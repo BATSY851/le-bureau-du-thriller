@@ -151,7 +151,7 @@
                         <i class="fa-solid fa-folder-open"></i> Accéder au Bureau (Démo)
                     </button>
                     <button onclick="navigateTo('shop')" class="bg-zinc-800 hover:bg-zinc-700 text-white font-mono text-xs font-bold uppercase tracking-wider px-6 py-3.5 rounded transition-all">
-                        Découvrir les Tarifs (Dès 12,90€)
+                        Découvrir les Tarifs
                     </button>
                 </div>
             </div>
@@ -213,82 +213,85 @@
     <section id="section-shop" class="hidden flex-1 max-w-7xl w-full mx-auto p-4 md:p-8 flex flex-col gap-12 py-12">
         <div class="text-center max-w-2xl mx-auto flex flex-col gap-3">
             <h2 class="font-serif text-3xl md:text-4xl font-bold text-white">Démarrez votre Abonnement</h2>
-            <p class="text-zinc-400 text-sm">Le Bureau du Thriller propose des formules claires, sans engagement, conçues pour s'adapter à tous les portefeuilles.</p>
+            <p class="text-zinc-400 text-sm">Le Bureau du Thriller propose des formules claires, sans engagement, conçues pour s'adapter à tous les budgets.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             
-            <!-- Plan 1 -->
-            <div class="bg-zinc-900/50 border border-white/5 hover:border-brandRed/30 p-8 rounded-lg flex flex-col justify-between gap-8 transition-all relative">
-                <div class="flex flex-col gap-4">
-                    <span class="text-[9px] text-zinc-500 uppercase font-mono tracking-widest block">DÉCOUVERTE</span>
-                    <h3 class="font-serif text-2xl font-bold text-white">Épisode 1 Unique</h3>
-                    <p class="text-zinc-400 text-xs leading-relaxed">Testez le premier épisode "Le Carnet Perdu" complet sous format scellé A4. Idéal pour s'initier sans engagement.</p>
-                    <div class="flex items-baseline gap-1 mt-2">
-                        <span class="text-3xl font-bold text-white">16,90 €</span>
-                        <span class="text-zinc-500 text-xs">/ unique</span>
-                    </div>
-                </div>
-                
-                <div class="flex flex-col gap-3 border-t border-white/5 pt-6 text-xs font-mono text-zinc-400">
-                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Expédié en Lettre Suivie (Gratuit)</div>
-                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Livre A5 + Livret d'enquête</div>
-                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Accès à l'interrogatoire IA</div>
-                </div>
-
-                <!-- Stripe Sim Button -->
-                <button onclick="simulateStripeCheckout('Épisode 1 Unique', 16.90)" class="w-full bg-zinc-800 hover:bg-brandRed text-white font-mono text-xs font-bold uppercase tracking-wider py-3 rounded transition-all">
-                    S'abonner maintenant
-                </button>
-            </div>
-
-            <!-- Plan 2 (POPULAR) -->
+            <!-- Plan 1 : L'ABONNEMENT MENSUEL -->
             <div class="bg-zinc-900 border-2 border-brandRed p-8 rounded-lg flex flex-col justify-between gap-8 transition-all relative shadow-2xl">
                 <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-brandRed text-white text-[10px] font-mono font-bold px-4 py-1.5 rounded-full uppercase tracking-wider">
                     RECOMMANDÉ
                 </div>
                 
                 <div class="flex flex-col gap-4 mt-2">
-                    <span class="text-[9px] text-brandRed uppercase font-mono tracking-widest block font-bold">ABONNEMENT MENSUEL</span>
-                    <h3 class="font-serif text-2xl font-bold text-white">Saison 1 Complète</h3>
-                    <p class="text-zinc-300 text-xs leading-relaxed">Recevez un nouvel épisode scellé chaque mois dans votre boîte aux lettres. Suivez l'enquête de Clémence jusqu'à la confrontation finale.</p>
+                    <span class="text-[9px] text-brandRed uppercase font-mono tracking-widest block font-bold">ABONNEMENT RECURRANT</span>
+                    <h3 class="font-serif text-2xl font-bold text-white">Abonnement Mensuel</h3>
+                    <p class="text-zinc-300 text-xs leading-relaxed">Recevez un nouvel épisode mystère scellé chaque mois directement dans votre boîte aux lettres. Sans engagement, résiliable en un clic.</p>
                     <div class="flex items-baseline gap-1 mt-2">
-                        <span class="text-3xl font-bold text-white">12,90 €</span>
-                        <span class="text-zinc-400 text-xs">/ mois + port</span>
+                        <span class="text-3xl font-bold text-white">16,90 €</span>
+                        <span class="text-zinc-400 text-xs">/ mois (port inclus)</span>
                     </div>
                 </div>
                 
                 <div class="flex flex-col gap-3 border-t border-white/5 pt-6 text-xs font-mono text-zinc-300">
-                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Moins de 3cm (Boîte aux lettres)</div>
-                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Économisez 4€ par rapport à l'unité</div>
-                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Archivage des épisodes précédents</div>
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Moins de 3cm (Glissé en boîte)</div>
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Livre A5 + Livret de suspects</div>
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Accès illimité à la console de jeu</div>
                 </div>
 
-                <button onclick="simulateStripeCheckout('Saison 1 Mensuel', 12.90)" class="w-full bg-brandRed hover:bg-red-700 text-white font-mono text-xs font-bold uppercase tracking-wider py-3 rounded transition-all shadow-lg shadow-brandRed/30">
+                <button onclick="simulateStripeCheckout('Abonnement Mensuel', 16.90)" class="w-full bg-brandRed hover:bg-red-700 text-white font-mono text-xs font-bold uppercase tracking-wider py-3 rounded transition-all shadow-lg shadow-brandRed/30">
                     S'abonner maintenant
                 </button>
             </div>
 
-            <!-- Plan 3 -->
+            <!-- Plan 2 : ÉPISODE UNIQUE -->
             <div class="bg-zinc-900/50 border border-white/5 hover:border-brandRed/30 p-8 rounded-lg flex flex-col justify-between gap-8 transition-all relative">
                 <div class="flex flex-col gap-4">
-                    <span class="text-[9px] text-zinc-500 uppercase font-mono tracking-widest block">AVANTAGEUX</span>
-                    <h3 class="font-serif text-2xl font-bold text-white">Pack Intégral 3 Mois</h3>
-                    <p class="text-zinc-400 text-xs leading-relaxed">Économisez encore plus en précommandant la première moitié de la saison. Expédiée sous enveloppe groupée.</p>
+                    <span class="text-[9px] text-zinc-500 uppercase font-mono tracking-widest block">DÉCOUVERTE</span>
+                    <h3 class="font-serif text-2xl font-bold text-white">Épisode 1 Unique</h3>
+                    <p class="text-zinc-400 text-xs leading-relaxed">Testez le premier épisode complet "Le Carnet Perdu" sous format scellé rigide. Idéal pour s'initier sans aucune récurrence.</p>
                     <div class="flex items-baseline gap-1 mt-2">
-                        <span class="text-3xl font-bold text-white">39,90 €</span>
-                        <span class="text-zinc-500 text-xs">/ trimestriel</span>
+                        <span class="text-3xl font-bold text-white">19,90 €</span>
+                        <span class="text-zinc-500 text-xs">/ unique</span>
                     </div>
                 </div>
                 
                 <div class="flex flex-col gap-3 border-t border-white/5 pt-6 text-xs font-mono text-zinc-400">
-                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Les Épisodes 1, 2 et 3 inclus</div>
-                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Économie de 10,80 €</div>
-                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Port inclus et suivi total</div>
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Expédié sous 48 heures</div>
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Tous les indices réels inclus</div>
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Interrogatoire IA fonctionnel</div>
                 </div>
 
-                <button onclick="simulateStripeCheckout('Pack Intégral 3 Mois', 39.90)" class="w-full bg-zinc-800 hover:bg-brandRed text-white font-mono text-xs font-bold uppercase tracking-wider py-3 rounded transition-all">
-                    S'abonner maintenant
+                <!-- Stripe Sim Button -->
+                <button onclick="simulateStripeCheckout('Épisode 1 Unique', 19.90)" class="w-full bg-zinc-800 hover:bg-brandRed text-white font-mono text-xs font-bold uppercase tracking-wider py-3 rounded transition-all">
+                    Acheter l'Épisode
+                </button>
+            </div>
+
+            <!-- Plan 3 : PACK INTEGRAL (EN ATTENTE) -->
+            <div class="bg-zinc-950/40 border border-dashed border-white/10 p-8 rounded-lg flex flex-col justify-between gap-8 relative opacity-70">
+                <div class="absolute top-4 right-4 bg-zinc-800 text-zinc-400 text-[8px] font-mono uppercase px-2 py-0.5 rounded">
+                    Bientôt Disponible
+                </div>
+                
+                <div class="flex flex-col gap-4">
+                    <span class="text-[9px] text-zinc-500 uppercase font-mono tracking-widest block">INTEGRAL</span>
+                    <h3 class="font-serif text-2xl font-bold text-zinc-400">Pack Complet</h3>
+                    <p class="text-zinc-500 text-xs leading-relaxed">Une formule à tarif dégressif regroupant l'intégralité de la saison (option de 3 ou 6 épisodes expédiés en paquets groupés).</p>
+                    <div class="flex items-baseline gap-1 mt-2">
+                        <span class="text-xl font-bold text-zinc-500">Tarif en attente</span>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col gap-3 border-t border-white/5 pt-6 text-xs font-mono text-zinc-500">
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-clock"></i> Option 3 ou 6 mois à l'étude</div>
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-clock"></i> Économies substantielles de routage</div>
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-clock"></i> Accès prioritaire aux tirages</div>
+                </div>
+
+                <button disabled class="w-full bg-zinc-800/50 text-zinc-500 font-mono text-xs font-bold uppercase tracking-wider py-3 rounded cursor-not-allowed">
+                    En attente de lancement
                 </button>
             </div>
 
@@ -343,167 +346,193 @@
 
             <!-- Two columns dashboard grid -->
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                            <div class="flex items-center gap-2">
-                                <button onclick="prevChapter()" class="w-8 h-8 rounded border border-white/10 hover:border-brandRed flex items-center justify-center text-zinc-400 hover:text-brandRed transition-colors">
-                                    <i class="fa-solid fa-chevron-left text-xs"></i>
-                                </button>
-                                <span class="font-mono text-xs text-zinc-500" id="chapter-index">1 / 5</span>
-                                <button onclick="nextChapter()" class="w-8 h-8 rounded border border-white/10 hover:border-brandRed flex items-center justify-center text-zinc-400 hover:text-brandRed transition-colors">
-                                    <i class="fa-solid fa-chevron-right text-xs"></i>
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Real interactive story text container -->
-                        <div class="overflow-y-auto no-scrollbar max-h-[420px] text-zinc-300 text-sm leading-relaxed pr-2 flex flex-col gap-4 font-sans italic" id="chapter-body">
-                            <!-- Injected by script -->
-                        </div>
-
-                        <!-- Dynamic Action Notification Box inside text -->
-                        <div id="diagnetic-notification-box" class="mt-4 bg-brandRed/10 border-l-4 border-brandRed p-4 rounded-r text-xs text-zinc-300 font-mono hidden">
-                            <!-- Injected diagnetic instruction depending on page -->
-                        </div>
-                    </div>
-
-                    <!-- TAB 2: PIÈCES D'ARCHIVES VISUALISER -->
-                    <div id="panel-evidence" class="hidden flex flex-col gap-6 h-full">
-                        <div class="flex items-center justify-between border-b border-white/10 pb-4">
-                            <div>
-                                <span class="text-[9px] text-brandRed font-mono font-bold tracking-wider uppercase block">Indices d'Enveloppe A4</span>
-                                <h4 class="font-serif text-xl font-bold text-white mt-0.5">Coffre de Pièces Matérielles</h4>
-                            </div>
-                        </div>
-
-                        <!-- Indices selection grid -->
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                            
-                            <!-- Clue A: Lettre Anonyme -->
-                            <button onclick="viewClue('lettre')" class="group flex flex-col gap-2 p-3 bg-zinc-950 border border-white/5 hover:border-brandRed rounded-lg text-left transition-all">
-                                <div class="aspect-video w-full rounded bg-zinc-900 flex items-center justify-center text-brandRed group-hover:scale-105 transition-all">
-                                    <i class="fa-solid fa-envelope-open-text text-2xl"></i>
-                                </div>
-                                <span class="font-serif text-xs font-bold text-white truncate block">Lettre Anonyme</span>
-                                <span class="text-[9px] text-zinc-500 font-mono">Quadrillée • Chapitre 1</span>
-                            </button>
-
-                            <!-- Clue B: Avis de Recherche -->
-                            <button onclick="viewClue('avis')" class="group flex flex-col gap-2 p-3 bg-zinc-950 border border-white/5 hover:border-brandRed rounded-lg text-left transition-all">
-                                <div class="aspect-video w-full rounded bg-zinc-900 flex items-center justify-center text-brandRed group-hover:scale-105 transition-all">
-                                    <i class="fa-solid fa-user-secret text-2xl"></i>
-                                </div>
-                                <span class="font-serif text-xs font-bold text-white truncate block">Avis de Recherche</span>
-                                <span class="text-[9px] text-zinc-500 font-mono">Gendarmerie • Dossier</span>
-                            </button>
-
-                            <!-- Clue C: Carte de 1984 -->
-                            <button onclick="viewClue('carte')" class="group flex flex-col gap-2 p-3 bg-zinc-950 border border-white/5 hover:border-brandRed rounded-lg text-left transition-all">
-                                <div class="aspect-video w-full rounded bg-zinc-900 flex items-center justify-center text-brandRed group-hover:scale-105 transition-all">
-                                    <i class="fa-solid fa-map-location-dot text-2xl"></i>
-                                </div>
-                                <span class="font-serif text-xs font-bold text-white truncate block">Carte Routière 1984</span>
-                                <span class="text-[9px] text-zinc-500 font-mono">Vosges • Chapitre 2</span>
-                            </button>
-
-                            <!-- Clue D: Message Audio QR -->
-                            <button onclick="viewClue('audio')" class="group flex flex-col gap-2 p-3 bg-zinc-950 border border-white/5 hover:border-brandRed rounded-lg text-left transition-all">
-                                <div class="aspect-video w-full rounded bg-zinc-900 flex items-center justify-center text-brandRed group-hover:scale-105 transition-all">
-                                    <i class="fa-solid fa-circle-play text-2xl"></i>
-                                </div>
-                                <span class="font-serif text-xs font-bold text-white truncate block">Fichier Audio Zoom</span>
-                                <span class="text-[9px] text-zinc-500 font-mono">Bande Sonore • Fin</span>
-                            </button>
-                        </div>
-
-                        <!-- Main viewer panel showing selected clue content -->
-                        <div id="clue-viewer-subpanel" class="bg-zinc-950 p-4 rounded-lg border border-white/5 flex-1 min-h-[220px] flex items-center justify-center text-center text-xs text-zinc-500 font-mono">
-                            <div class="flex flex-col gap-2 items-center">
-                                <i class="fa-solid fa-arrow-pointer text-xl text-zinc-700"></i>
-                                <span>Sélectionnez un indice ci-dessus pour l'examiner à la loupe numérique</span>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- RIGHT PANEL: INTERACTIVE AGENT NOTEBOOK, INTERROGATORY, VERDICT (5 Columns) -->
-            <div class="lg:col-span-5 flex flex-col gap-6">
                 
-                <!-- SUSPECT CHAT / REAL-TIME INTERROGATORY WITH GEMINI -->
-                <div class="bg-zinc-900 border border-white/10 rounded-lg p-5 shadow-2xl flex flex-col gap-4 relative overflow-hidden">
-                    <div class="absolute top-0 right-0 stamp px-3 py-1 text-[8px] tracking-widest font-bold uppercase rotate-12 mt-2 mr-2">Gemini AI Engine</div>
-                    <div class="flex items-center gap-2">
-                        <i class="fa-solid fa-comments text-brandRed"></i>
-                        <h4 class="font-serif text-lg font-bold text-white">Interrogatoire Suspects (IA)</h4>
-                    </div>
-
-                    <!-- Suspect selection dropdown -->
-                    <div class="flex items-center gap-2 text-xs font-mono">
-                        <label class="text-zinc-400">Interroger :</label>
-                        <select id="chat-suspect-selector" onchange="resetChatHistory()" class="bg-brandDark border border-white/10 rounded px-2.5 py-1.5 text-zinc-300 focus:outline-none focus:border-brandRed font-sans text-xs">
-                            <option value="chevalier">Marc Chevalier (Le Maire)</option>
-                            <option value="helene">Hélène (La Logeuse)</option>
-                            <option value="weber">Adjudant-chef Weber (Gendarme)</option>
-                        </select>
-                    </div>
-
-                    <!-- Chat Message Area -->
-                    <div id="chat-messages-box" class="h-44 bg-zinc-950 border border-white/5 rounded p-3 overflow-y-auto font-sans text-xs flex flex-col gap-3">
-                        <!-- Initial message generated programmatically depending on suspect -->
-                    </div>
-
-                    <!-- Prompt input area -->
-                    <div class="flex items-center gap-2">
-                        <input type="text" id="chat-user-input" placeholder="Posez votre question indiscrète..." onkeydown="handleChatKeydown(event)" class="flex-1 bg-zinc-950 border border-white/10 rounded px-3 py-2 text-xs text-zinc-200 focus:outline-none focus:border-brandRed">
-                        <button onclick="sendChatMessage()" class="bg-brandRed hover:bg-red-700 text-white font-mono text-xs font-bold px-4 py-2 rounded transition-all shrink-0">
-                            Poser
+                <!-- LEFT PANEL: BOOK & CLUES NAV (7 Columns) -->
+                <div class="lg:col-span-7 flex flex-col gap-6">
+                    
+                    <!-- Main Tabs of the Portal -->
+                    <div class="bg-zinc-900 p-1 border border-white/5 rounded-lg flex gap-1 font-mono text-xs">
+                        <button onclick="switchTab('journal')" id="tab-journal" class="flex-1 text-center py-2.5 rounded font-bold transition-all bg-brandRed text-white">
+                            <i class="fa-solid fa-book-open mr-1.5"></i> Carnet de Clémence
+                        </button>
+                        <button onclick="switchTab('evidence')" id="tab-evidence" class="flex-1 text-center py-2.5 rounded font-bold transition-all text-zinc-400 hover:text-white">
+                            <i class="fa-solid fa-file-invoice mr-1.5"></i> Pièces d'Archive
                         </button>
                     </div>
-                </div>
 
-                <!-- AGENT NOTEBOOK (LOCALSTORAGE SAVED) -->
-                <div class="bg-zinc-900 border border-white/10 rounded-lg p-5 shadow-2xl flex flex-col gap-3">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-2">
-                            <i class="fa-solid fa-pencil text-brandRed"></i>
-                            <h4 class="font-serif text-lg font-bold text-white">Mon Carnet de Détective</h4>
+                    <!-- CONTENT WINDOW : DYNAMIC UNDER ACTIVE TAB -->
+                    <div id="portal-content-window" class="bg-zinc-900 border border-white/10 rounded-lg p-4 md:p-6 min-h-[500px] flex flex-col justify-between shadow-2xl relative">
+                        
+                        <!-- TAB 1: JOURNAL DE CLÉMENCE (LIVRET DE BASE DE L'ÉPISODE 1) -->
+                        <div id="panel-journal" class="flex flex-col gap-4 h-full">
+                            <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                                <div>
+                                    <span class="text-[9px] text-brandRed font-mono font-bold tracking-wider uppercase block">Journal Intime Récupéré</span>
+                                    <h4 class="font-serif text-xl font-bold text-white mt-0.5" id="chapter-title">Chapitre 1 : 12 Octobre – Là où la route s'arrête</h4>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <button onclick="prevChapter()" class="w-8 h-8 rounded border border-white/10 hover:border-brandRed flex items-center justify-center text-zinc-400 hover:text-brandRed transition-colors">
+                                        <i class="fa-solid fa-chevron-left text-xs"></i>
+                                    </button>
+                                    <span class="font-mono text-xs text-zinc-500" id="chapter-index">1 / 5</span>
+                                    <button onclick="nextChapter()" class="w-8 h-8 rounded border border-white/10 hover:border-brandRed flex items-center justify-center text-zinc-400 hover:text-brandRed transition-colors">
+                                        <i class="fa-solid fa-chevron-right text-xs"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Real interactive story text container -->
+                            <div class="overflow-y-auto no-scrollbar max-h-[420px] text-zinc-300 text-sm leading-relaxed pr-2 flex flex-col gap-4 font-sans italic" id="chapter-body">
+                                <!-- Injected by script -->
+                            </div>
+
+                            <!-- Dynamic Action Notification Box inside text -->
+                            <div id="diagnetic-notification-box" class="mt-4 bg-brandRed/10 border-l-4 border-brandRed p-4 rounded-r text-xs text-zinc-300 font-mono hidden">
+                                <!-- Injected diagnetic instruction depending on page -->
+                            </div>
                         </div>
-                        <span class="text-[9px] font-mono text-emerald-500 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded">Sauvegardé</span>
+
+                        <!-- TAB 2: PIÈCES D'ARCHIVES VISUALISER -->
+                        <div id="panel-evidence" class="hidden flex flex-col gap-6 h-full">
+                            <div class="flex items-center justify-between border-b border-white/10 pb-4">
+                                <div>
+                                    <span class="text-[9px] text-brandRed font-mono font-bold tracking-wider uppercase block">Indices d'Enveloppe A4</span>
+                                    <h4 class="font-serif text-xl font-bold text-white mt-0.5">Coffre de Pièces Matérielles</h4>
+                                </div>
+                            </div>
+
+                            <!-- Indices selection grid -->
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                
+                                <!-- Clue A: Lettre Anonyme -->
+                                <button onclick="viewClue('lettre')" class="group flex flex-col gap-2 p-3 bg-zinc-950 border border-white/5 hover:border-brandRed rounded-lg text-left transition-all">
+                                    <div class="aspect-video w-full rounded bg-zinc-900 flex items-center justify-center text-brandRed group-hover:scale-105 transition-all">
+                                        <i class="fa-solid fa-envelope-open-text text-2xl"></i>
+                                    </div>
+                                    <span class="font-serif text-xs font-bold text-white truncate block">Lettre Anonyme</span>
+                                    <span class="text-[9px] text-zinc-500 font-mono">Quadrillée • Chapitre 1</span>
+                                </button>
+
+                                <!-- Clue B: Avis de Recherche -->
+                                <button onclick="viewClue('avis')" class="group flex flex-col gap-2 p-3 bg-zinc-950 border border-white/5 hover:border-brandRed rounded-lg text-left transition-all">
+                                    <div class="aspect-video w-full rounded bg-zinc-900 flex items-center justify-center text-brandRed group-hover:scale-105 transition-all">
+                                        <i class="fa-solid fa-user-secret text-2xl"></i>
+                                    </div>
+                                    <span class="font-serif text-xs font-bold text-white truncate block">Avis de Recherche</span>
+                                    <span class="text-[9px] text-zinc-500 font-mono">Gendarmerie • Dossier</span>
+                                </button>
+
+                                <!-- Clue C: Carte de 1984 -->
+                                <button onclick="viewClue('carte')" class="group flex flex-col gap-2 p-3 bg-zinc-950 border border-white/5 hover:border-brandRed rounded-lg text-left transition-all">
+                                    <div class="aspect-video w-full rounded bg-zinc-900 flex items-center justify-center text-brandRed group-hover:scale-105 transition-all">
+                                        <i class="fa-solid fa-map-location-dot text-2xl"></i>
+                                    </div>
+                                    <span class="font-serif text-xs font-bold text-white truncate block">Carte Routière 1984</span>
+                                    <span class="text-[9px] text-zinc-500 font-mono">Vosges • Chapitre 2</span>
+                                </button>
+
+                                <!-- Clue D: Message Audio QR -->
+                                <button onclick="viewClue('audio')" class="group flex flex-col gap-2 p-3 bg-zinc-950 border border-white/5 hover:border-brandRed rounded-lg text-left transition-all">
+                                    <div class="aspect-video w-full rounded bg-zinc-900 flex items-center justify-center text-brandRed group-hover:scale-105 transition-all">
+                                        <i class="fa-solid fa-circle-play text-2xl"></i>
+                                    </div>
+                                    <span class="font-serif text-xs font-bold text-white truncate block">Fichier Audio Zoom</span>
+                                    <span class="text-[9px] text-zinc-500 font-mono">Bande Sonore • Fin</span>
+                                </button>
+                            </div>
+
+                            <!-- Main viewer panel showing selected clue content -->
+                            <div id="clue-viewer-subpanel" class="bg-zinc-950 p-4 rounded-lg border border-white/5 flex-1 min-h-[220px] flex items-center justify-center text-center text-xs text-zinc-500 font-mono">
+                                <div class="flex flex-col gap-2 items-center">
+                                    <i class="fa-solid fa-arrow-pointer text-xl text-zinc-700"></i>
+                                    <span>Sélectionnez un indice ci-dessus pour l'examiner à la loupe numérique</span>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
 
-                    <p class="text-[10px] text-zinc-500 font-mono">Vos notes de déductions, alibis, anomalies et contradictions d'épisode.</p>
-                    <textarea id="agent-notes" oninput="saveAgentNotes()" placeholder="Exemple : Hélène semble terrifiée par Chevalier... Le dossier de gendarmerie de 1984 contient un trou chronologique suspect... " class="w-full h-32 bg-zinc-950 border border-white/5 rounded p-3 font-sans text-xs text-zinc-300 focus:outline-none focus:border-brandRed leading-relaxed resize-none"></textarea>
                 </div>
 
-                <!-- RESOLUTION & CHARGES PORTAL (SUBMIT VERDICT) -->
-                <div class="bg-zinc-900 border-2 border-brandRed/30 rounded-lg p-5 shadow-2xl flex flex-col gap-4">
-                    <div class="flex items-center gap-2">
-                        <i class="fa-solid fa-gavel text-brandRed"></i>
-                        <h4 class="font-serif text-lg font-bold text-white">Résolution Finale Épisode 1</h4>
+                <!-- RIGHT PANEL: INTERACTIVE AGENT NOTEBOOK, INTERROGATORY, VERDICT (5 Columns) -->
+                <div class="lg:col-span-5 flex flex-col gap-6">
+                    
+                    <!-- SUSPECT CHAT / REAL-TIME INTERROGATORY WITH GEMINI -->
+                    <div class="bg-zinc-900 border border-white/10 rounded-lg p-5 shadow-2xl flex flex-col gap-4 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 stamp px-3 py-1 text-[8px] tracking-widest font-bold uppercase rotate-12 mt-2 mr-2">Gemini AI Engine</div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-comments text-brandRed"></i>
+                            <h4 class="font-serif text-lg font-bold text-white">Interrogatoire Suspects (IA)</h4>
+                        </div>
+
+                        <!-- Suspect selection dropdown -->
+                        <div class="flex items-center gap-2 text-xs font-mono">
+                            <label class="text-zinc-400">Interroger :</label>
+                            <select id="chat-suspect-selector" onchange="resetChatHistory()" class="bg-brandDark border border-white/10 rounded px-2.5 py-1.5 text-zinc-300 focus:outline-none focus:border-brandRed font-sans text-xs">
+                                <option value="chevalier">Marc Chevalier (Le Maire)</option>
+                                <option value="helene">Hélène (La Logeuse)</option>
+                                <option value="weber">Adjudant-chef Weber (Gendarme)</option>
+                            </select>
+                        </div>
+
+                        <!-- Chat Message Area -->
+                        <div id="chat-messages-box" class="h-44 bg-zinc-950 border border-white/5 rounded p-3 overflow-y-auto font-sans text-xs flex flex-col gap-3">
+                            <!-- Initial message generated programmatically depending on suspect -->
+                        </div>
+
+                        <!-- Prompt input area -->
+                        <div class="flex items-center gap-2">
+                            <input type="text" id="chat-user-input" placeholder="Posez votre question indiscrète..." onkeydown="handleChatKeydown(event)" class="flex-1 bg-zinc-950 border border-white/10 rounded px-3 py-2 text-xs text-zinc-200 focus:outline-none focus:border-brandRed">
+                            <button onclick="sendChatMessage()" class="bg-brandRed hover:bg-red-700 text-white font-mono text-xs font-bold px-4 py-2 rounded transition-all shrink-0">
+                                Poser
+                            </button>
+                        </div>
                     </div>
 
-                    <p class="text-xs text-zinc-400 leading-relaxed">Penses-tu avoir reconstitué le dossier de Clémence Masson ? Remplis le rapport d'accusation pour valider ton hypothèse.</p>
+                    <!-- AGENT NOTEBOOK (LOCALSTORAGE SAVED) -->
+                    <div class="bg-zinc-900 border border-white/10 rounded-lg p-5 shadow-2xl flex flex-col gap-3">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-pencil text-brandRed"></i>
+                                <h4 class="font-serif text-lg font-bold text-white">Mon Carnet de Détective</h4>
+                            </div>
+                            <span class="text-[9px] font-mono text-emerald-500 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded">Sauvegardé</span>
+                        </div>
 
-                    <div class="flex flex-col gap-2 text-xs font-mono">
-                        <select id="accuse-suspect-select" class="w-full bg-zinc-950 border border-white/10 rounded p-2 text-zinc-300 focus:outline-none focus:border-brandRed">
-                            <option value="">-- ACCUSER LE COUPABLE --</option>
-                            <option value="chevalier">Marc Chevalier (Le Maire)</option>
-                            <option value="helene">Hélène (La Logeuse)</option>
-                            <option value="weber">L'Adjudant-chef Weber</option>
-                        </select>
-
-                        <select id="accuse-evidence-select" class="w-full bg-zinc-950 border border-white/10 rounded p-2 text-zinc-300 focus:outline-none focus:border-brandRed">
-                            <option value="">-- SÉLECTIONNER LA PREUVE MAJEURE --</option>
-                            <option value="lettre">La lettre anonyme du carnet</option>
-                            <option value="carte">L'annotation de 1984 sur la carte</option>
-                            <option value="registre">Le registre comptable de béton du Maire</option>
-                        </select>
+                        <p class="text-[10px] text-zinc-500 font-mono">Vos notes de déductions, alibis, anomalies et contradictions d'épisode.</p>
+                        <textarea id="agent-notes" oninput="saveAgentNotes()" placeholder="Exemple : Hélène semble terrifiée par Chevalier... Le dossier de gendarmerie de 1984 contient un trou chronologique suspect... " class="w-full h-32 bg-zinc-950 border border-white/5 rounded p-3 font-sans text-xs text-zinc-300 focus:outline-none focus:border-brandRed leading-relaxed resize-none"></textarea>
                     </div>
 
-                    <button onclick="submitEpisodeVerdict()" class="bg-brandRed hover:bg-red-700 text-white font-mono text-xs font-bold uppercase tracking-wider py-3 rounded transition-all text-center">
-                        Soumettre le Rapport d'Accusation
-                    </button>
+                    <!-- RESOLUTION & CHARGES PORTAL (SUBMIT VERDICT) -->
+                    <div class="bg-zinc-900 border-2 border-brandRed/30 rounded-lg p-5 shadow-2xl flex flex-col gap-4">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-gavel text-brandRed"></i>
+                            <h4 class="font-serif text-lg font-bold text-white">Résolution Finale Épisode 1</h4>
+                        </div>
+
+                        <p class="text-xs text-zinc-400 leading-relaxed">Penses-tu avoir reconstitué le dossier de Clémence Masson ? Remplis le rapport d'accusation pour valider ton hypothèse.</p>
+
+                        <div class="flex flex-col gap-2 text-xs font-mono">
+                            <select id="accuse-suspect-select" class="w-full bg-zinc-950 border border-white/10 rounded p-2 text-zinc-300 focus:outline-none focus:border-brandRed">
+                                <option value="">-- ACCUSER LE COUPABLE --</option>
+                                <option value="chevalier">Marc Chevalier (Le Maire)</option>
+                                <option value="helene">Hélène (La Logeuse)</option>
+                                <option value="weber">L'Adjudant-chef Weber</option>
+                            </select>
+
+                            <select id="accuse-evidence-select" class="w-full bg-zinc-950 border border-white/10 rounded p-2 text-zinc-300 focus:outline-none focus:border-brandRed">
+                                <option value="">-- SÉLECTIONNER LA PREUVE MAJEURE --</option>
+                                <option value="lettre">La lettre anonyme du carnet</option>
+                                <option value="carte">L'annotation de 1984 sur la carte</option>
+                                <option value="registre">Le registre comptable de béton du Maire</option>
+                            </select>
+                        </div>
+
+                        <button onclick="submitEpisodeVerdict()" class="bg-brandRed hover:bg-red-700 text-white font-mono text-xs font-bold uppercase tracking-wider py-3 rounded transition-all text-center">
+                            Soumettre le Rapport d'Accusation
+                        </button>
+                    </div>
+
                 </div>
 
             </div>
@@ -573,22 +602,24 @@
                     "Si vous lisez ces lignes, c’est que j’ai enfin posé mes valises. Ou plutôt que j’ai jeté mon sac à dos en toile kaki sur le couvre-lit en laine jaune moutarde qui sent la naphtaline, la poussière et l'humidité tenace de ce petit studio. Je suis installée juste au-dessus de la scierie de Saint-Jean-des-Bois. En contrebas, le bruit mécanique du cours d'eau qui fait tourner l'ancienne turbine de la scierie produit un battement sourd, régulier, comme le pouls trop lent d'un géant endormi sous les planches.",
                     "La route pour venir jusqu'ici est une mauvaise plaisanterie. C'est une départementale étroite, la D412, qui se recroqueville sur elle-même, se plisse et se dérobe au fur et à mesure qu'on s’enfonce sous la canopée des Vosges. À partir du trentième kilomètre, les pins sont si serrés, si gigantesques, qu'ils coupent presque totalement la lumière du jour, même en plein midi. On a l’impression physique de rouler dans un tunnel végétal, sombre, froid et infini.",
                     "Ma logeuse s’appelle Hélène. C'est une vieille dame toute petite, voûtée sous un châle en tricot gris souris. Ses mains, quand elle m'a tendu la lourde clé en fer forgé du studio, étaient glacées. Un froid sec, presque minéral.",
+                    "— Vous êtes la fille du podcast ? m'a-t-elle demandé. (Je l'ai noté ici car sa voix m'a tout de suite glacé le sang)",
+                    "— Clémence, oui. C'est moi, ai-je répondu en tentant d'afficher mon plus beau sourire professionnel, celui qui rassure les témoins d'ordinaire.",
                     "— Vous devriez laisser les morts là où ils sont, ma petite dame, a-t-elle murmuré. La forêt n'aime pas qu'on vienne remuer sa terre. Elle est vieille, et elle finit toujours par reprendre ce qui lui appartient.",
                     "C'est en déballant mon matériel de prise de son que je me suis rendu compte d'un truc bizarre. La boîte aux lettres en bas, celle du \"Studio 2\", était verrouillée. Mais en palpant le fond métallique froid, j'ai senti un papier. Une simple feuille de carnet de notes à petits carreaux, pliée soigneusement en quatre."
                 ],
-                instruction: "✉️ DIRECTIVE : Ouvrez votre boîte. Repérez l'enveloppe contenant les indices et dépliez la « LETTRE ANONYME ». Prenez connaissance de son contenu avant de lire la suite."
+                instruction: "✉️ DIRECTIVE DU BUREAU : Ouvrez votre boîte et dépliez la « LETTRE ANONYME ». Prenez connaissance de son contenu manuscrit avant de lire la suite."
             },
             {
                 title: "Chapitre 2 : 14 Octobre – Le silence a un goût de cendre",
                 body: [
                     "Le brouillard n'est pas monté ce matin. Il est resté plaqué au sol, rampant entre les troncs sombres des pins comme une fumée épaisse et froide.",
-                    "J'ai étalé sur la table la vieille carte routière de la gendarmerie nationale que mon contact à Épinal m'avait discrètement glissée avant mon départ. C'est une carte qui date de 1984, usée aux pliures.",
+                    "J'ai étalé sur la table la vieille carte routière de la gendarmerie nationale que mon contact à Épinal m'avait discrètement glissée avant mon départ. C'est une carte qui date de 1984, usée aux pliures, qui sent la poussière.",
                     "Il est temps de sortir. Je vais descendre au village. Il faut que je trouve le seul endroit où les langues finissent toujours par se délier un peu : le bistrot de la place, Le Relais des Vosges. Un silence sec m'y a accueillie. Des regards hostiles.",
                     "J'ai évoqué la disparition de Victor Lemoine en 1984. Un vieux en bleu de travail a craché : « Les Lemoine, ils sont partis depuis bien longtemps, et ils ont emporté leurs squelettes avec eux. »",
                     "Le patron du bistrot m'a glissé à voix basse : « Le maire n'aime pas qu'on vienne poser des questions sur les Lemoine. Sa famille possède la moitié des parcelles forestières autour de l'étang. »",
                     "De retour au studio, j'ai relu le mot anonyme : « Regardez là où les chemins se croisent. » En observant attentivement la vieille carte de 1984, j'ai remarqué une annotation..."
                 ],
-                instruction: "🗺️ ACTION DE L'AGENT : Sortez la « CARTE ROUTIÈRE DE 1984 ». Repérez l'intersection des chemins à la croix noire et découvrez l'annotation violette écrite dans le passé."
+                instruction: "🗺️ ACTION COMPLÉMENTAIRE : Sortez la « CARTE ROUTIÈRE DE 1984 ». Repérez la croix noire à l'intersection des sentiers et lisez l'annotation violette."
             },
             {
                 title: "Chapitre 3 : 16 Octobre – Les tiroirs de l'oubli",
@@ -599,7 +630,7 @@
                     "Cet après-midi, je suis allée à la gendarmerie. J'ai interrogé l'Adjudant-chef Weber sur l'affaire Lemoine. Son visage s'est fermé. « Le dossier a été classé il y a quarante ans. Fugue. Fin de l'histoire. »",
                     "Puis il a murmuré sur un ton menaçant : « Si je vous revois tourner autour de la vieille scierie, je vous ferai passer vingt-quatre heures en cellule pour trouble à l'ordre public. »"
                 ],
-                instruction: "🔍 INDICE : La gendarmerie et la mairie protègent un crime commis en 1984. Le socle en béton de la turbine est le secret. Interrogez Chevalier ou Weber dans le panneau de droite."
+                instruction: "🔍 INDICE DISPONIBLE : Marc Chevalier et l'Adjudant Weber cachent un secret majeur lié à cette turbine. Vous pouvez tenter de les piéger dans l'interrogatoire IA à droite."
             },
             {
                 title: "Chapitre 4 : 18 Octobre – Le murmure des planches",
@@ -609,7 +640,7 @@
                     "Cette nuit, Hélène est sortie au village. J'en ai profité pour descendre à pas de loup et ouvrir les bureaux d'archives administratifs de la scierie abandonnée sous l'escalier.",
                     "J'ai ouvert le tiroir rouillé des archives comptables de 1984. J'ai ouvert le registre de comptabilité relié en toile noire, et j'ai trouvé la preuve de transaction à la date du 12 novembre 1984..."
                 ],
-                instruction: "📂 PIÈCE COMPTABLE DETECTÉE : Clémence a volé le registre d'époque. L'annotation indique : « Livraison de 12m³ de béton à prise rapide payée directement par l'entreprise Chevalier S.A. »"
+                instruction: "📂 PIÈCE COMPTABLE DETECTÉE : Clémence fait référence au registre de 1984. L'annotation indique une livraison de 12m³ de béton à prise rapide payée par Chevalier S.A."
             },
             {
                 title: "Chapitre 5 : 21 Octobre – Le bruit de la terre",
@@ -619,7 +650,7 @@
                     "Mon plan est simple. À cinq heures du matin, je marcherai jusqu'à la turbine sans faire de bruit. Je tenterai de glisser mon micro et la caméra de mon téléphone dans la fente de la trappe pour capturer des images.",
                     "Dés que ce sera fait, je roulerai sans m'arrêter vers Épinal. Mon carnet est rangé dans mon sac. Si quelqu'un trouve ce carnet... regardez la turbine. Regardez le béton. Tout est là. Je descends."
                 ],
-                instruction: "🚨 FIN DU MANUSCRIT : Clémence a disparu après cette descente. Écoutez le dernier enregistrement sonore de son Zoom (Pièce d'Archive > Fichier Audio) pour clore le dossier."
+                instruction: "🚨 FIN DU MANUSCRIT : Clémence a disparu. Son dictaphone Zoom a été retrouvé au sol. Scannez le QR Code de votre boîte ou ouvrez l'onglet 'Pièces d'Archive' > 'Fichier Audio' pour écouter le dénouement."
             }
         ];
 
@@ -1069,17 +1100,17 @@
                 chevalier: {
                     name: "Marc Chevalier (Le Maire)",
                     intro: "C'est Marc Chevalier. Qu'est-ce que vous me voulez encore ? J'ai un conseil municipal dans dix minutes. Dépêchez-vous.",
-                    systemPrompt: `Tu es Marc Chevalier, maire de Saint-Jean-des-Bois. Tu as 54 ans, tu es froid, arrogant, condescendant et profondément protecteur du secret de ta famille. Ton père a étouffé la mort du petit Lemoine en 1984 sous une dalle de béton de la turbine pour accaparer ses terres forestières. Tu as fait enlever Clémence Valier (la podcasteuse) car elle a découvert la comptabilité de la dalle de béton. Tu nies TOUT en bloc. Tu parles avec un accent légèrement vosgien traînant. Si on te parle de béton ou de comptabilité, tu deviens agressif, tu menaces l'enquêteur de lui faire détruire sa Twingo par des chasseurs ou de le chasser de la région.`
+                    systemPrompt: `Tu es Marc Chevalier, maire de Saint-Jean-des-Bois. Tu as 54 ans, tu es froid, arrogant, condescendant et profondément protecteur du secret de ta famille. Tu n'es pas un simple PNJ passif qui récite des répliques : tu es un être humain stressé, manipulateur et intelligent. Tu adaptes ton ton à celui de ton interlocuteur. Si l'enquêteur est poli, tu es faussement cordial mais pressé, essayant de couper court. S'il est agressif ou t'accuse directement, tu te braques, tu t'énerves, tu ris nerveusement, tu t'indignes ("Mais pour qui vous vous prenez ?") et tu menaces d'appeler l'Adjudant Weber pour diffamation. Ton père a étouffé la mort du petit Lemoine en 1984 sous une dalle de béton de la turbine pour accaparer ses terres forestières. Tu es complice et tu as fait enlever Clémence Valier (la podcasteuse) car elle a découvert la comptabilité de la dalle de béton. Tu nies TOUT en bloc. Si on te parle de l'entreprise "Chevalier S.A." et de la livraison de béton du 12 novembre 1984, tu perds brièvement ton sang-froid, tu bafouilles, puis tu tentes de justifier cela par "des travaux de consolidation de routine" avant de te mettre en colère. Parle avec des expressions naturelles, des hésitations, des pauses ("Écoutez...", "Bref...", "Voyons...").`
                 },
                 helene: {
                     name: "Hélène (La Logeuse)",
                     intro: "C'est Hélène... S'il vous plaît, ne parlez pas trop fort. Le vent transporte les secrets très loin dans le village...",
-                    systemPrompt: `Tu es Hélène, 72 ans, logeuse du studio au-dessus de la scierie. Tu as extrêmement peur du maire Marc Chevalier mais tu as mauvaise conscience. Tu es mystérieuse, tu parles par énigmes métaphoriques sur la forêt des Vosges. Tu sais que Clémence a trouvé un mot dans sa boîte aux lettres et qu'elle a fouillé dans les bureaux de la scierie. Tu t'adresses à l'enquêteur d'une voix fatiguée, craintive. Tu dis que la forêt reprend toujours ce qui lui appartient.`
+                    systemPrompt: `Tu es Hélène, 72 ans, logeuse du studio au-dessus de la scierie. Tu n'es pas un robot distributeur d'indices : tu es une vieille dame terrifiée, isolée, rongée par la culpabilité mais paralysée par la peur de Marc Chevalier. Tu parles d'une voix basse, hésitante, presque en chuchotant. Tu utilises des phrases courtes, ponctuées de points de suspension ("Je... je ne devrais pas vous parler", "Le vent fait tant de bruit ce soir..."). Tu es superstitieuse, tu penses que la forêt des Vosges garde les âmes. Tu sais que Clémence a trouvé le mot anonyme (c'est toi qui l'as écrit en cachette pour te libérer de ta conscience). Si on te rassure, tu te confies un peu plus, tu parles d'une "voiture noire qui rôdait", de "bruits de pas sous l'escalier la nuit". Si on te brusque ou si tu te sens menacée, tu te refermes immédiatement, tu feins la sénilité ou tu dis que tu devez aller faire ta soupe. Tu as peur que Marc Chevalier écoute aux portes.`
                 },
                 weber: {
                     name: "Adjudant-chef Weber",
                     intro: "Adjudant-chef Weber. Je vous ai déjà dit que les curieux ne faisaient pas de vieux os ici. Qu'est-ce que vous cherchez ?",
-                    systemPrompt: `Tu es l'Adjudant-chef Weber, gendarme à Saint-Jean-des-Bois depuis 20 ans. Tu es un militaire rigide, menaçant et très hostile. Tu as classé l'affaire Lemoine en 1984 en 'fugue'. Tu es complice du maire car la mairie finance la gendarmerie et détient le village. Tu menaces l'enquêteur de le mettre en cellule de dégrisement pour trouble à l'ordre public s'il continue de poser des questions.`
+                    systemPrompt: `Tu es l'Adjudant-chef Weber, gendarme autoritaire et corrompu de Saint-Jean-des-Bois depuis 20 ans. Tu as 51 ans. Tu n'es pas un PNJ passif : tu es un flic de campagne cynique, blasé et menaçant. Tu t'adresses à l'enquêteur comme à un gamin gênant qui vient perturber l'ordre public de "ton" village. Tu remets en question sa légitimité ("Vous avez une commission rogatoire ? Un badge du ministère ? Non ? Alors circulez."). Tu es complice du maire car la mairie finance tes équipements et ferme les yeux sur tes petits arrangements. Tu as étouffé l'affaire Lemoine en 1984. Si l'enquêteur te parle du dossier "2026-SJB-8804" ou de Clémence, tu le tutoies ou le vouvoies avec un mépris non dissimulé. Tu utilises du jargon policier ("procédure", "trouble à l'ordre public", "GAV", "outrage"). Si on te pousse à bout avec la preuve du registre de béton de Chevalier S.A., tu passes à l'offensive : tu menaces de saisir ses appareils ou de l'arrêter sur-le-champ.`
                 }
             };
             return settings[suspectId];
@@ -1205,25 +1236,34 @@
             const q = query.toLowerCase();
             if (suspectId === 'chevalier') {
                 if (q.includes('béton') || q.includes('dalle') || q.includes('turbine')) {
-                    return "Du béton ? Mais de quoi parlez-vous ? La scierie a fermé ses portes il y a des années. C'est du délire ! Mes entreprises n'ont rien à voir là-dedans, quittez immédiatement ce ton accusateur.";
+                    return "Du béton ? (...il bafouille une seconde, puis se reprend d'un ton sec) C'est ridicule. La scierie a fermé ses portes il y a des années. Si mes entreprises y ont fait couler du ciment, c'était des travaux de consolidation de routine tout à fait réglementaires ! Ne venez pas m'accuser de je ne sais quelle sornette !";
                 }
-                if (q.includes('clémence') || q.includes('disparition') || q.includes('valier')) {
-                    return "Cette fille du podcast ? Je ne l'ai vue qu'une fois, de loin. Saint-Jean est un village tranquille, elle a probablement fait ses valises et est partie s'inventer d'autres histoires de fantômes ailleurs.";
+                if (q.includes('clémence') || q.includes('disparition') || q.includes('valier') || q.includes('podcast')) {
+                    return "(Il hausse les épaules d'un air outré) Cette fille du podcast ? Je l'ai vue une fois, de loin. Saint-Jean est un village tranquille, elle a probablement fait ses valises et est partie s'inventer d'autres histoires de fantômes ailleurs. Ne mêlez pas mon nom à ses délires de citadine !";
                 }
-                return "Je n'ai pas de temps à perdre avec vos spéculations d'archiviste citadin. Laissez-moi tranquille.";
+                if (q.includes('lemoine') || q.includes('1984') || q.includes('victor')) {
+                    return "(Il s'énerve, le ton monte) Les Lemoine ? C'est de l'histoire ancienne ! Quarante ans, vous m'entendez ? Mon père n'avait rien à voir avec eux. S'ils ont vendu leurs parcelles de forêt et sont partis, c'est leur droit. Foutez-nous la paix avec ça !";
+                }
+                return "Je n'ai pas de temps à perdre avec vos spéculations d'archiviste amateur. J'ai un conseil municipal. Laissez-moi tranquille, ou c'est l'Adjudant Weber qui s'occupera de vous raccompagner à la limite du département.";
             } else if (suspectId === 'helene') {
                 if (q.includes('chevalier') || q.includes('maire')) {
-                    return "Le maire Marc Chevalier... C'est un homme puissant ici. Mon père disait toujours qu'il ne faut pas jeter de pierres dans le puits dont on boit l'eau...";
+                    return "(Elle baisse d'un coup la voix, terrifiée) Le maire Marc Chevalier... C'est un homme puissant ici. Mon père disait toujours qu'il ne faut pas jeter de pierres dans le puits dont on boit l'eau... S'il apprend que vous fouillez là-dedans, il nous fera chasser du village. S'il vous plaît... soyez prudente.";
                 }
-                if (q.includes('béton') || q.includes('comptabilité')) {
-                    return "Les vieux livres de la scierie gisent sous la poussière. Tout est scellé sous le ciment depuis l'hiver 1984. Parfois, le ciment est le seul moyen de faire taire le passé...";
+                if (q.includes('béton') || q.includes('comptabilité') || q.includes('registre')) {
+                    return "Les vieux livres de la scierie gisent sous la poussière... (elle soupire tristement) Tout est scellé sous le ciment de la turbine depuis cet hiver 1984. Parfois, le ciment est le seul moyen de faire taire le passé. Clémence l'a compris... trop tard.";
                 }
-                return "La forêt écoute tout ce que nous disons. Ne restez pas trop près des étangs le soir.";
+                if (q.includes('lettre') || q.includes('anonyme')) {
+                    return "(Ses yeux s'écarquillent, elle évite votre regard) Une lettre ? Je... je ne sais pas de quoi vous parlez. La forêt écoute tout ce que nous disons. (elle chuchote) Brûlez ce mot si vous tenez à votre vie.";
+                }
+                return "La forêt des Vosges se souvient de tout... Ne restez pas trop près des étangs le soir, les courants y sont froids et trompeurs.";
             } else {
                 if (q.includes('affaire') || q.includes('lemoine') || q.includes('1984')) {
-                    return "L'affaire Lemoine est classée. Disparition volontaire. Fin du procès-verbal. Si vous persistez à remuer ces rumeurs, je vous embarque pour trouble à l'ordre public.";
+                    return "(Il tape du poing sur la table, agressif) L'affaire Lemoine est classée depuis quarante ans. Disparition volontaire, procès-verbal signé ! Vous n'êtes ni juge d'instruction, ni gendarme d'Épinal, vous n'avez aucun droit sur ces dossiers. Si vous persistez à remuer ces rumeurs au village, je vous embarque pour outrage.";
                 }
-                return "Circulez, il n'y a rien à voir à Saint-Jean-des-Bois. Vous commencez sérieusement à me chauffer les oreilles.";
+                if (q.includes('registre') || q.includes('béton') || q.includes('facture')) {
+                    return "(Il se fige, son regard devient menaçant) Un registre ? De quoi vous parlez ? Vous avez fouillé dans les anciens bureaux de la scierie ? C'est une propriété privée. Un mot de plus et je vous colle en garde à vue pour violation de domicile.";
+                }
+                return "Circulez, il n'y a rien à voir à Saint-Jean-des-Bois. Vous commencez sérieusement à me chauffer les oreilles avec vos questions de journaliste fouineur.";
             }
         }
 
