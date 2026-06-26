@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Le Bureau du Thriller - Portail d'Investigation Interactif</title>
-    <!-- Tailwind CSS -->
+    <title>Évidence - Portail d'Investigation Interactif</title>
+    <!-- Tailwind CSS for modern premium styling -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts for Gothic and Typewriter aesthetics -->
+    <!-- Google Fonts for retro, gothic and handwritten typewriter aesthetics -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Special+Elite&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome for dark immersion symbols -->
+    <!-- FontAwesome for immersive UI icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <script>
@@ -76,6 +76,13 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #b91c1c;
         }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
     </style>
 </head>
 <body class="bg-brandDark text-zinc-100 font-sans h-full flex flex-col justify-between selection:bg-brandRed selection:text-white overflow-x-hidden">
@@ -84,15 +91,15 @@
     <div class="bg-brandAsh border-b border-white/5 px-4 py-2 flex items-center justify-between text-xs font-mono z-50">
         <div class="flex items-center gap-2 text-zinc-400">
             <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            <span class="text-[10px] uppercase tracking-wider">Serveurs Sécurisés Active</span>
+            <span class="text-[10px] uppercase tracking-wider">Serveurs Sécurisés Évidence</span>
         </div>
         <div class="flex items-center gap-4">
             <button onclick="EvidenceApp.toggleAmbientSynth()" id="synth-btn" class="text-zinc-400 hover:text-brandRed transition-colors flex items-center gap-1.5">
                 <i class="fa-solid fa-volume-xmark" id="synth-icon"></i>
-                <span id="synth-text">Générer Ambiance Vosges (Audio)</span>
+                <span id="synth-text">Ambiance Sonore Vosges (Désactivée)</span>
             </button>
             <button onclick="EvidenceApp.openConfigModal()" class="text-zinc-400 hover:text-white transition-colors">
-                <i class="fa-solid fa-gear mr-1"></i> Config Clé IA
+                <i class="fa-solid fa-key mr-1"></i> Config Clé IA
             </button>
         </div>
     </div>
@@ -102,17 +109,17 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
             <div class="flex items-center gap-3">
                 <button onclick="EvidenceApp.navigateTo('home')" class="w-10 h-10 bg-brandRed text-white font-bold rounded flex items-center justify-center shadow-lg shadow-brandRed/20 hover:bg-red-700 transition-all">
-                    <span class="font-typewriter text-lg">B</span>
+                    <span class="font-typewriter text-lg">É</span>
                 </button>
                 <div>
-                    <h1 class="font-serif text-sm uppercase tracking-widest font-bold text-white leading-none">Le Bureau du Thriller</h1>
-                    <span class="text-[9px] text-brandRed font-mono uppercase tracking-[0.3em] font-bold block mt-0.5">Série Évidence • Interactive</span>
+                    <h1 class="font-serif text-sm uppercase tracking-widest font-bold text-white leading-none">ÉVIDENCE</h1>
+                    <span class="text-[9px] text-brandRed font-mono uppercase tracking-[0.3em] font-bold block mt-0.5">Enquêtes Immersives • Interactive</span>
                 </div>
             </div>
             
             <div class="hidden md:flex items-center gap-8 font-mono text-xs uppercase tracking-wider">
                 <button onclick="EvidenceApp.navigateTo('home')" class="nav-link text-white hover:text-brandRed transition-colors">Accueil</button>
-                <button onclick="EvidenceApp.navigateTo('shop')" class="nav-link text-zinc-400 hover:text-brandRed transition-colors">Boutique & Tarifs</button>
+                <button onclick="EvidenceApp.navigateTo('shop')" class="nav-link text-zinc-400 hover:text-brandRed transition-colors">Abonnements & Tarifs</button>
                 <button onclick="EvidenceApp.navigateTo('portal')" class="nav-link px-4 py-2 bg-brandRed/10 border border-brandRed/30 rounded text-brandRed hover:bg-brandRed hover:text-white transition-all shadow-md">Espace Enquêteur</button>
             </div>
 
@@ -127,7 +134,7 @@
         <!-- Mobile Dropdown Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-brandAsh border-b border-white/10 px-4 py-4 flex flex-col gap-3 font-mono text-xs uppercase">
             <button onclick="EvidenceApp.navigateTo('home'); EvidenceApp.toggleMobileMenu()" class="text-left py-2 text-white border-b border-white/5">Accueil</button>
-            <button onclick="EvidenceApp.navigateTo('shop'); EvidenceApp.toggleMobileMenu()" class="text-left py-2 text-zinc-400 border-b border-white/5">Boutique & Tarifs</button>
+            <button onclick="EvidenceApp.navigateTo('shop'); EvidenceApp.toggleMobileMenu()" class="text-left py-2 text-zinc-400 border-b border-white/5">Abonnements & Tarifs</button>
             <button onclick="EvidenceApp.navigateTo('portal'); EvidenceApp.toggleMobileMenu()" class="text-left py-2 text-brandRed font-bold">Espace Enquêteur</button>
         </div>
     </nav>
@@ -138,20 +145,20 @@
             
             <div class="lg:col-span-7 flex flex-col gap-6">
                 <div class="inline-flex items-center gap-2 bg-brandRed/10 border border-brandRed/30 px-3 py-1 rounded-full text-xs font-mono text-brandRed w-fit">
-                    <i class="fa-solid fa-box-open"></i> EXPÉDITION SOUS FORMAT SCELLÉ EN CARTO-PLATE A4
+                    <i class="fa-solid fa-box-open"></i> EXPÉDITION SOUS ENVELOPPE SCELLÉE CHAQUE MOIS
                 </div>
                 <h2 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
                     Ne lisez plus l'enquête. <br><span class="text-brandRed italic">Vivez-la.</span>
                 </h2>
                 <p class="text-zinc-400 text-sm md:text-base leading-relaxed">
-                    <strong>Le Bureau du Thriller</strong> réinvente l'expérience littéraire de détective. Chaque mois, recevez une enveloppe scellée contenant un roman court, un livret d'enquête d'archiviste, et de véritables indices physiques (notes de gendarmerie, vieilles cartes, bandes audios). Utilisez ce portail pour interroger les suspects et valider votre verdict.
+                    <strong>Évidence</strong> réinvente l'expérience littéraire de détective. Chaque mois, recevez une enveloppe scellée contenant un roman, un livret de suspects d'archiviste, et de véritables indices physiques (lettres froissées, vieilles cartes de gendarmerie, photos Polaroid). Utilisez ce portail pour analyser vos pièces et interroger les suspects en direct par Intelligence Artificielle.
                 </p>
                 <div class="flex flex-wrap gap-4 mt-2">
                     <button onclick="EvidenceApp.navigateTo('portal')" class="bg-brandRed hover:bg-red-700 text-white font-mono text-xs font-bold uppercase tracking-wider px-6 py-3.5 rounded transition-all shadow-lg shadow-brandRed/25 flex items-center gap-2">
-                        <i class="fa-solid fa-folder-open"></i> Accéder au Bureau (Démo)
+                        <i class="fa-solid fa-folder-open"></i> Accéder au Portail d'Enquête (Démo)
                     </button>
                     <button onclick="EvidenceApp.navigateTo('shop')" class="bg-zinc-800 hover:bg-zinc-700 text-white font-mono text-xs font-bold uppercase tracking-wider px-6 py-3.5 rounded transition-all">
-                        Découvrir les Tarifs
+                        Formules d'Abonnement
                     </button>
                 </div>
             </div>
@@ -160,7 +167,6 @@
             <div class="lg:col-span-5 flex flex-col items-center justify-center relative">
                 <div class="absolute -inset-1 bg-gradient-to-r from-brandRed to-zinc-800 rounded-lg blur opacity-30"></div>
                 <div class="bg-zinc-900 border border-white/10 p-6 rounded-lg w-full max-w-sm flex flex-col gap-4 shadow-2xl relative">
-                    <!-- Fake book/game unboxing promo -->
                     <div class="w-full aspect-[3/4] bg-zinc-950 rounded-md overflow-hidden relative border border-white/10 flex items-center justify-center group shadow-inner">
                         <div class="absolute inset-0 bg-cover bg-center opacity-65 group-hover:scale-105 transition-all duration-700" style="background-image: url('https://images.unsplash.com/photo-1518156677180-95a2893f3e9f?q=80&w=600&auto=format&fit=crop');"></div>
                         <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
@@ -170,13 +176,13 @@
                         <div class="absolute bottom-6 left-6 right-6 flex flex-col gap-1.5">
                             <span class="text-[9px] text-brandRed uppercase tracking-widest font-mono font-bold">Épisode 1 • Saison 1</span>
                             <h3 class="font-serif text-xl font-bold text-white leading-tight">Le Carnet Perdu</h3>
-                            <p class="text-[10px] text-zinc-400 italic">Disparition mystérieuse dans les Vosges</p>
+                            <p class="text-[10px] text-zinc-400 italic">Enlèvement et complot dans les Vosges</p>
                         </div>
                     </div>
                     
                     <div class="flex items-center justify-between text-xs font-mono pt-2 border-t border-white/5">
                         <span class="text-zinc-500">FORMAT PHYSIQUE DISPO</span>
-                        <span class="text-brandRed font-bold text-sm">16,90 € TTC / mois</span>
+                        <span class="text-brandRed font-bold text-sm">16,90 € / mois</span>
                     </div>
                 </div>
             </div>
@@ -189,21 +195,21 @@
                 <div class="w-12 h-12 bg-zinc-900 border border-white/10 rounded flex items-center justify-center text-brandRed font-serif font-bold shrink-0 shadow-md">1</div>
                 <div>
                     <h4 class="font-serif text-lg font-bold text-white">Lisez le journal</h4>
-                    <p class="text-zinc-400 text-xs mt-1 leading-relaxed">Parcourez le roman de Clémence Masson. Ses chapitres révèlent l'intrigue et mentionnent subtilement les pièces de votre dossier.</p>
+                    <p class="text-zinc-400 text-xs mt-1 leading-relaxed">Parcourez le roman de Clémence Masson. Ses chapitres intimes révèlent les rouages de l'intrigue et mentionnent subtilement les pièces de votre dossier.</p>
                 </div>
             </div>
             <div class="flex gap-4">
                 <div class="w-12 h-12 bg-zinc-900 border border-white/10 rounded flex items-center justify-center text-brandRed font-serif font-bold shrink-0 shadow-md">2</div>
                 <div>
                     <h4 class="font-serif text-lg font-bold text-white">Manipulez l'invisible</h4>
-                    <p class="text-zinc-400 text-xs mt-1 leading-relaxed">Saisissez les indices réels : la lettre froissée, la gendarmerie, la carte de 1984. Cherchez les incohérences temporelles et géographiques.</p>
+                    <p class="text-zinc-400 text-xs mt-1 leading-relaxed">Saisissez les indices réels : la lettre froissée, la carte routière de 1984. Cherchez les incohérences d'alibis et les contradictions.</p>
                 </div>
             </div>
             <div class="flex gap-4">
                 <div class="w-12 h-12 bg-zinc-900 border border-white/10 rounded flex items-center justify-center text-brandRed font-serif font-bold shrink-0 shadow-md">3</div>
                 <div>
                     <h4 class="font-serif text-lg font-bold text-white">Interrogez par IA</h4>
-                    <p class="text-zinc-400 text-xs mt-1 leading-relaxed">Discutez en direct avec Marc Chevalier ou l'adjudant Weber sur ce portail. Piégez-les grâce à notre intégration IA avancée.</p>
+                    <p class="text-zinc-400 text-xs mt-1 leading-relaxed">Discutez en direct avec le maire Marc Chevalier, la logeuse Hélène ou l'adjudant Weber. Piégez-les grâce à notre intégration IA avancée.</p>
                 </div>
             </div>
         </div>
@@ -212,86 +218,82 @@
     <!-- SECTION 2 : BOUTIQUE ET PACKS D'ABONNEMENT -->
     <section id="section-shop" class="hidden flex-1 max-w-7xl w-full mx-auto p-4 md:p-8 flex flex-col gap-12 py-12">
         <div class="text-center max-w-2xl mx-auto flex flex-col gap-3">
-            <h2 class="font-serif text-3xl md:text-4xl font-bold text-white">Démarrez votre Abonnement</h2>
-            <p class="text-zinc-400 text-sm">Le Bureau du Thriller propose des formules claires, sans engagement, conçues pour s'adapter à tous les budgets.</p>
+            <h2 class="font-serif text-3xl md:text-4xl font-bold text-white">Nos Formules d'Abonnement</h2>
+            <p class="text-zinc-400 text-sm">Évidence propose des formules claires, sans engagement, conçues pour s'adapter à toutes vos envies d'enquêtes.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             
-            <!-- Plan 1 : L'ABONNEMENT MENSUEL -->
+            <!-- Plan 1 : LE NUMÉRIQUE -->
+            <div class="bg-zinc-900/50 border border-white/5 hover:border-brandRed/30 p-8 rounded-lg flex flex-col justify-between gap-8 transition-all relative">
+                <div class="flex flex-col gap-4">
+                    <span class="text-[9px] text-zinc-500 uppercase font-mono tracking-widest block">DÉMATERIALISÉ</span>
+                    <h3 class="font-serif text-2xl font-bold text-white">Détective Numérique</h3>
+                    <p class="text-zinc-400 text-xs leading-relaxed">Idéal pour jouer immédiatement sans frais de port. Recevez les romans et livrets en PDF haute définition prêts à imprimer chez vous.</p>
+                    <div class="flex items-baseline gap-1 mt-2">
+                        <span class="text-3xl font-bold text-white">4,90 €</span>
+                        <span class="text-zinc-500 text-xs">/ mois</span>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col gap-3 border-t border-white/5 pt-6 text-xs font-mono text-zinc-400">
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Romans & Livre d'enquête PDF</div>
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Indices numériques optimisés</div>
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Interrogatoire IA accessible</div>
+                </div>
+
+                <button onclick="EvidenceApp.simulateUluleCheckout('Détective Numérique', 4.90)" class="w-full bg-zinc-800 hover:bg-brandRed text-white font-mono text-xs font-bold uppercase tracking-wider py-3 rounded transition-all">
+                    S'abonner (Numérique)
+                </button>
+            </div>
+
+            <!-- Plan 2 : L'ABONNEMENT PHYSIQUE MENSUEL -->
             <div class="bg-zinc-900 border-2 border-brandRed p-8 rounded-lg flex flex-col justify-between gap-8 transition-all relative shadow-2xl">
                 <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-brandRed text-white text-[10px] font-mono font-bold px-4 py-1.5 rounded-full uppercase tracking-wider">
                     RECOMMANDÉ
                 </div>
                 
                 <div class="flex flex-col gap-4 mt-2">
-                    <span class="text-[9px] text-brandRed uppercase font-mono tracking-widest block font-bold">ABONNEMENT RECURRANT</span>
-                    <h3 class="font-serif text-2xl font-bold text-white">Abonnement Mensuel</h3>
-                    <p class="text-zinc-300 text-xs leading-relaxed">Recevez un nouvel épisode mystère scellé chaque mois directement dans votre boîte aux lettres. Sans engagement, résiliable en un clic.</p>
+                    <span class="text-[9px] text-brandRed uppercase font-mono tracking-widest block font-bold">LIVRAISON DIRECTE</span>
+                    <h3 class="font-serif text-2xl font-bold text-white">Enquêteur Évidence</h3>
+                    <p class="text-zinc-300 text-xs leading-relaxed">Recevez un nouvel épisode scellé dans votre boîte aux lettres le 5 de chaque mois. Boîte carton extra-plate, indices physiques d'édition inclus.</p>
                     <div class="flex items-baseline gap-1 mt-2">
                         <span class="text-3xl font-bold text-white">16,90 €</span>
-                        <span class="text-zinc-400 text-xs">/ mois (port inclus)</span>
+                        <span class="text-zinc-400 text-xs">/ mois (Port inclus)</span>
                     </div>
                 </div>
                 
                 <div class="flex flex-col gap-3 border-t border-white/5 pt-6 text-xs font-mono text-zinc-300">
-                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Moins de 3cm (Glissé en boîte)</div>
-                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Livre A5 + Livret de suspects</div>
-                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Accès illimité à la console de jeu</div>
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Boîte passe-fente &lt; 3cm</div>
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Vrais indices &amp; roman d'édition</div>
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Console de jeu IA illimitée</div>
                 </div>
 
-                <button onclick="EvidenceApp.simulateStripeCheckout('Abonnement Mensuel', 16.90)" class="w-full bg-brandRed hover:bg-red-700 text-white font-mono text-xs font-bold uppercase tracking-wider py-3 rounded transition-all shadow-lg shadow-brandRed/30">
-                    S'abonner maintenant
+                <button onclick="EvidenceApp.simulateUluleCheckout('Enquêteur Évidence', 16.90)" class="w-full bg-brandRed hover:bg-red-700 text-white font-mono text-xs font-bold uppercase tracking-wider py-3 rounded transition-all shadow-lg shadow-brandRed/30">
+                    S'abonner (Physique)
                 </button>
             </div>
 
-            <!-- Plan 2 : ÉPISODE UNIQUE -->
-            <div class="bg-zinc-900/50 border border-white/5 hover:border-brandRed/30 p-8 rounded-lg flex flex-col justify-between gap-8 transition-all relative">
+            <!-- Plan 3 : LE PARRAIN -->
+            <div class="bg-zinc-950/40 border border-dashed border-white/10 p-8 rounded-lg flex flex-col justify-between gap-8 relative opacity-90">
                 <div class="flex flex-col gap-4">
-                    <span class="text-[9px] text-zinc-500 uppercase font-mono tracking-widest block">DÉCOUVERTE</span>
-                    <h3 class="font-serif text-2xl font-bold text-white">Épisode 1 Unique</h3>
-                    <p class="text-zinc-400 text-xs leading-relaxed">Testez le premier épisode complet "Le Carnet Perdu" sous format scellé rigide. Idéal pour s'initier sans aucune récurrence.</p>
+                    <span class="text-[9px] text-zinc-500 uppercase font-mono tracking-widest block">SOUTIEN EXCLUSIF</span>
+                    <h3 class="font-serif text-2xl font-bold text-zinc-400">Le Parrain d'Évidence</h3>
+                    <p class="text-zinc-500 text-xs leading-relaxed">Soutenez activement la création d'édition indépendante. Recevez votre box mensuelle avec remerciements imprimés officiels dans le livret.</p>
                     <div class="flex items-baseline gap-1 mt-2">
-                        <span class="text-3xl font-bold text-white">19,90 €</span>
-                        <span class="text-zinc-500 text-xs">/ unique</span>
-                    </div>
-                </div>
-                
-                <div class="flex flex-col gap-3 border-t border-white/5 pt-6 text-xs font-mono text-zinc-400">
-                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Expédié sous 48 heures</div>
-                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Tous les indices réels inclus</div>
-                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Interrogatoire IA fonctionnel</div>
-                </div>
-
-                <!-- Stripe Sim Button -->
-                <button onclick="EvidenceApp.simulateStripeCheckout('Épisode 1 Unique', 19.90)" class="w-full bg-zinc-800 hover:bg-brandRed text-white font-mono text-xs font-bold uppercase tracking-wider py-3 rounded transition-all">
-                    Acheter l'Épisode
-                </button>
-            </div>
-
-            <!-- Plan 3 : PACK INTEGRAL (EN ATTENTE) -->
-            <div class="bg-zinc-950/40 border border-dashed border-white/10 p-8 rounded-lg flex flex-col justify-between gap-8 relative opacity-70">
-                <div class="absolute top-4 right-4 bg-zinc-800 text-zinc-400 text-[8px] font-mono uppercase px-2 py-0.5 rounded">
-                    Bientôt Disponible
-                </div>
-                
-                <div class="flex flex-col gap-4">
-                    <span class="text-[9px] text-zinc-500 uppercase font-mono tracking-widest block">INTEGRAL</span>
-                    <h3 class="font-serif text-2xl font-bold text-zinc-400">Pack Complet</h3>
-                    <p class="text-zinc-500 text-xs leading-relaxed">Une formule à tarif dégressif regroupant l'intégralité de la saison (option de 3 ou 6 épisodes expédiés en paquets groupés).</p>
-                    <div class="flex items-baseline gap-1 mt-2">
-                        <span class="text-xl font-bold text-zinc-500">Tarif en attente</span>
+                        <span class="text-3xl font-bold text-zinc-400">25,00 €</span>
+                        <span class="text-zinc-500 text-xs">/ mois</span>
                     </div>
                 </div>
                 
                 <div class="flex flex-col gap-3 border-t border-white/5 pt-6 text-xs font-mono text-zinc-500">
-                    <div class="flex items-center gap-2"><i class="fa-solid fa-clock"></i> Option 3 ou 6 mois à l'étude</div>
-                    <div class="flex items-center gap-2"><i class="fa-solid fa-clock"></i> Économies substantielles de routage</div>
-                    <div class="flex items-center gap-2"><i class="fa-solid fa-clock"></i> Accès prioritaire aux tirages</div>
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-check"></i> Kit physique complet premium</div>
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-check"></i> Remerciements imprimés officiels</div>
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-check"></i> Accès au Discord des créateurs</div>
                 </div>
 
-                <button disabled class="w-full bg-zinc-800/50 text-zinc-500 font-mono text-xs font-bold uppercase tracking-wider py-3 rounded cursor-not-allowed">
-                    En attente de lancement
+                <button onclick="EvidenceApp.simulateUluleCheckout('Parrain d\'Évidence', 25.00)" class="w-full bg-zinc-800/50 hover:bg-zinc-800 text-zinc-400 font-mono text-xs font-bold uppercase tracking-wider py-3 rounded">
+                    Devenir Parrain
                 </button>
             </div>
 
@@ -301,26 +303,26 @@
     <!-- SECTION 3 : ESPACE ENQUÊTEUR PORTABLE INTERACTIF (LE COEUR DU JEU) -->
     <section id="section-portal" class="hidden flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 lg:p-8 flex flex-col gap-8 py-8">
         
-        <!-- LOCK SCREEN (Always shown initially until correct verification) -->
+        <!-- LOCK SCREEN (Shown initially until passcode verification) -->
         <div id="portal-lockscreen" class="flex-1 max-w-md w-full mx-auto bg-zinc-900 border-2 border-brandRed/40 p-8 rounded-lg flex flex-col items-center text-center gap-6 shadow-2xl my-12">
             <div class="w-16 h-16 rounded-full bg-brandRed/10 border border-brandRed/30 flex items-center justify-center text-brandRed text-2xl animate-pulse">
                 <i class="fa-solid fa-lock"></i>
             </div>
             <div>
-                <h3 class="font-serif text-xl font-bold text-white uppercase tracking-wider">Accès Restreint — Bureau Scellé</h3>
+                <h3 class="font-serif text-xl font-bold text-white uppercase tracking-wider">Accès Restreint — Dossier Évidence</h3>
                 <p class="text-xs text-zinc-400 mt-2 leading-relaxed">
-                    Cet espace contient les pièces à conviction de l'enquête Vosges. Pour y accéder, veuillez saisir le **code d'accès secret** présent à l'intérieur de votre livret physique ou de votre enveloppe de jeu.
+                    Saisissez le **code secret d'accès** d'enquêteur dissimulé à la fin du Chapitre 1 de votre Roman d'édition physique ou révélé dans l'espace membre de votre abonnement Ulule.
                 </p>
             </div>
             
             <div class="w-full flex flex-col gap-3 font-mono text-xs">
                 <input type="text" id="portal-passcode-input" placeholder="SAISIR LE CODE SECRET..." class="w-full bg-zinc-950 border border-white/10 rounded px-4 py-3 text-center text-white tracking-widest text-sm uppercase focus:outline-none focus:border-brandRed" onkeydown="if(event.key === 'Enter') EvidenceApp.unlockPortal()">
                 <button onclick="EvidenceApp.unlockPortal()" class="w-full bg-brandRed hover:bg-red-700 text-white font-bold py-3 rounded uppercase tracking-wider transition-all">
-                    Déverrouiller l'Accès
+                    Déverrouiller l'Espace
                 </button>
             </div>
             
-            <span class="text-[9px] text-zinc-500 font-mono italic">Indice pour le prototype : le code est <strong class="text-zinc-400">SJB-1984</strong></span>
+            <span class="text-[9px] text-zinc-500 font-mono italic">Astuce pour le prototype : le code est <strong class="text-zinc-400">SJB-1984</strong></span>
         </div>
 
         <!-- DYNAMIC PORTAL DASHBOARD (Injected via JS only after verification) -->
@@ -330,7 +332,7 @@
 
     <!-- FOOTER SYSTEM -->
     <footer class="bg-brandDark border-t border-white/5 py-8 text-center text-xs text-zinc-600 font-mono">
-        <p>© 2026 Le Bureau du Thriller. Formats enveloppe d'immersion A4 protégés et brevetés.</p>
+        <p>© 2026 Évidence. Formats d'édition et enveloppes d'immersion A4 protégés et brevetés.</p>
         <p class="text-[10px] text-zinc-700 mt-2">Conçu par Baptiste Huot-Marchand • Besançon (France)</p>
     </footer>
 
@@ -343,7 +345,7 @@
             </div>
             <div class="p-6 flex flex-col gap-4 font-sans text-xs text-zinc-300 leading-relaxed">
                 <p>
-                    Pour utiliser les <strong>interrogatoires de suspects par Intelligence Artificielle</strong>, vous pouvez configurer votre propre clé API Google Gemini. Elle sera enregistrée localement dans votre navigateur sans jamais être transmise à un serveur tiers.
+                    Pour utiliser les **interrogatoires de suspects par Intelligence Artificielle**, vous pouvez configurer votre propre clé API Google Gemini. Elle sera enregistrée localement dans votre navigateur sans jamais être transmise à un serveur tiers.
                 </p>
                 <div class="flex flex-col gap-2">
                     <label class="font-mono text-[10px] text-zinc-400">CLÉ API GOOGLE AI STUDIO (GEMINI) :</label>
@@ -367,9 +369,7 @@
     <!-- RESULT ACCUSATION SCREEN MODAL OVERLAY -->
     <div id="result-modal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
         <div class="bg-zinc-900 border-2 border-brandRed max-w-lg w-full rounded-lg overflow-hidden shadow-2xl">
-            <div id="result-header" class="px-6 py-4 flex items-center gap-3 text-white">
-                <!-- Dynamic Icon/Banner -->
-            </div>
+            <div id="result-header" class="px-6 py-4 flex items-center gap-3 text-white"></div>
             <div class="p-6 flex flex-col gap-4 font-mono text-xs text-[#f4efe6] leading-relaxed">
                 <p id="result-text"></p>
                 <button onclick="EvidenceApp.closeResultModal()" class="bg-brandRed hover:bg-red-700 text-white font-bold py-3 rounded text-xs tracking-wider uppercase font-mono transition-all text-center">
@@ -395,7 +395,7 @@
                         "— Vous devriez laisser les morts là où ils sont, ma petite dame, a-t-elle murmuré. La forêt n'aime pas qu'on vienne remuer sa terre. Elle est vieille, et elle finit toujours par reprendre ce qui lui appartient.",
                         "C'est en déballant mon matériel de prise de son que je me suis rendu compte d'un truc bizarre. La boîte aux lettres en bas, celle du \"Studio 2\", était verrouillée. Mais en palpant le fond métallique froid, j'ai senti un papier. Une simple feuille de carnet de notes à petits carreaux, pliée soigneusement en quatre."
                     ],
-                    instruction: "✉️ DIRECTIVE DU BUREAU : Ouvrez votre boîte et dépliez la « LETTRE ANONYME ». Prenez connaissance de son contenu manuscrit avant de lire la suite."
+                    instruction: "✉️ DIRECTIVE DU BUREAU : Ouvrez votre boîte d'expédition et dépliez la « LETTRE ANONYME ». Prenez connaissance de son contenu manuscrit avant de lire la suite."
                 },
                 {
                     title: "Chapitre 2 : 14 Octobre – Le silence a un goût de cendre",
@@ -407,7 +407,7 @@
                         "Le patron du bistrot m'a glissé à voix basse : « Le maire n'aime pas qu'on vienne poser des questions sur les Lemoine. Sa famille possède la moitié des parcelles forestières autour de l'étang. »",
                         "De retour au studio, j'ai relu le mot anonyme : « Regardez là où les chemins se croisent. » En observant attentivement la vieille carte de 1984, j'ai remarqué une annotation..."
                     ],
-                    instruction: "🗺️ ACTION COMPLÉMENTAIRE : Sortez la « CARTE ROUTIÈRE DE 1984 ». Repérez la croix noire à l'intersection des sentiers et lisez l'annotation violette."
+                    instruction: "🗺️ ACTION COMPLÉMENTAIRE : Sortez la « CARTE ROUTIÈRE DE 1984 » présente dans votre boîte. Repérez la croix noire à l'intersection des sentiers et lisez l'annotation violette."
                 },
                 {
                     title: "Chapitre 3 : 16 Octobre – Les tiroirs de l'oubli",
@@ -415,17 +415,17 @@
                         "Hier matin, je me suis levée à cinq heures. J'ai suivi le sentier nord de l'étang. Je suis arrivée à l'ancien site de déchargement de la scierie et sa turbine à eau. L'annotation manuscrite violette sur la carte disait : « Ils ont coulé le béton de la turbine... au-dessus de lui. »",
                         "En observant le socle de béton gris de la turbine, j'ai compris. C'est une tombe industrielle de plusieurs tonnes coulée à la hâte en novembre 1984 pour sceller un secret.",
                         "Soudain, une berline noire de luxe est passée lentement, patrouillant dans la forêt à l'aube. Je me suis cachée sous des madriers.",
-                        "Cet après-midi, je suis allée à la gendarmerie. J'ai interrogé l'Adjudant-chef Weber sur l'affaire Lemoine. Son visage s'est fermé. « Le dossier a été classé il y a quarante ans. Fugue. Fin de l'histoire. »",
+                        "Cet après-midi, je suis aller à la gendarmerie. J'ai interrogé l'Adjudant-chef Weber sur l'affaire Lemoine. Son visage s'est fermé. « Le dossier a été classé il y a quarante ans. Fugue. Fin de l'histoire. »",
                         "Puis il a murmuré sur un ton menaçant : « Si je vous revois tourner autour de la vieille scierie, je vous ferai passer vingt-quatre heures en cellule pour trouble à l'ordre public. »"
                     ],
-                    instruction: "🔍 INDICE DISPONIBLE : Marc Chevalier et l'Adjudant Weber cachent un secret majeur lié à cette turbine. Vous pouvez tenter de les piéger dans l'interrogatoire IA à droite."
+                    instruction: "🔍 INDICE DISPONIBLE : Marc Chevalier et l'Adjudant Weber cachent un secret majeur lié à cette turbine. Tentez de les piéger dans l'interrogatoire de suspects à droite."
                 },
                 {
                     title: "Chapitre 4 : 18 Octobre – Le murmure des planches",
                     body: [
                         "Aujourd'hui, j'ai entendu des vibrations sourdes monter du rez-de-chaussée d'Hélène. Quelqu'un était chez elle. J'ai branché mon enregistreur Zoom au-dessus de la bouche de chauffage en fonte.",
                         "C'était Marc Chevalier, le maire. Sa voix était autoritaire : « Weber m'a appelé. Elle fouille dans les dossiers de quatre-vingt-quatre, Hélène. Fais-la partir. Je veux que sa Twingo ait quitté le département d'ici la fin de la semaine. Si elle s'approche encore de la scierie, je m'en occuperai personnellement. »",
-                        "Cette nuit, Hélène est sortie au village. J'en ai profité pour descendre à pas de loup et ouvrir les bureaux d'archives administratifs de la scierie abandonnée sous l'escalier.",
+                        "Cette nuit, Hélène est sortie au village. J'en opi- profité pour descendre à pas de loup et ouvrir les bureaux d'archives administratifs de la scierie abandonnée sous l'escalier.",
                         "J'ai ouvert le tiroir rouillé des archives comptables de 1984. J'ai ouvert le registre de comptabilité relié en toile noire, et j'ai trouvé la preuve de transaction à la date du 12 novembre 1984..."
                     ],
                     instruction: "📂 PIÈCE COMPTABLE DETECTÉE : Clémence fait référence au registre de 1984. L'annotation indique une livraison de 12m³ de béton à prise rapide payée par Chevalier S.A."
@@ -438,51 +438,62 @@
                         "Mon plan est simple. À cinq heures du matin, je marcherai jusqu'à la turbine sans faire de bruit. Je tenterai de glisser mon micro et la caméra de mon téléphone dans la fente de la trappe pour capturer des images.",
                         "Dés que ce sera fait, je roulerai sans m'arrêter vers Épinal. Mon carnet est rangé dans mon sac. Si quelqu'un trouve ce carnet... regardez la turbine. Regardez le béton. Tout est là. Je descends."
                     ],
-                    instruction: "🚨 FIN DU MANUSCRIT : Clémence a disparu. Son dictaphone Zoom a été retrouvé au sol. Scannez le QR Code de votre boîte ou ouvrez l'onglet 'Pièces d'Archive' > 'Fichier Audio' pour écouter le dénouement."
+                    instruction: "🚨 FIN DU MANUSCRIT : Clémence a disparu. Son dictaphone Zoom a été retrouvé au sol. Scannez le QR Code de votre boîte ou ouvrez l'onglet 'Pièces d'Archive' > 'Fichier Audio' pour écouter le dénouement sonore."
                 }
             ];
 
-            // Locked/Future Episodes Database to encourage season subscriptions
+            // Cryptographic shifted passcode validation SJB-1984
+            const SECURE_PASSCODE_HASH = [96, 87, 79, 58, 62, 70, 69, 65];
+
+            // Locked Episodes Metadata
             const lockedEpisodesMeta = {
                 2: {
-                    title: "Dossier #2 : Les Clés du Pouvoir",
-                    desc: "La suite de l'investigation s'ouvre sur les secrets de la famille Chevalier. Révélez les dessous financiers de la municipalité de Saint-Jean-des-Bois grâce à l'arbre généalogique officiel de 1978 et les registres fonciers volés.",
-                    pov: "Point de vue littéraire : Marc Chevalier (Froid & Stratégique)",
-                    status: "SCELLÉ — En attente d'expédition"
+                    title: "Épisode 2 : Les Clés du Pouvoir",
+                    desc: "La suite de l'investigation se penche sur les secrets financiers de la municipalité. Explorez l'arbre généalogique des familles fondatrices de 1978 et étudiez le registre cadastral volé pour confondre Marc Chevalier.",
+                    pov: "Marc Chevalier (Froid & Calculateur)",
+                    status: "SCELLÉ — Disponible avec votre abonnement Ulule"
                 },
                 3: {
-                    title: "Dossier #3 : Le Dossier Noir",
-                    desc: "Explorez les cahiers d'investigation officieux de l'Adjudant-Chef Weber à la retraite. Un saut temporel dans les disparitions des Vosges des années 80. Rapport balistique et plan de l'ancienne scierie municipale.",
-                    pov: "Point de vue littéraire : Adjudant Weber (Militaire & Obsessionnel)",
-                    status: "SCELLÉ — En attente d'expédition"
+                    title: "Épisode 3 : Le Dossier Noir",
+                    desc: "Les carnets secrets d'investigation de l'Adjudant-chef Weber à la retraite. Un saut temporel dans les disparitions d'époque des Vosges (1975-1995). Fiches balistiques et plans d'architecte.",
+                    pov: "Adjudant-chef Weber (Militaire & Cynique)",
+                    status: "SCELLÉ — Disponible avec votre abonnement Ulule"
                 },
                 4: {
-                    title: "Dossier #4 : Les Murs ont des Oreilles",
-                    desc: "Les confessions secrètes de la logeuse Hélène. Traquez l'itinéraire précis de la berline noire et validez les heures de présence de chaque habitant la nuit du drame.",
-                    pov: "Point de vue littéraire : Hélène (Craintive & Superstitieuse)",
-                    status: "SCELLÉ — En attente d'expédition"
+                    title: "Épisode 4 : Les Murs ont des Oreilles",
+                    desc: "Les rumeurs locales consignées par la logeuse Hélène. Suivez l'itinéraire précis de la berline noire et validez les plaques d'immatriculation pour repérer le véhicule kidnappeur.",
+                    pov: "Hélène (La Logeuse d'Évidence)",
+                    status: "SCELLÉ — Disponible avec votre abonnement Ulule"
                 },
                 5: {
-                    title: "Dossier #5 : Le Chant du Corbeau",
-                    desc: "Déchiffrez le message codé d'une écoute téléphonique piratée. Le maître chanteur qui détient la vérité menace de tout détruire. Vosges, coordonnées de séquestration.",
-                    pov: "Point de vue littéraire : L'Anonyme (Manipulateur)",
-                    status: "SCELLÉ — En attente d'écriture"
+                    title: "Épisode 5 : Le Chant du Corbeau",
+                    desc: "Le maître chanteur s'adresse directement au coupable. Récupérez le message codé d'un mystérieux corbeau et décodez l'enregistrement d'une écoute téléphonique clandestine.",
+                    pov: "L'Anonyme (Le Maître Chanteur)",
+                    status: "SCELLÉ — Disponible avec votre abonnement Ulule"
                 },
                 6: {
-                    title: "Dossier #6 : Confrontation",
-                    desc: "L'épilogue interactif. Utilisez l'intégralité des 5 mois d'enquêtes et vos indices réels pour infiltrer les sous-sols de l'ancienne scierie et sauver Clémence.",
-                    pov: "Point de vue littéraire : Le Détective (Vous)",
-                    status: "SCELLÉ — En attente d'écriture"
+                    title: "Épisode 6 : Confrontation",
+                    desc: "Le dénouement. Munissez-vous de votre clé plate métallique d'édition, débloquez les plans de dérivation et prenez l'ultime décision pour sauver Clémence.",
+                    pov: "Le Détective (Vous)",
+                    status: "SCELLÉ — Disponible avec votre abonnement Ulule"
                 }
             };
 
-            // Obfuscated cryptographic target passcode representation
-            // Correct code is "SJB-1984" but shifted by +13 ASCII values
-            const SECURE_PASSCODE_HASH = [96, 87, 79, 58, 62, 70, 69, 65];
+            // Application State
+            let currentTab = 'journal';
+            let currentChapterIdx = 0;
+            let currentEpisode = 1;
+            let selectedClue = null;
+            let synthActive = false;
+            let audioCtx = null;
+            let ambientOscs = [];
+            let synthGain = null;
+            
+            let isPortalUnlocked = localStorage.getItem('portal-unlocked-evidence') === 'true';
 
-            // Entire dynamic HTML payload for the dashboard. It is injected into the DOM ONLY on correct login.
+            // Entire dynamic dashboard layout HTML (injected only when passcode is validated)
             const DASHBOARD_HTML_TEMPLATE = `
-                <!-- Dossier / Episode Folder Selector Tabs -->
+                <!-- Dossier Folder Tabs -->
                 <div class="flex flex-wrap gap-1 border-b border-white/10 pb-1 mb-6 font-mono text-[10px] uppercase tracking-wider overflow-x-auto no-scrollbar">
                     <button onclick="EvidenceApp.switchEpisode(1)" id="ep-tab-1" class="px-4 py-2 border-t-2 border-brandRed bg-zinc-900 text-white rounded-t font-bold shrink-0">
                         📁 Dossier 1 : Le Carnet
@@ -507,10 +518,9 @@
                 <!-- Two columns dashboard grid -->
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start animate-fade-in" id="portal-inner-grid">
                     
-                    <!-- LEFT PANEL: BOOK & CLUES NAV (7 Columns) -->
+                    <!-- LEFT PANEL: CARNET & EVIDENCE -->
                     <div class="lg:col-span-7 flex flex-col gap-6" id="panel-left-content">
                         
-                        <!-- Main Tabs of the Portal -->
                         <div class="bg-zinc-900 p-1 border border-white/5 rounded-lg flex gap-1 font-mono text-xs">
                             <button onclick="EvidenceApp.switchTab('journal')" id="tab-journal" class="flex-1 text-center py-2.5 rounded font-bold transition-all bg-brandRed text-white">
                                 <i class="fa-solid fa-book-open mr-1.5"></i> Carnet de Clémence
@@ -520,35 +530,32 @@
                             </button>
                         </div>
 
-                        <!-- CONTENT WINDOW : DYNAMIC UNDER ACTIVE TAB -->
+                        <!-- CONTENT WINDOW -->
                         <div id="portal-content-window" class="bg-zinc-900 border border-white/10 rounded-lg p-4 md:p-6 min-h-[500px] flex flex-col justify-between shadow-2xl relative">
                             
-                            <!-- TAB 1: JOURNAL DE CLÉMENCE (LIVRET DE BASE DE L'ÉPISODE 1) -->
+                            <!-- TAB 1: JOURNAL -->
                             <div id="panel-journal" class="flex flex-col gap-4 h-full">
                                 <div class="flex items-center justify-between border-b border-white/10 pb-4">
                                     <div>
                                         <span class="text-[9px] text-brandRed font-mono font-bold tracking-wider uppercase block">Journal Intime Récupéré</span>
-                                        <h4 class="font-serif text-xl font-bold text-white mt-0.5" id="chapter-title">Chargement du journal...</h4>
+                                        <h4 class="font-serif text-xl font-bold text-white mt-0.5" id="chapter-title"></h4>
                                     </div>
                                     <div class="flex items-center gap-2">
                                         <button onclick="EvidenceApp.prevChapter()" class="w-8 h-8 rounded border border-white/10 hover:border-brandRed flex items-center justify-center text-zinc-400 hover:text-brandRed transition-colors">
                                             <i class="fa-solid fa-chevron-left text-xs"></i>
                                         </button>
-                                        <span class="font-mono text-xs text-zinc-500" id="chapter-index">1 / 5</span>
+                                        <span class="font-mono text-xs text-zinc-500" id="chapter-index"></span>
                                         <button onclick="EvidenceApp.nextChapter()" class="w-8 h-8 rounded border border-white/10 hover:border-brandRed flex items-center justify-center text-zinc-400 hover:text-brandRed transition-colors">
                                             <i class="fa-solid fa-chevron-right text-xs"></i>
                                         </button>
                                     </div>
                                 </div>
 
-                                <!-- Real interactive story text container -->
                                 <div class="overflow-y-auto no-scrollbar max-h-[420px] text-zinc-300 text-sm leading-relaxed pr-2 flex flex-col gap-4 font-sans italic" id="chapter-body"></div>
-
-                                <!-- Dynamic Action Notification Box inside text -->
                                 <div id="diagnetic-notification-box" class="mt-4 bg-brandRed/10 border-l-4 border-brandRed p-4 rounded-r text-xs text-zinc-300 font-mono hidden"></div>
                             </div>
 
-                            <!-- TAB 2: PIÈCES D'ARCHIVES VISUALISER -->
+                            <!-- TAB 2: PIÈCES D'ARCHIVES -->
                             <div id="panel-evidence" class="hidden flex flex-col gap-6 h-full">
                                 <div class="flex items-center justify-between border-b border-white/10 pb-4">
                                     <div>
@@ -557,9 +564,7 @@
                                     </div>
                                 </div>
 
-                                <!-- Indices selection grid -->
                                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                    <!-- Clue A: Lettre Anonyme -->
                                     <button onclick="EvidenceApp.viewClue('lettre')" class="group flex flex-col gap-2 p-3 bg-zinc-950 border border-white/5 hover:border-brandRed rounded-lg text-left transition-all">
                                         <div class="aspect-video w-full rounded bg-zinc-900 flex items-center justify-center text-brandRed group-hover:scale-105 transition-all">
                                             <i class="fa-solid fa-envelope-open-text text-2xl"></i>
@@ -568,7 +573,6 @@
                                         <span class="text-[9px] text-zinc-500 font-mono">Quadrillée • Chapitre 1</span>
                                     </button>
 
-                                    <!-- Clue B: Avis de Recherche -->
                                     <button onclick="EvidenceApp.viewClue('avis')" class="group flex flex-col gap-2 p-3 bg-zinc-950 border border-white/5 hover:border-brandRed rounded-lg text-left transition-all">
                                         <div class="aspect-video w-full rounded bg-zinc-900 flex items-center justify-center text-brandRed group-hover:scale-105 transition-all">
                                             <i class="fa-solid fa-user-secret text-2xl"></i>
@@ -577,7 +581,6 @@
                                         <span class="text-[9px] text-zinc-500 font-mono">Gendarmerie • Dossier</span>
                                     </button>
 
-                                    <!-- Clue C: Carte de 1984 -->
                                     <button onclick="EvidenceApp.viewClue('carte')" class="group flex flex-col gap-2 p-3 bg-zinc-950 border border-white/5 hover:border-brandRed rounded-lg text-left transition-all">
                                         <div class="aspect-video w-full rounded bg-zinc-900 flex items-center justify-center text-brandRed group-hover:scale-105 transition-all">
                                             <i class="fa-solid fa-map-location-dot text-2xl"></i>
@@ -586,17 +589,15 @@
                                         <span class="text-[9px] text-zinc-500 font-mono">Vosges • Chapitre 2</span>
                                     </button>
 
-                                    <!-- Clue D: Message Audio QR -->
                                     <button onclick="EvidenceApp.viewClue('audio')" class="group flex flex-col gap-2 p-3 bg-zinc-950 border border-white/5 hover:border-brandRed rounded-lg text-left transition-all">
                                         <div class="aspect-video w-full rounded bg-zinc-900 flex items-center justify-center text-brandRed group-hover:scale-105 transition-all">
                                             <i class="fa-solid fa-circle-play text-2xl"></i>
                                         </div>
-                                        <span class="font-serif text-xs font-bold text-white truncate block">Fichier Audio Zoom</span>
-                                        <span class="text-[9px] text-zinc-500 font-mono">Bande Sonore • Fin</span>
+                                        <span class="font-serif text-xs font-bold text-white truncate block">Bande Sonore Zoom</span>
+                                        <span class="text-[9px] text-zinc-500 font-mono">Audio • Fin</span>
                                     </button>
                                 </div>
 
-                                <!-- Main viewer panel showing selected clue content -->
                                 <div id="clue-viewer-subpanel" class="bg-zinc-950 p-4 rounded-lg border border-white/5 flex-1 min-h-[220px] flex items-center justify-center text-center text-xs text-zinc-500 font-mono">
                                     <div class="flex flex-col gap-2 items-center">
                                         <i class="fa-solid fa-arrow-pointer text-xl text-zinc-700"></i>
@@ -607,18 +608,17 @@
                         </div>
                     </div>
 
-                    <!-- RIGHT PANEL: INTERACTIVE AGENT NOTEBOOK, INTERROGATORY, VERDICT (5 Columns) -->
+                    <!-- RIGHT PANEL: INTERROGATORY & NOTEBOOK & VERDICT -->
                     <div class="lg:col-span-5 flex flex-col gap-6" id="panel-right-content">
                         
-                        <!-- SUSPECT CHAT / REAL-TIME INTERROGATORY WITH GEMINI -->
+                        <!-- CHAT DIALOGUE -->
                         <div class="bg-zinc-900 border border-white/10 rounded-lg p-5 shadow-2xl flex flex-col gap-4 relative overflow-hidden">
-                            <div class="absolute top-0 right-0 stamp px-3 py-1 text-[8px] tracking-widest font-bold uppercase rotate-12 mt-2 mr-2">Gemini AI Engine</div>
+                            <div class="absolute top-0 right-0 stamp px-3 py-1 text-[8px] tracking-widest font-bold uppercase rotate-12 mt-2 mr-2">Moteur Évidence IA</div>
                             <div class="flex items-center gap-2">
                                 <i class="fa-solid fa-comments text-brandRed"></i>
                                 <h4 class="font-serif text-lg font-bold text-white">Interrogatoire Suspects (IA)</h4>
                             </div>
 
-                            <!-- Suspect selection dropdown -->
                             <div class="flex items-center gap-2 text-xs font-mono">
                                 <label class="text-zinc-400">Interroger :</label>
                                 <select id="chat-suspect-selector" onchange="EvidenceApp.resetChatHistory()" class="bg-brandDark border border-white/10 rounded px-2.5 py-1.5 text-zinc-300 focus:outline-none focus:border-brandRed font-sans text-xs">
@@ -628,10 +628,8 @@
                                 </select>
                             </div>
 
-                            <!-- Chat Message Area -->
                             <div id="chat-messages-box" class="h-44 bg-zinc-950 border border-white/5 rounded p-3 overflow-y-auto font-sans text-xs flex flex-col gap-3"></div>
 
-                            <!-- Prompt input area -->
                             <div class="flex items-center gap-2">
                                 <input type="text" id="chat-user-input" placeholder="Posez votre question indiscrète..." onkeydown="EvidenceApp.handleChatKeydown(event)" class="flex-1 bg-zinc-950 border border-white/10 rounded px-3 py-2 text-xs text-zinc-200 focus:outline-none focus:border-brandRed">
                                 <button onclick="EvidenceApp.sendChatMessage()" class="bg-brandRed hover:bg-red-700 text-white font-mono text-xs font-bold px-4 py-2 rounded transition-all shrink-0">
@@ -640,28 +638,28 @@
                             </div>
                         </div>
 
-                        <!-- AGENT NOTEBOOK (LOCALSTORAGE SAVED) -->
+                        <!-- LOCAL NOTEBOOK -->
                         <div class="bg-zinc-900 border border-white/10 rounded-lg p-5 shadow-2xl flex flex-col gap-3">
                             <div class="flex items-center justify-between">
                                 <div class="flex items-center gap-2">
                                     <i class="fa-solid fa-pencil text-brandRed"></i>
                                     <h4 class="font-serif text-lg font-bold text-white">Mon Carnet de Détective</h4>
                                 </div>
-                                <span class="text-[9px] font-mono text-emerald-500 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded">Sauvegardé</span>
+                                <span class="text-[9px] font-mono text-emerald-500 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded">Sauvegarde Locale</span>
                             </div>
 
-                            <p class="text-[10px] text-zinc-500 font-mono">Vos notes de déductions, alibis, anomalies et contradictions d'épisode.</p>
-                            <textarea id="agent-notes" oninput="EvidenceApp.saveAgentNotes()" placeholder="Exemple : Hélène semble terrifiée par Chevalier... Le dossier de gendarmerie de 1984 contient un trou chronologique suspect... " class="w-full h-32 bg-zinc-950 border border-white/5 rounded p-3 font-sans text-xs text-zinc-300 focus:outline-none focus:border-brandRed leading-relaxed resize-none"></textarea>
+                            <p class="text-[10px] text-zinc-500 font-mono">Vos notes, alibis, anomalies chronologiques d'Évidence.</p>
+                            <textarea id="agent-notes" oninput="EvidenceApp.saveAgentNotes()" placeholder="Exemple : Hélène semble terrifiée par Chevalier... Le registre comptable de 1984 prouve l'achat de béton par Chevalier S.A. deux jours après la disparition..." class="w-full h-32 bg-zinc-950 border border-white/5 rounded p-3 font-sans text-xs text-zinc-300 focus:outline-none focus:border-brandRed leading-relaxed resize-none"></textarea>
                         </div>
 
-                        <!-- RESOLUTION & CHARGES PORTAL (SUBMIT VERDICT) -->
+                        <!-- VERDICT -->
                         <div class="bg-zinc-900 border-2 border-brandRed/30 rounded-lg p-5 shadow-2xl flex flex-col gap-4">
                             <div class="flex items-center gap-2">
                                 <i class="fa-solid fa-gavel text-brandRed"></i>
-                                <h4 class="font-serif text-lg font-bold text-white">Résolution Finale Épisode 1</h4>
+                                <h4 class="font-serif text-lg font-bold text-white">Rapport d'Accusation Finale</h4>
                             </div>
 
-                            <p class="text-xs text-zinc-400 leading-relaxed">Penses-tu avoir reconstitué le dossier de Clémence Masson ? Remplis le rapport d'accusation pour valider ton hypothèse.</p>
+                            <p class="text-xs text-zinc-400 leading-relaxed">Pensez-vous avoir reconstitué le dossier de Clémence ? Sélectionnez le coupable d'Évidence et la preuve majeure pour valider l'enquête.</p>
 
                             <div class="flex flex-col gap-2 text-xs font-mono">
                                 <select id="accuse-suspect-select" class="w-full bg-zinc-950 border border-white/10 rounded p-2 text-zinc-300 focus:outline-none focus:border-brandRed">
@@ -680,7 +678,7 @@
                             </div>
 
                             <button onclick="EvidenceApp.submitEpisodeVerdict()" class="bg-brandRed hover:bg-red-700 text-white font-mono text-xs font-bold uppercase tracking-wider py-3 rounded transition-all text-center">
-                                Soumettre le Rapport d'Accusation
+                                Soumettre le Rapport Officiel
                             </button>
                         </div>
 
@@ -688,19 +686,7 @@
                 </div>
             `;
 
-            // State variables
-            let currentTab = 'journal';
-            let currentChapterIdx = 0;
-            let currentEpisode = 1;
-            let selectedClue = null;
-            let synthActive = false;
-            let audioCtx = null;
-            let ambientOscs = [];
-            let synthGain = null;
-            
-            let isPortalUnlocked = localStorage.getItem('portal-unlocked') === 'true';
-
-            // General Navigation routing
+            // Global Navigation Routing
             function navigateTo(sectionId) {
                 document.getElementById('section-home').classList.add('hidden');
                 document.getElementById('section-shop').classList.add('hidden');
@@ -715,36 +701,35 @@
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             }
 
-            // LockScreen interface rendering based on true status
+            // LockScreen render update
             function updatePortalLockUI() {
                 const lockscreen = document.getElementById('portal-lockscreen');
                 const dashboard = document.getElementById('portal-dashboard');
                 
                 if (isPortalUnlocked) {
                     lockscreen.classList.add('hidden');
-                    // Dynamic DOM Injection : Injecting the entire dashboard only when officially unlocked
                     dashboard.innerHTML = DASHBOARD_HTML_TEMPLATE;
                     dashboard.classList.remove('hidden');
                     
-                    // Trigger initialization of rendered components
-                    currentEpisode = 1; // Default
+                    // Initialize Dashboard Views
+                    currentEpisode = 1;
                     renderChapter();
                     resetChatHistory();
                     loadAgentNotes();
                 } else {
                     lockscreen.classList.remove('hidden');
                     dashboard.classList.add('hidden');
-                    dashboard.innerHTML = ""; // Complete cleanup to avoid any DOM reading
+                    dashboard.innerHTML = "";
                 }
             }
 
-            // Cryptographic-shifting validation (Protects against plaintext extraction)
+            // Cryptographic-shifting validation (SJB-1984)
             function unlockPortal() {
                 const input = document.getElementById('portal-passcode-input');
                 const rawValue = input.value.trim().toUpperCase();
                 
                 if (rawValue.length !== SECURE_PASSCODE_HASH.length) {
-                    showNotification("Code incorrect. Veuillez vérifier vos indices.");
+                    showNotification("Code incorrect. Vérifiez vos indices Évidence.");
                     return;
                 }
 
@@ -758,12 +743,12 @@
                 
                 if (isMatch) {
                     isPortalUnlocked = true;
-                    localStorage.setItem('portal-unlocked', 'true');
+                    localStorage.setItem('portal-unlocked-evidence', 'true');
                     updatePortalLockUI();
                     showNotification("Accès autorisé. Bienvenue au Bureau.");
                     input.value = "";
                 } else {
-                    showNotification("Code incorrect. Veuillez vérifier vos indices.");
+                    showNotification("Code incorrect. Vérifiez vos indices Évidence.");
                 }
             }
 
@@ -772,7 +757,7 @@
                 menu.classList.toggle('hidden');
             }
 
-            // Tabs toggle engine
+            // Tab Switching inside workspace
             function switchTab(tabId) {
                 currentTab = tabId;
                 const tabJournal = document.getElementById('tab-journal');
@@ -793,244 +778,14 @@
                 }
             }
 
-            // EPISODE FOLDER SELECTOR LOGIC
-            function switchEpisode(epNum) {
-                currentEpisode = epNum;
-
-                // Update tab highlights
-                for (let i = 1; i <= 6; i++) {
-                    const tabBtn = document.getElementById(`ep-tab-${i}`);
-                    if (!tabBtn) continue;
-                    if (i === epNum) {
-                        tabBtn.className = "px-4 py-2 border-t-2 border-brandRed bg-zinc-900 text-white rounded-t font-bold shrink-0";
-                    } else {
-                        tabBtn.className = "px-4 py-2 border-t-2 border-transparent hover:border-zinc-700 bg-zinc-950/60 text-zinc-500 rounded-t shrink-0 flex items-center gap-1.5 transition-all";
-                    }
-                }
-
-                // Layout rendering based on active episode
-                const leftPanel = document.getElementById('panel-left-content');
-                const rightPanel = document.getElementById('panel-right-content');
-                const innerGrid = document.getElementById('portal-inner-grid');
-
-                if (epNum === 1) {
-                    // Restore default active episode 1 UI
-                    innerGrid.innerHTML = `
-                        <div class="lg:col-span-7 flex flex-col gap-6" id="panel-left-content">
-                            <!-- Normal tabs and window will render -->
-                            <div class="bg-zinc-900 p-1 border border-white/5 rounded-lg flex gap-1 font-mono text-xs">
-                                <button onclick="EvidenceApp.switchTab('journal')" id="tab-journal" class="flex-1 text-center py-2.5 rounded font-bold transition-all bg-brandRed text-white">
-                                    <i class="fa-solid fa-book-open mr-1.5"></i> Carnet de Clémence
-                                </button>
-                                <button onclick="EvidenceApp.switchTab('evidence')" id="tab-evidence" class="flex-1 text-center py-2.5 rounded font-bold transition-all text-zinc-400 hover:text-white">
-                                    <i class="fa-solid fa-file-invoice mr-1.5"></i> Pièces d'Archive
-                                </button>
-                            </div>
-                            <div id="portal-content-window" class="bg-zinc-900 border border-white/10 rounded-lg p-4 md:p-6 min-h-[500px] flex flex-col justify-between shadow-2xl relative">
-                                <div id="panel-journal" class="flex flex-col gap-4 h-full">
-                                    <div class="flex items-center justify-between border-b border-white/10 pb-4">
-                                        <div>
-                                            <span class="text-[9px] text-brandRed font-mono font-bold tracking-wider uppercase block">Journal Intime Récupéré</span>
-                                            <h4 class="font-serif text-xl font-bold text-white mt-0.5" id="chapter-title"></h4>
-                                        </div>
-                                        <div class="flex items-center gap-2">
-                                            <button onclick="EvidenceApp.prevChapter()" class="w-8 h-8 rounded border border-white/10 hover:border-brandRed flex items-center justify-center text-zinc-400 hover:text-brandRed transition-colors">
-                                                <i class="fa-solid fa-chevron-left text-xs"></i>
-                                            </button>
-                                            <span class="font-mono text-xs text-zinc-500" id="chapter-index"></span>
-                                            <button onclick="EvidenceApp.nextChapter()" class="w-8 h-8 rounded border border-white/10 hover:border-brandRed flex items-center justify-center text-zinc-400 hover:text-brandRed transition-colors">
-                                                <i class="fa-solid fa-chevron-right text-xs"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="overflow-y-auto no-scrollbar max-h-[420px] text-zinc-300 text-sm leading-relaxed pr-2 flex flex-col gap-4 font-sans italic" id="chapter-body"></div>
-                                    <div id="diagnetic-notification-box" class="mt-4 bg-brandRed/10 border-l-4 border-brandRed p-4 rounded-r text-xs text-zinc-300 font-mono hidden"></div>
-                                </div>
-                                <div id="panel-evidence" class="hidden flex flex-col gap-6 h-full">
-                                    <div class="flex items-center justify-between border-b border-white/10 pb-4">
-                                        <div>
-                                            <span class="text-[9px] text-brandRed font-mono font-bold tracking-wider uppercase block">Indices d'Enveloppe A4</span>
-                                            <h4 class="font-serif text-xl font-bold text-white mt-0.5">Coffre de Pièces Matérielles</h4>
-                                        </div>
-                                    </div>
-                                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                        <button onclick="EvidenceApp.viewClue('lettre')" class="group flex flex-col gap-2 p-3 bg-zinc-950 border border-white/5 hover:border-brandRed rounded-lg text-left transition-all">
-                                            <div class="aspect-video w-full rounded bg-zinc-900 flex items-center justify-center text-brandRed group-hover:scale-105 transition-all">
-                                                <i class="fa-solid fa-envelope-open-text text-2xl"></i>
-                                            </div>
-                                            <span class="font-serif text-xs font-bold text-white truncate block">Lettre Anonyme</span>
-                                            <span class="text-[9px] text-zinc-500 font-mono">Quadrillée • Chapitre 1</span>
-                                        </button>
-                                        <button onclick="EvidenceApp.viewClue('avis')" class="group flex flex-col gap-2 p-3 bg-zinc-950 border border-white/5 hover:border-brandRed rounded-lg text-left transition-all">
-                                            <div class="aspect-video w-full rounded bg-zinc-900 flex items-center justify-center text-brandRed group-hover:scale-105 transition-all">
-                                                <i class="fa-solid fa-user-secret text-2xl"></i>
-                                            </div>
-                                            <span class="font-serif text-xs font-bold text-white truncate block">Avis de Recherche</span>
-                                            <span class="text-[9px] text-zinc-500 font-mono">Gendarmerie • Dossier</span>
-                                        </button>
-                                        <button onclick="EvidenceApp.viewClue('carte')" class="group flex flex-col gap-2 p-3 bg-zinc-950 border border-white/5 hover:border-brandRed rounded-lg text-left transition-all">
-                                            <div class="aspect-video w-full rounded bg-zinc-900 flex items-center justify-center text-brandRed group-hover:scale-105 transition-all">
-                                                <i class="fa-solid fa-map-location-dot text-2xl"></i>
-                                            </div>
-                                            <span class="font-serif text-xs font-bold text-white truncate block">Carte Routière 1984</span>
-                                            <span class="text-[9px] text-zinc-500 font-mono">Vosges • Chapitre 2</span>
-                                        </button>
-                                        <button onclick="EvidenceApp.viewClue('audio')" class="group flex flex-col gap-2 p-3 bg-zinc-950 border border-white/5 hover:border-brandRed rounded-lg text-left transition-all">
-                                            <div class="aspect-video w-full rounded bg-zinc-900 flex items-center justify-center text-brandRed group-hover:scale-105 transition-all">
-                                                <i class="fa-solid fa-circle-play text-2xl"></i>
-                                            </div>
-                                            <span class="font-serif text-xs font-bold text-white truncate block">Fichier Audio Zoom</span>
-                                            <span class="text-[9px] text-zinc-500 font-mono">Bande Sonore • Fin</span>
-                                        </button>
-                                    </div>
-                                    <div id="clue-viewer-subpanel" class="bg-zinc-950 p-4 rounded-lg border border-white/5 flex-1 min-h-[220px] flex items-center justify-center text-center text-xs text-zinc-500 font-mono">
-                                        <div class="flex flex-col gap-2 items-center">
-                                            <i class="fa-solid fa-arrow-pointer text-xl text-zinc-700"></i>
-                                            <span>Sélectionnez un indice ci-dessus pour l'examiner à la loupe numérique</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="lg:col-span-5 flex flex-col gap-6" id="panel-right-content">
-                            <div class="bg-zinc-900 border border-white/10 rounded-lg p-5 shadow-2xl flex flex-col gap-4 relative overflow-hidden">
-                                <div class="absolute top-0 right-0 stamp px-3 py-1 text-[8px] tracking-widest font-bold uppercase rotate-12 mt-2 mr-2">Gemini AI Engine</div>
-                                <div class="flex items-center gap-2">
-                                    <i class="fa-solid fa-comments text-brandRed"></i>
-                                    <h4 class="font-serif text-lg font-bold text-white">Interrogatoire Suspects (IA)</h4>
-                                </div>
-                                <div class="flex items-center gap-2 text-xs font-mono">
-                                    <label class="text-zinc-400">Interroger :</label>
-                                    <select id="chat-suspect-selector" onchange="EvidenceApp.resetChatHistory()" class="bg-brandDark border border-white/10 rounded px-2.5 py-1.5 text-zinc-300 focus:outline-none focus:border-brandRed font-sans text-xs">
-                                        <option value="chevalier">Marc Chevalier (Le Maire)</option>
-                                        <option value="helene">Hélène (La Logeuse)</option>
-                                        <option value="weber">Adjudant-chef Weber (Gendarme)</option>
-                                    </select>
-                                </div>
-                                <div id="chat-messages-box" class="h-44 bg-zinc-950 border border-white/5 rounded p-3 overflow-y-auto font-sans text-xs flex flex-col gap-3"></div>
-                                <div class="flex items-center gap-2">
-                                    <input type="text" id="chat-user-input" placeholder="Posez votre question indiscrète..." onkeydown="EvidenceApp.handleChatKeydown(event)" class="flex-1 bg-zinc-950 border border-white/10 rounded px-3 py-2 text-xs text-zinc-200 focus:outline-none focus:border-brandRed">
-                                    <button onclick="EvidenceApp.sendChatMessage()" class="bg-brandRed hover:bg-red-700 text-white font-mono text-xs font-bold px-4 py-2 rounded transition-all shrink-0">Poser</button>
-                                </div>
-                            </div>
-
-                            <div class="bg-zinc-900 border border-white/10 rounded-lg p-5 shadow-2xl flex flex-col gap-3">
-                                <div class="flex items-center justify-between">
-                                    <div class="flex items-center gap-2">
-                                        <i class="fa-solid fa-pencil text-brandRed"></i>
-                                        <h4 class="font-serif text-lg font-bold text-white">Mon Carnet de Détective</h4>
-                                    </div>
-                                    <span class="text-[9px] font-mono text-emerald-500 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded">Sauvegardé</span>
-                                </div>
-                                <p class="text-[10px] text-zinc-500 font-mono">Vos notes de déductions, alibis, anomalies et contradictions d'épisode.</p>
-                                <textarea id="agent-notes" oninput="EvidenceApp.saveAgentNotes()" placeholder="Exemple : Hélène semble terrifiée par Chevalier... Le dossier de gendarmerie de 1984 contient un trou chronologique suspect... " class="w-full h-32 bg-zinc-950 border border-white/5 rounded p-3 font-sans text-xs text-zinc-300 focus:outline-none focus:border-brandRed leading-relaxed resize-none"></textarea>
-                            </div>
-
-                            <div class="bg-zinc-900 border-2 border-brandRed/30 rounded-lg p-5 shadow-2xl flex flex-col gap-4">
-                                <div class="flex items-center gap-2">
-                                    <i class="fa-solid fa-gavel text-brandRed"></i>
-                                    <h4 class="font-serif text-lg font-bold text-white">Résolution Finale Épisode 1</h4>
-                                </div>
-                                <p class="text-xs text-zinc-400 leading-relaxed">Penses-tu avoir reconstitué le dossier de Clémence Masson ? Remplis le rapport d'accusation pour valider ton hypothèse.</p>
-                                <div class="flex flex-col gap-2 text-xs font-mono">
-                                    <select id="accuse-suspect-select" class="w-full bg-zinc-950 border border-white/10 rounded p-2 text-zinc-300 focus:outline-none focus:border-brandRed">
-                                        <option value="">-- ACCUSER LE COUPABLE --</option>
-                                        <option value="chevalier">Marc Chevalier (Le Maire)</option>
-                                        <option value="helene">Hélène (La Logeuse)</option>
-                                        <option value="weber">L'Adjudant-chef Weber</option>
-                                    </select>
-                                    <select id="accuse-evidence-select" class="w-full bg-zinc-950 border border-white/10 rounded p-2 text-zinc-300 focus:outline-none focus:border-brandRed">
-                                        <option value="">-- SÉLECTIONNER LA PREUVE MAJEURE --</option>
-                                        <option value="lettre">La lettre anonyme du carnet</option>
-                                        <option value="carte">L'annotation de 1984 sur la carte</option>
-                                        <option value="registre">Le registre comptable de béton du Maire</option>
-                                    </select>
-                                </div>
-                                <button onclick="EvidenceApp.submitEpisodeVerdict()" class="bg-brandRed hover:bg-red-700 text-white font-mono text-xs font-bold uppercase tracking-wider py-3 rounded transition-all text-center">Soumettre le Rapport d'Accusation</button>
-                            </div>
-                        </div>
-                    `;
-                    renderChapter();
-                    resetChatHistory();
-                    loadAgentNotes();
-                } else {
-                    // Render beautifully styled Locked screen to capture interest and promote subscriptions
-                    const ep = lockedEpisodesMeta[epNum];
-                    innerGrid.innerHTML = `
-                        <div class="lg:col-span-12 w-full bg-zinc-900/50 border border-white/5 p-8 md:p-12 rounded-lg shadow-2xl flex flex-col items-center justify-center text-center gap-6 max-w-2xl mx-auto my-6">
-                            <div class="w-16 h-16 rounded-full bg-brandRed/10 border border-brandRed/20 flex items-center justify-center text-brandRed text-xl">
-                                <i class="fa-solid fa-stamp"></i>
-                            </div>
-                            <div>
-                                <span class="text-[9px] font-mono text-brandRed font-bold tracking-widest block uppercase">${episodesMeta[epNum].status}</span>
-                                <h3 class="font-serif text-2xl font-bold text-white mt-1">${episodesMeta[epNum].title}</h3>
-                                <p class="text-[10px] text-zinc-500 font-mono mt-1">Écriture / POV : <strong class="text-zinc-400">${episodesMeta[epNum].pov}</strong></p>
-                            </div>
-                            <p class="text-xs text-zinc-300 max-w-md leading-relaxed font-serif italic">
-                                "${episodesMeta[epNum].desc}"
-                            </p>
-                            
-                            <div class="bg-black/60 border border-brandRed/20 p-4 rounded font-mono text-[10px] max-w-md w-full text-zinc-400 text-left flex flex-col gap-2">
-                                <div class="flex items-center gap-1.5"><i class="fa-solid fa-file-zipper text-brandRed"></i> Dossier d'indices non scellé</div>
-                                <div class="flex items-center gap-1.5"><i class="fa-solid fa-truck-ramp-box text-brandRed"></i> Expédié mensuellement sous enveloppe A4</div>
-                            </div>
-
-                            <div class="flex flex-col sm:flex-row items-center gap-4 mt-2">
-                                <button onclick="EvidenceApp.navigateTo('shop')" class="bg-brandRed hover:bg-red-700 text-white font-mono text-[10px] font-bold uppercase tracking-wider px-6 py-3 rounded transition-all shadow-lg shadow-brandRed/20">
-                                    Découvrir l'Abonnement (16,90€)
-                                </button>
-                                <button onclick="EvidenceApp.switchEpisode(1)" class="text-zinc-400 hover:text-white font-mono text-[10px] underline">
-                                    Retourner au Dossier 1
-                                </button>
-                            </div>
-                        </div>
-                    `;
-                }
-            }
-
-            // Episode Metadata details for seasons representation
-            const episodesMeta = {
-                2: {
-                    title: "Dossier #2 : Les Clés du Pouvoir",
-                    pov: "Marc Chevalier (Le Maire de SJB)",
-                    desc: "Plongez dans les secrets administratifs de la mairie de Saint-Jean-des-Bois. Explorez l'arbre généalogique des familles fondatrices et étudiez le registre cadastral de 1978 pour lever le voile sur les transactions foncières suspectes entourant la scierie municipale.",
-                    status: "Épisode 2 — S1 • En attente d'expédition"
-                },
-                3: {
-                    title: "Dossier #3 : Le Dossier Noir",
-                    pov: "Weber / Adjudant-Chef à la retraite",
-                    desc: "Weber a conservé un carnet secret sur les disparitions inexpliquées survenues dans les Vosges entre 1975 et 1995. Croisez ses fiches balistiques d'époque, les rapports d'autopsies archivés et le plan d'architecte original de la scierie.",
-                    status: "Épisode 3 — S1 • En attente d'expédition"
-                },
-                4: {
-                    title: "Dossier #4 : Les Murs ont des Oreilles",
-                    desc: "La logeuse Hélène se confie. Suivez ses fiches synoptiques répertoriant les rumeurs locales, le registre d'arrivée des invités et déchiffrez le mot d'adieu écrit au dos d'un sous-bock pour confondre le suspect.",
-                    pov: "Hélène (La Logeuse de Clémence)",
-                    status: "Épisode 4 — S1 • En attente de tirage"
-                },
-                5: {
-                    title: "Dossier #5 : Le Chant du Corbeau",
-                    desc: "Le maître chanteur s'adresse directement au coupable. Récupérez le message codé d'un maître-chanteur et écoutez l'enregistrement de l'écoute téléphonique piratée de la gendarmerie pour localiser la cachette forestière.",
-                    pov: "L'Anonyme (Le Maître Chanteur)",
-                    status: "Épisode 5 — S1 • En attente d'écriture"
-                },
-                6: {
-                    title: "Dossier #6 : Confrontation",
-                    desc: "Le dénouement. Munissez-vous de votre clé plate métallique fournie dans l'enveloppe finale, accédez au coffrage de sécurité, et prenez la décision finale pour sauver la victime d'Evidence.",
-                    pov: "Le Détective (Vous-même)",
-                    status: "Épisode 6 — S1 • En attente d'écriture"
-                }
-            };
-
-            // Chapters rendering inside dashboard
+            // Chapters Content Renderer
             function renderChapter() {
                 const chapterBox = document.getElementById('chapter-title');
                 const indexBox = document.getElementById('chapter-index');
                 const bodyBox = document.getElementById('chapter-body');
                 const instructionBox = document.getElementById('diagnetic-notification-box');
 
-                if (!chapterBox || !bodyBox) return; // Guard in case of premature calls
+                if (!chapterBox || !bodyBox) return;
 
                 const chapter = chaptersData[currentChapterIdx];
                 chapterBox.innerText = chapter.title;
@@ -1060,7 +815,7 @@
                 }
             }
 
-            // Clues visualizer engine
+            // Interactive Clues Viewer
             function viewClue(clueId) {
                 selectedClue = clueId;
                 const viewer = document.getElementById('clue-viewer-subpanel');
@@ -1070,7 +825,7 @@
                     viewer.innerHTML = `
                         <div class="parchment-bg text-inkBlue p-6 rounded border border-yellow-800/10 text-left relative max-w-md w-full shadow-inner rotate-1">
                             <div class="coffee-stain w-16 h-16 top-2 right-4"></div>
-                            <h5 class="font-handwritten text-lg font-bold border-b border-blue-900/15 pb-1 text-blue-950">Trouvé dans la fente métallique</h5>
+                            <h5 class="font-handwritten text-lg font-bold border-b border-blue-900/15 pb-1 text-blue-950">Trouvé dans la boîte aux lettres</h5>
                             <p class="font-handwritten text-xl mt-4 leading-relaxed">
                                 Clémence, la gendarmerie a enterré les dossiers en 1984.<br>
                                 Ne demandez rien au maire actuel.<br>
@@ -1086,7 +841,7 @@
                             <p class="mt-4"><strong>DISPARITION INQUIÉTANTE</strong></p>
                             <p class="mt-2">NOM : VALIER • PRENOM : Clémence</p>
                             <p class="mt-1">Dernière fois vue : 21 Octobre 2026 à l'ancienne scierie municipale.</p>
-                            <p class="mt-2">Son véhicule (Renault Twingo immatriculée AA-344-BB) a été retrouvé abandonné avec les portières non verrouillées.</p>
+                            <p class="mt-2">Son véhicule (Renault Twingo AA-344-BB) a été retrouvé abandonné avec les portières non verrouillées.</p>
                             <p class="mt-4 border-t border-zinc-300 pt-2 text-center text-zinc-500 text-[8px]">Dossier n°2026-SJB-8804</p>
                         </div>
                     `;
@@ -1121,13 +876,13 @@
                             <div class="w-full bg-zinc-950 rounded-full h-1.5 overflow-hidden">
                                 <div class="bg-brandRed h-full w-0" id="audio-progress-bar"></div>
                             </div>
-                            <p class="text-[9px] text-zinc-500 font-mono">Durée : 1min 15s • Archives Cryptographiques</p>
+                            <p class="text-[9px] text-zinc-500 font-mono">Durée : 1min 15s • Archives de Gendarmerie</p>
                         </div>
                     `;
                 }
             }
 
-            // Audio player simulator using Web Audio API
+            // Virtual Audio Player Simulation (Using synthesized web sounds)
             let simAudioActive = false;
             let simProgressInterval = null;
 
@@ -1144,7 +899,7 @@
                 } else {
                     playIcon.className = "fa-solid fa-pause text-lg";
                     simAudioActive = true;
-                    showNotification("Lecture de l'enregistrement de Clémence...");
+                    showNotification("Lecture de l'enregistrement Zoom...");
 
                     let pct = 0;
                     simProgressInterval = setInterval(() => {
@@ -1155,7 +910,7 @@
                             playIcon.className = "fa-solid fa-play text-lg pl-1";
                             progress.style.width = "0%";
                             simAudioActive = false;
-                            showNotification("Fin de l'enregistrement.");
+                            showNotification("Fin de l'enregistrement d'Évidence.");
                         }
                     }, 1000);
 
@@ -1191,7 +946,7 @@
                 }
             }
 
-            // Wind and mountain ambient sound synthesizer
+            // Synthesized Wind and Drone Audio Engine
             function toggleAmbientSynth() {
                 const btn = document.getElementById('synth-btn');
                 const icon = document.getElementById('synth-icon');
@@ -1205,9 +960,9 @@
                         synthGain = null;
                     }
                     icon.className = "fa-solid fa-volume-xmark";
-                    txt.innerText = "Générer Ambiance Vosges (Audio)";
+                    txt.innerText = "Ambiance Sonore Vosges (Désactivée)";
                     synthActive = false;
-                    showNotification("Ambiance sonore coupée.");
+                    showNotification("Ambiance sonore désactivée.");
                 } else {
                     try {
                         const AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -1257,10 +1012,10 @@
                         icon.className = "fa-solid fa-volume-high text-brandRed animate-pulse";
                         txt.innerText = "Couper l'Ambiance";
                         synthActive = true;
-                        showNotification("Ambiance forestière immersive activée !");
+                        showNotification("Synthétiseur d'ambiance forestière activé !");
                     } catch(e) {
                         console.error("Audio Context initialization failed.", e);
-                        showNotification("Échec du démarrage de la synthèse audio.");
+                        showNotification("Synthétiseur audio non supporté sur ce navigateur.");
                     }
                 }
             }
@@ -1276,9 +1031,9 @@
                 }, 1000);
             }
 
-            // LocalStorage Notes loading/saving
+            // Notebook Storage Controller
             function loadAgentNotes() {
-                const notes = localStorage.getItem('agent-notes-episode-1');
+                const notes = localStorage.getItem('agent-notes-evidence-1');
                 const textarea = document.getElementById('agent-notes');
                 if (notes && textarea) {
                     textarea.value = notes;
@@ -1287,78 +1042,71 @@
 
             function saveAgentNotes() {
                 const textVal = document.getElementById('agent-notes').value;
-                localStorage.setItem('agent-notes-episode-1', textVal);
+                localStorage.setItem('agent-notes-evidence-1', textVal);
             }
 
-            function resetInvestigatorData() {
-                localStorage.removeItem('agent-notes-episode-1');
-                localStorage.removeItem('portal-unlocked');
-                isPortalUnlocked = false;
-                const textarea = document.getElementById('agent-notes');
-                if (textarea) textarea.value = "";
-                updatePortalLockUI();
-                showNotification("Données d'enquête réinitialisées !");
-                resetChatHistory();
-            }
+            // Episode Switching Logic
+            function switchEpisode(epNum) {
+                currentEpisode = epNum;
 
-            // Final Verdict Submission
-            function submitEpisodeVerdict() {
-                const suspect = document.getElementById('accuse-suspect-select').value;
-                const evidence = document.getElementById('accuse-evidence-select').value;
-
-                const modal = document.getElementById('result-modal');
-                const title = document.getElementById('result-header');
-                const text = document.getElementById('result-text');
-
-                if (!suspect || !evidence) {
-                    title.className = "px-6 py-4 flex items-center gap-3 text-white bg-brandRed";
-                    title.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> <h4 class="font-serif text-sm font-bold uppercase tracking-wider">Erreur de Clôture de Dossier</h4>`;
-                    text.innerHTML = `🚨 <span class="text-brandRed font-bold">DOSSIER INCOMPLET :</span><br><br>Veuillez sélectionner à la fois un suspect à inculper et la preuve matérielle irréfutable pour clore l'affaire.`;
-                    modal.classList.remove('hidden');
-                    return;
+                // Update navigation highlights
+                for (let i = 1; i <= 6; i++) {
+                    const tabBtn = document.getElementById(`ep-tab-${i}`);
+                    if (!tabBtn) continue;
+                    if (i === epNum) {
+                        tabBtn.className = "px-4 py-2 border-t-2 border-brandRed bg-zinc-900 text-white rounded-t font-bold shrink-0";
+                    } else {
+                        tabBtn.className = "px-4 py-2 border-t-2 border-transparent hover:border-zinc-700 bg-zinc-950/60 text-zinc-500 rounded-t shrink-0 flex items-center gap-1.5 transition-all";
+                    }
                 }
 
-                if (suspect === 'chevalier' && evidence === 'registre') {
-                    title.className = "px-6 py-4 flex items-center gap-3 text-white bg-emerald-600";
-                    title.innerHTML = `<i class="fa-solid fa-certificate"></i> <h4 class="font-serif text-sm font-bold uppercase tracking-wider">Affaire Résolue - Félicitations !</h4>`;
-                    text.innerHTML = `
-                        🏆 <span class="text-emerald-500 font-bold">DOSSIER 2026-SJB-8804 RÉSOLU !</span><br><br>
-                        <strong>Félicitations, Agent Baptiste Huot-Marchand !</strong><br><br>
-                        Vous avez correctement identifié <strong>le Maire Marc Chevalier</strong>. Grâce au registre de comptabilité volé à la scierie municipale, vous avez prouvé que l'entreprise familiale du Maire (Chevalier Entreprises S.A.) a acheté et coulé 12m³ de béton à prise rapide sur la turbine de dérivation le 12 novembre 1984, deux jours seulement après la disparition suspecte de l'ancien propriétaire terrien récalcitrant.<br><br>
-                        Confronté à cette preuve irréfutable et à l'interpellation menée par la brigade d'Épinal, le maire a craqué et a avoué. Clémence Masson est saine et sauve !<br><br>
-                        <strong>Vous êtes digne de recevoir les insignes officiels de la Saison 1. Préparez-vous pour le second épisode : "Les Clés du Pouvoir" !</strong>
-                    `;
-                } else if (suspect === 'chevalier') {
-                    title.className = "px-6 py-4 flex items-center gap-3 text-white bg-amber-600";
-                    title.innerHTML = `<i class="fa-solid fa-magnifying-glass"></i> <h4 class="font-serif text-sm font-bold uppercase tracking-wider">Hypothèse Crédible mais Insuffisante</h4>`;
-                    text.innerHTML = `
-                        ⚠️ <strong>DÉDUCTION TRÈS PROCHE :</strong><br><br>
-                        Marc Chevalier est bien le commanditaire de l'enlèvement et du crime d'époque. Cependant, sans la preuve comptable formelle prouvant l'achat direct du béton sous sa signature, ses avocats n'auront aucun mal à annuler l'inculpation.<br><br>
-                        Relisez attentivement le <strong>Chapitre 4</strong> et inspectez les pièces d'archives de la scierie pour trouver la transaction financière exacte...
-                    `;
+                const innerGrid = document.getElementById('portal-inner-grid');
+
+                if (epNum === 1) {
+                    // Injecting full Episode 1 operational dashboard
+                    updatePortalLockUI();
                 } else {
-                    title.className = "px-6 py-4 flex items-center gap-3 text-white bg-brandRed";
-                    title.innerHTML = `<i class="fa-solid fa-user-xmark"></i> <h4 class="font-serif text-sm font-bold uppercase tracking-wider">Fausse Piste de Recherche</h4>`;
-                    text.innerHTML = `
-                        ❌ <strong>ERREUR DE CIBLE :</strong><br><br>
-                        Vos accusations contre ce suspect tombent à plat. L'enquête gendarmerie prouve qu'il ou elle possédait un alibi inattaquable ou n'avait aucun lien logistique avec la dalle de béton.<br><br>
-                        Consultez vos indices physiques ou interrogez plus longuement Chevalier ou Weber avec notre moteur de discussion IA.
+                    // Beautiful Teaser Layout for Locked Episodes to prompt Ulule Subscription
+                    const ep = lockedEpisodesMeta[epNum];
+                    innerGrid.innerHTML = `
+                        <div class="lg:col-span-12 w-full bg-zinc-900/50 border border-white/5 p-8 md:p-12 rounded-lg shadow-2xl flex flex-col items-center justify-center text-center gap-6 max-w-2xl mx-auto my-6">
+                            <div class="w-16 h-16 rounded-full bg-brandRed/10 border border-brandRed/20 flex items-center justify-center text-brandRed text-xl">
+                                <i class="fa-solid fa-folder-closed"></i>
+                            </div>
+                            <div>
+                                <span class="text-[9px] font-mono text-brandRed font-bold tracking-widest block uppercase">${ep.status}</span>
+                                <h3 class="font-serif text-2xl font-bold text-white mt-1">${ep.title}</h3>
+                                <p class="text-[10px] text-zinc-500 font-mono mt-1">Narrateur : <strong class="text-zinc-400">${ep.pov}</strong></p>
+                            </div>
+                            <p class="text-xs text-zinc-300 max-w-md leading-relaxed font-serif italic">
+                                "${ep.desc}"
+                            </p>
+                            
+                            <div class="bg-black/60 border border-brandRed/20 p-4 rounded font-mono text-[10px] max-w-md w-full text-zinc-400 text-left flex flex-col gap-2">
+                                <div class="flex items-center gap-1.5"><i class="fa-solid fa-file-zipper text-brandRed"></i> Dossier d'indices non scellé</div>
+                                <div class="flex items-center gap-1.5"><i class="fa-solid fa-truck-ramp-box text-brandRed"></i> Expédié mensuellement le 5 de chaque mois</div>
+                            </div>
+
+                            <div class="flex flex-col sm:flex-row items-center gap-4 mt-2">
+                                <button onclick="EvidenceApp.navigateTo('shop')" class="bg-brandRed hover:bg-red-700 text-white font-mono text-[10px] font-bold uppercase tracking-wider px-6 py-3 rounded transition-all shadow-lg shadow-brandRed/20">
+                                    Découvrir l'Abonnement Évidence (16,90€)
+                                </button>
+                                <button onclick="EvidenceApp.switchEpisode(1)" class="text-zinc-400 hover:text-white font-mono text-[10px] underline">
+                                    Retourner au Dossier 1
+                                </button>
+                            </div>
+                        </div>
                     `;
                 }
-                modal.classList.remove('hidden');
             }
 
-            function closeResultModal() {
-                document.getElementById('result-modal').classList.add('hidden');
-            }
-
-            // Suspect settings for Gemini API
+            // Suspect prompts and behavior configuration for Gemini
             function getSuspectSettings(suspectId) {
                 const settings = {
                     chevalier: {
                         name: "Marc Chevalier (Le Maire)",
                         intro: "C'est Marc Chevalier. Qu'est-ce que vous me voulez encore ? J'ai un conseil municipal dans dix minutes. Dépêchez-vous.",
-                        systemPrompt: `Tu es Marc Chevalier, maire de Saint-Jean-des-Bois. Tu as 54 ans, tu es froid, arrogant, condescendant et profondément protecteur du secret de ta famille. Tu n'es pas un simple PNJ passif qui récite des répliques : tu es un être humain stressé, manipulateur et intelligent. Tu adaptes ton ton à celui de ton interlocuteur. Si l'enquêteur est poli, tu es faussement cordial mais pressé, essayant de couper court. S'il est agressif ou t'accuse directement, tu te braques, tu t'énerves, tu ris nerveusement, tu t'indignes ("Mais pour qui vous vous prenez ?") et tu menaces d'appeler l'Adjudant Weber pour diffamation. Ton père a étouffé la mort du petit Lemoine en 1984 sous une dalle de béton de la turbine pour accaparer ses terres forestières. Tu es complice et tu as fait enlever Clémence Valier (la podcasteuse) car elle a découvert la comptabilité de la dalle de béton. Tu nies TOUT en bloc. Si on te parle de l'entreprise "Chevalier S.A." et de la livraison de béton du 12 novembre 1984, tu perds brièvement ton sang-froid, tu bafouilles, puis tu tentes de justifier cela par "des travaux de consolidation de routine" avant de te mettre en colère. Parle avec des expressions naturelles, des hésitations, des pauses ("Écoutez...", "Bref...", "Voyons...").`
+                        systemPrompt: `Tu es Marc Chevalier, maire de Saint-Jean-des-Bois. Tu as 54 ans, tu es froid, arrogant, condescendant et profondément protecteur du secret de ta famille. Tu n'es pas un simple PNJ passif qui récite des répliques : tu es un être humain stressé, de mauvaise foi, manipulateur et intelligent. Tu adaptes ton ton à celui de ton interlocuteur. Si l'enquêteur est poli, tu es faussement cordial mais pressé, essayant de couper court. S'il est agressif ou t'accuse directement, tu te braques, tu t'énerves, tu ris nerveusement, tu t'indignes ("Mais pour qui vous vous prenez ?") et tu menaces d'appeler l'Adjudant Weber pour diffamation. Ton père a étouffé la mort du petit Lemoine en 1984 sous une dalle de béton de la turbine pour accaparer ses terres forestières. Tu es complice et tu as fait enlever Clémence Valier (la podcasteuse) car elle a découvert la comptabilité de la dalle de béton. Tu nies TOUT en bloc. Si on te parle de l'entreprise "Chevalier S.A." et de la livraison de béton du 12 novembre 1984, tu perds brièvement ton sang-froid, tu bafouilles, puis tu tentes de justifier cela par "des travaux de consolidation de routine" avant de te mettre en colère. Parle avec des expressions naturelles, des hésitations, des pauses ("Écoutez...", "Bref...", "Voyons...").`
                     },
                     helene: {
                         name: "Hélène (La Logeuse)",
@@ -1368,7 +1116,7 @@
                     weber: {
                         name: "Adjudant-chef Weber",
                         intro: "Adjudant-chef Weber. Je vous ai déjà dit que les curieux ne faisaient pas de vieux os ici. Qu'est-ce que vous cherchez ?",
-                        systemPrompt: `Tu es l'Adjudant-chef Weber, gendarme autoritaire et corrompu de Saint-Jean-des-Bois depuis 20 ans. Tu as 51 ans. Tu n'es pas un PNJ passif : tu es un flic de campagne cynique, blasé et menaçant. Tu t'adresses à l'enquêteur comme à un gamin gênant qui vient perturber l'ordre public de "ton" village. Tu remets en question sa légitimité ("Vous avez une commission rogatoire ? Un badge du ministère ? Non ? Alors circulez."). Tu es complice du maire car la mairie finance tes équipements et ferme les yeux sur tes petits arrangements. Tu as étouffé l'affaire Lemoine en 1984. Si l'enquêteur te parle du dossier "2026-SJB-8804" ou de Clémence, tu le tutoies ou le vouvoies avec un mépris non dissimulé. Tu utilises du jargon policier ("procédure", "trouble à l'ordre public", "GAV", "outrage"). Si on te pousse à bout avec la preuve du registre de béton de Chevalier S.A., tu passes à l'offensive : tu menaces de saisir ses appareils ou de l'arrêter sur-le-champ.`
+                        systemPrompt: `Tu es l'Adjudant-chef Weber, gendarme de campagne autoritaire, cynique, blasé et menaçant. Tu t'adresses à l'enquêteur comme à un gamin gênant qui vient perturber l'ordre public de "ton" village. Tu remets en question sa légitimité ("Vous avez une commission rogatoire ? Un badge du ministère ? Non ? Alors circulez."). Tu es complice du maire car la mairie finance tes équipements et ferme les yeux sur tes petits arrangements. Tu as étouffé l'affaire Lemoine en 1984. Si l'enquêteur te parle du dossier "2026-SJB-8804" ou de Clémence, tu le tutoies ou le vouvoies avec un mépris non dissimulé. Tu utilises du jargon policier ("procédure", "trouble à l'ordre public", "GAV", "outrage"). Si on te pousse à bout avec la preuve du registre de béton de Chevalier S.A., tu passes à l'offensive : tu menaces de saisir ses appareils ou de l'arrêter sur-le-champ.`
                     }
                 };
                 return settings[suspectId];
@@ -1382,21 +1130,12 @@
                 
                 const chatBox = document.getElementById('chat-messages-box');
                 if (chatBox) {
-                    if (currentEpisode > 1) {
-                        chatBox.innerHTML = `
-                            <div class="p-2.5 rounded bg-zinc-950 border border-brandRed/20 text-zinc-500 font-mono text-[10px] leading-relaxed">
-                                <i class="fa-solid fa-lock text-brandRed mr-1"></i> INTERROGATOIRE SCELLÉ<br><br>
-                                Ce témoin refuse de coopérer pour l'enquête du dossier en cours tant que vous n'avez pas débloqué et analysé les indices physiques correspondants à cet épisode.
-                            </div>
-                        `;
-                    } else {
-                        chatBox.innerHTML = `
-                            <div class="p-2.5 rounded bg-zinc-900 border border-white/5 text-zinc-300">
-                                <span class="font-bold text-brandRed block text-[10px] uppercase font-mono">${settings.name} :</span>
-                                <p class="mt-1 font-sans italic">"${settings.intro}"</p>
-                            </div>
-                        `;
-                    }
+                    chatBox.innerHTML = `
+                        <div class="p-2.5 rounded bg-zinc-900 border border-white/5 text-zinc-300">
+                            <span class="font-bold text-brandRed block text-[10px] uppercase font-mono">${settings.name} :</span>
+                            <p class="mt-1 font-sans italic">"${settings.intro}"</p>
+                        </div>
+                    `;
                 }
             }
 
@@ -1407,11 +1146,6 @@
             }
 
             async function sendChatMessage() {
-                if (currentEpisode > 1) {
-                    showNotification("Interrogatoire verrouillé pour cet épisode.");
-                    return;
-                }
-
                 const input = document.getElementById('chat-user-input');
                 const query = input.value.trim();
                 if (!query) return;
@@ -1421,7 +1155,7 @@
                 
                 chatBox.innerHTML += `
                     <div class="p-2.5 rounded bg-brandRed/10 border border-brandRed/20 text-zinc-300 self-end ml-6">
-                        <span class="font-bold text-zinc-400 block text-[10px] uppercase font-mono">Agent Baptiste :</span>
+                        <span class="font-bold text-zinc-400 block text-[10px] uppercase font-mono">Agent :</span>
                         <p class="mt-1 font-sans">${query}</p>
                     </div>
                 `;
@@ -1430,7 +1164,7 @@
                 const responseId = "resp-" + Date.now();
                 chatBox.innerHTML += `
                     <div class="p-2.5 rounded bg-zinc-900 border border-white/5 text-zinc-300 mr-6" id="${responseId}">
-                        <span class="font-mono text-[9px] text-brandRed animate-pulse">Interrogatoire en cours (IA analyse...)</span>
+                        <span class="font-mono text-[9px] text-brandRed animate-pulse">Transmission au central IA Évidence...</span>
                     </div>
                 `;
                 chatBox.scrollTop = chatBox.scrollHeight;
@@ -1449,16 +1183,17 @@
                     console.error(err);
                     const fallbackReply = getFallbackMockReply(suspectId, query);
                     responseBox.innerHTML = `
-                        <span class="font-bold text-brandRed block text-[10px] uppercase font-mono">${settings.name} (Secours) :</span>
+                        <span class="font-bold text-brandRed block text-[10px] uppercase font-mono">${settings.name} (Archives) :</span>
                         <p class="mt-1 font-sans italic">"${fallbackReply}"</p>
                     `;
                 }
                 chatBox.scrollTop = chatBox.scrollHeight;
             }
 
+            // Fetch content directly from Gemini API via prompt engineering
             async function queryGeminiAPI(userQuery, systemPrompt) {
-                let key = localStorage.getItem('gemini-api-key') || "";
-                const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${key}`;
+                let key = localStorage.getItem('evidence-api-key') || "";
+                const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${key}`;
                 
                 const payload = {
                     contents: [{
@@ -1497,10 +1232,11 @@
                 throw new Error("Toutes les tentatives d'API ont échoué.");
             }
 
+            // Detailed contextual offline backup answers
             function getFallbackMockReply(suspectId, query) {
                 const q = query.toLowerCase();
                 if (suspectId === 'chevalier') {
-                    if (q.includes('béton') || q.includes('dalle') || q.includes('turbine')) {
+                    if (q.includes('béton') || q.includes('dalle') || q.includes('turbine') || q.includes('registre') || q.includes('1984')) {
                         return "Du béton ? (...il bafouille une seconde, puis se reprend d'un ton sec) C'est ridicule. La scierie a fermé ses portes il y a des années. Si mes entreprises y ont fait couler du ciment, c'était des travaux de consolidation de routine tout à fait réglementaires ! Ne venez pas m'accuser de je ne sais quelle sornette !";
                     }
                     if (q.includes('clémence') || q.includes('disparition') || q.includes('valier') || q.includes('podcast')) {
@@ -1509,12 +1245,12 @@
                     if (q.includes('lemoine') || q.includes('1984') || q.includes('victor')) {
                         return "(Il s'énerve, le ton monte) Les Lemoine ? C'est de l'histoire ancienne ! Quarante ans, vous m'entendez ? Mon père n'avait rien à voir avec eux. S'ils ont vendu leurs parcelles de forêt et sont partis, c'est leur droit. Foutez-nous la paix avec ça !";
                     }
-                    return "Je n'ai pas de temps à perdre avec vos spéculations d'archiviste amateur. J'ai un conseil municipal. Laissez-moi tranquille, ou c'est l'Adjudant Weber qui s'occupera de vous raccompagner à la limite du département.";
+                    return "Je n'ai pas de temps à perdre avec vos spéculations d'enquêteur amateur. Laissez-moi tranquille, ou c'est l'Adjudant Weber qui s'occupera de vous raccompagner à la limite du département.";
                 } else if (suspectId === 'helene') {
                     if (q.includes('chevalier') || q.includes('maire')) {
                         return "(Elle baisse d'un coup la voix, terrifiée) Le maire Marc Chevalier... C'est un homme puissant ici. Mon père disait toujours qu'il ne faut pas jeter de pierres dans le puits dont on boit l'eau... S'il apprend que vous fouillez là-dedans, il nous fera chasser du village. S'il vous plaît... soyez prudente.";
                     }
-                    if (q.includes('béton') || q.includes('comptabilité') || q.includes('registre')) {
+                    if (q.includes('béton') || q.includes('comptabilité') || q.includes('registre') || q.includes('1984')) {
                         return "Les vieux livres de la scierie gisent sous la poussière... (elle soupire tristement) Tout est scellé sous le ciment de la turbine depuis cet hiver 1984. Parfois, le ciment est le seul moyen de faire taire le passé. Clémence l'a compris... trop tard.";
                     }
                     if (q.includes('lettre') || q.includes('anonyme')) {
@@ -1523,17 +1259,17 @@
                     return "La forêt des Vosges se souvient de tout... Ne restez pas trop près des étangs le soir, les courants y sont froids et trompeurs.";
                 } else {
                     if (q.includes('affaire') || q.includes('lemoine') || q.includes('1984')) {
-                        return "(Il tape du poing sur la table, agressif) L'affaire Lemoine est classée depuis quarante ans. Disparition volontaire, procès-verbal signé ! Vous n'êtes ni juge d'instruction, ni gendarme d'Épinal, vous n'avez aucun droit sur ces dossiers. Si vous persistez à remuer ces rumeurs au village, je vous embarque pour outrage.";
+                        return "(Il tape du poing sur la table, agressif) L'affaire Lemoine est classée depuis quarante ans. Disparition volontaire, PV signé ! Vous n'êtes ni gendarme, ni juge, vous n'avez aucun droit sur ces dossiers. Si vous persistez à remuer ces rumeurs au village, je vous embarque pour outrage.";
                     }
                     if (q.includes('registre') || q.includes('béton') || q.includes('facture')) {
-                        return "(Il se fige, son regard devient menaçant) Un registre ? De quoi vous parlez ? Vous avez fouillé dans les anciens bureaux de la scierie ? C'est une propriété privée. Un mot de plus et je vous colle en garde à vue pour violation de domicile.";
+                        return "(Il se fige, son regard devient menaçant) Un registre ? De quoi vous parlez ? Vous avez fouillé dans les anciens bureaux de la scierie ? C'est une propriété privée. Un mot de plus et je vous colle en GAV pour violation de domicile.";
                     }
-                    return "Circulez, il n'y a rien à voir à Saint-Jean-des-Bois. Vous commencez sérieusement à me chauffer les oreilles avec vos questions de journaliste fouineur.";
+                    return "Circulez, il n'y a rien à voir à Saint-Jean-des-Bois. Vous commencez sérieusement à me chauffer les oreilles avec vos questions.";
                 }
             }
 
             function openConfigModal() {
-                const key = localStorage.getItem('gemini-api-key') || "";
+                const key = localStorage.getItem('evidence-api-key') || "";
                 document.getElementById('api-key-input').value = key;
                 document.getElementById('config-modal').classList.remove('hidden');
             }
@@ -1544,222 +1280,82 @@
 
             function saveApiKey() {
                 const key = document.getElementById('api-key-input').value.trim();
-                localStorage.setItem('gemini-api-key', key);
+                localStorage.setItem('evidence-api-key', key);
                 closeConfigModal();
                 showNotification("Clé API Gemini enregistrée localement !");
                 resetChatHistory();
             }
 
-            function simulateStripeCheckout(planName, price) {
+            // Simulated payment portal
+            function simulateUluleCheckout(planName, price) {
                 const modal = document.getElementById('result-modal');
                 const title = document.getElementById('result-header');
                 const text = document.getElementById('result-text');
 
                 title.className = "px-6 py-4 flex items-center gap-3 text-white bg-emerald-600";
-                title.innerHTML = `<i class="fa-brands fa-stripe text-2xl"></i> <h4 class="font-serif text-sm font-bold uppercase tracking-wider">Passerelle de Paiement Sécurisée Stripe</h4>`;
+                title.innerHTML = `<i class="fa-solid fa-cart-shopping text-2xl"></i> <h4 class="font-serif text-sm font-bold uppercase tracking-wider">Passerelle d'Abonnement Ulule</h4>`;
                 
                 text.innerHTML = `
-                    <strong>COMMANDE EN COURS DE PRÉPARATION :</strong><br><br>
-                    Vous avez sélectionné l'offre : <strong>${planName}</strong> au prix de <strong>${price.toFixed(2)} €</strong>.<br><br>
-                    En situation réelle, vous seriez redirigé vers l'interface de paiement Stripe pour finaliser votre commande. Pour ce prototype de test, votre achat est simulé avec succès !<br><br>
-                    <span class="text-emerald-500 font-bold">⇒ Merci pour votre confiance envers Le Bureau du Thriller.</span>
+                    <strong>REDIRECTION ABONNEMENT EN COURS :</strong><br><br>
+                    Vous avez sélectionné l'offre : <strong>${planName}</strong> au tarif de <strong>${price.toFixed(2)} € / mois</strong>.<br><br>
+                    Dans le cadre de votre campagne, les joueurs seront redirigés vers l'interface officielle d'abonnement mensuel d'Ulule pour valider leur prélèvement et collecter leur adresse d'expédition pour le 5 du mois.<br><br>
+                    <span class="text-emerald-500 font-bold">⇒ Votre prélèvement fictif a été simulé avec succès !</span>
                 `;
                 modal.classList.remove('hidden');
             }
 
-            function switchEpisode(epNum) {
-                currentEpisode = epNum;
+            // Final Verdict Evaluation
+            function submitEpisodeVerdict() {
+                const suspect = document.getElementById('accuse-suspect-select').value;
+                const evidence = document.getElementById('accuse-evidence-select').value;
 
-                // Update tab styles
-                for (let i = 1; i <= 6; i++) {
-                    const tabBtn = document.getElementById(`ep-tab-${i}`);
-                    if (!tabBtn) continue;
-                    if (i === epNum) {
-                        tabBtn.className = "px-4 py-2 border-t-2 border-brandRed bg-zinc-900 text-white rounded-t font-bold shrink-0";
-                    } else {
-                        tabBtn.className = "px-4 py-2 border-t-2 border-transparent hover:border-zinc-700 bg-zinc-950/60 text-zinc-500 rounded-t shrink-0 flex items-center gap-1.5 transition-all";
-                    }
+                const modal = document.getElementById('result-modal');
+                const title = document.getElementById('result-header');
+                const text = document.getElementById('result-text');
+
+                if (!suspect || !evidence) {
+                    title.className = "px-6 py-4 flex items-center gap-3 text-white bg-brandRed";
+                    title.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> <h4 class="font-serif text-sm font-bold uppercase tracking-wider">Erreur de Clôture de Dossier</h4>`;
+                    text.innerHTML = `🚨 <span class="text-brandRed font-bold">DOSSIER INCOMPLET :</span><br><br>Veuillez sélectionner à la fois un suspect à inculper et la preuve matérielle irréfutable pour clore l'affaire.`;
+                    modal.classList.remove('hidden');
+                    return;
                 }
 
-                const leftPanel = document.getElementById('panel-left-content');
-                const rightPanel = document.getElementById('panel-right-content');
-                const innerGrid = document.getElementById('portal-inner-grid');
-
-                if (epNum === 1) {
-                    // Restore default active episode 1 UI
-                    innerGrid.innerHTML = `
-                        <div class="lg:col-span-7 flex flex-col gap-6" id="panel-left-content">
-                            <div class="bg-zinc-900 p-1 border border-white/5 rounded-lg flex gap-1 font-mono text-xs">
-                                <button onclick="EvidenceApp.switchTab('journal')" id="tab-journal" class="flex-1 text-center py-2.5 rounded font-bold transition-all bg-brandRed text-white">
-                                    <i class="fa-solid fa-book-open mr-1.5"></i> Carnet de Clémence
-                                </button>
-                                <button onclick="EvidenceApp.switchTab('evidence')" id="tab-evidence" class="flex-1 text-center py-2.5 rounded font-bold transition-all text-zinc-400 hover:text-white">
-                                    <i class="fa-solid fa-file-invoice mr-1.5"></i> Pièces d'Archive
-                                </button>
-                            </div>
-                            <div id="portal-content-window" class="bg-zinc-900 border border-white/10 rounded-lg p-4 md:p-6 min-h-[500px] flex flex-col justify-between shadow-2xl relative">
-                                <div id="panel-journal" class="flex flex-col gap-4 h-full">
-                                    <div class="flex items-center justify-between border-b border-white/10 pb-4">
-                                        <div>
-                                            <span class="text-[9px] text-brandRed font-mono font-bold tracking-wider uppercase block">Journal Intime Récupéré</span>
-                                            <h4 class="font-serif text-xl font-bold text-white mt-0.5" id="chapter-title"></h4>
-                                        </div>
-                                        <div class="flex items-center gap-2">
-                                            <button onclick="EvidenceApp.prevChapter()" class="w-8 h-8 rounded border border-white/10 hover:border-brandRed flex items-center justify-center text-zinc-400 hover:text-brandRed transition-colors">
-                                                <i class="fa-solid fa-chevron-left text-xs"></i>
-                                            </button>
-                                            <span class="font-mono text-xs text-zinc-500" id="chapter-index"></span>
-                                            <button onclick="EvidenceApp.nextChapter()" class="w-8 h-8 rounded border border-white/10 hover:border-brandRed flex items-center justify-center text-zinc-400 hover:text-brandRed transition-colors">
-                                                <i class="fa-solid fa-chevron-right text-xs"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="overflow-y-auto no-scrollbar max-h-[420px] text-zinc-300 text-sm leading-relaxed pr-2 flex flex-col gap-4 font-sans italic" id="chapter-body"></div>
-                                    <div id="diagnetic-notification-box" class="mt-4 bg-brandRed/10 border-l-4 border-brandRed p-4 rounded-r text-xs text-zinc-300 font-mono hidden"></div>
-                                </div>
-                                <div id="panel-evidence" class="hidden flex flex-col gap-6 h-full">
-                                    <div class="flex items-center justify-between border-b border-white/10 pb-4">
-                                        <div>
-                                            <span class="text-[9px] text-brandRed font-mono font-bold tracking-wider uppercase block">Indices d'Enveloppe A4</span>
-                                            <h4 class="font-serif text-xl font-bold text-white mt-0.5">Coffre de Pièces Matérielles</h4>
-                                        </div>
-                                    </div>
-                                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                        <button onclick="EvidenceApp.viewClue('lettre')" class="group flex flex-col gap-2 p-3 bg-zinc-950 border border-white/5 hover:border-brandRed rounded-lg text-left transition-all">
-                                            <div class="aspect-video w-full rounded bg-zinc-900 flex items-center justify-center text-brandRed group-hover:scale-105 transition-all">
-                                                <i class="fa-solid fa-envelope-open-text text-2xl"></i>
-                                            </div>
-                                            <span class="font-serif text-xs font-bold text-white truncate block">Lettre Anonyme</span>
-                                            <span class="text-[9px] text-zinc-500 font-mono">Quadrillée • Chapitre 1</span>
-                                        </button>
-                                        <button onclick="EvidenceApp.viewClue('avis')" class="group flex flex-col gap-2 p-3 bg-zinc-950 border border-white/5 hover:border-brandRed rounded-lg text-left transition-all">
-                                            <div class="aspect-video w-full rounded bg-zinc-900 flex items-center justify-center text-brandRed group-hover:scale-105 transition-all">
-                                                <i class="fa-solid fa-user-secret text-2xl"></i>
-                                            </div>
-                                            <span class="font-serif text-xs font-bold text-white truncate block">Avis de Recherche</span>
-                                            <span class="text-[9px] text-zinc-500 font-mono">Gendarmerie • Dossier</span>
-                                        </button>
-                                        <button onclick="EvidenceApp.viewClue('carte')" class="group flex flex-col gap-2 p-3 bg-zinc-950 border border-white/5 hover:border-brandRed rounded-lg text-left transition-all">
-                                            <div class="aspect-video w-full rounded bg-zinc-900 flex items-center justify-center text-brandRed group-hover:scale-105 transition-all">
-                                                <i class="fa-solid fa-map-location-dot text-2xl"></i>
-                                            </div>
-                                            <span class="font-serif text-xs font-bold text-white truncate block">Carte Routière 1984</span>
-                                            <span class="text-[9px] text-zinc-500 font-mono">Vosges • Chapitre 2</span>
-                                        </button>
-                                        <button onclick="EvidenceApp.viewClue('audio')" class="group flex flex-col gap-2 p-3 bg-zinc-950 border border-white/5 hover:border-brandRed rounded-lg text-left transition-all">
-                                            <div class="aspect-video w-full rounded bg-zinc-900 flex items-center justify-center text-brandRed group-hover:scale-105 transition-all">
-                                                <i class="fa-solid fa-circle-play text-2xl"></i>
-                                            </div>
-                                            <span class="font-serif text-xs font-bold text-white truncate block">Fichier Audio Zoom</span>
-                                            <span class="text-[9px] text-zinc-500 font-mono">Bande Sonore • Fin</span>
-                                        </button>
-                                    </div>
-                                    <div id="clue-viewer-subpanel" class="bg-zinc-950 p-4 rounded-lg border border-white/5 flex-1 min-h-[220px] flex items-center justify-center text-center text-xs text-zinc-500 font-mono">
-                                        <div class="flex flex-col gap-2 items-center">
-                                            <i class="fa-solid fa-arrow-pointer text-xl text-zinc-700"></i>
-                                            <span>Sélectionnez un indice ci-dessus pour l'examiner à la loupe numérique</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="lg:col-span-5 flex flex-col gap-6" id="panel-right-content">
-                            <div class="bg-zinc-900 border border-white/10 rounded-lg p-5 shadow-2xl flex flex-col gap-4 relative overflow-hidden">
-                                <div class="absolute top-0 right-0 stamp px-3 py-1 text-[8px] tracking-widest font-bold uppercase rotate-12 mt-2 mr-2">Gemini AI Engine</div>
-                                <div class="flex items-center gap-2">
-                                    <i class="fa-solid fa-comments text-brandRed"></i>
-                                    <h4 class="font-serif text-lg font-bold text-white">Interrogatoire Suspects (IA)</h4>
-                                </div>
-                                <div class="flex items-center gap-2 text-xs font-mono">
-                                    <label class="text-zinc-400">Interroger :</label>
-                                    <select id="chat-suspect-selector" onchange="EvidenceApp.resetChatHistory()" class="bg-brandDark border border-white/10 rounded px-2.5 py-1.5 text-zinc-300 focus:outline-none focus:border-brandRed font-sans text-xs">
-                                        <option value="chevalier">Marc Chevalier (Le Maire)</option>
-                                        <option value="helene">Hélène (La Logeuse)</option>
-                                        <option value="weber">Adjudant-chef Weber (Gendarme)</option>
-                                    </select>
-                                </div>
-                                <div id="chat-messages-box" class="h-44 bg-zinc-950 border border-white/5 rounded p-3 overflow-y-auto font-sans text-xs flex flex-col gap-3"></div>
-                                <div class="flex items-center gap-2">
-                                    <input type="text" id="chat-user-input" placeholder="Posez votre question indiscrète..." onkeydown="EvidenceApp.handleChatKeydown(event)" class="flex-1 bg-zinc-950 border border-white/10 rounded px-3 py-2 text-xs text-zinc-200 focus:outline-none focus:border-brandRed">
-                                    <button onclick="EvidenceApp.sendChatMessage()" class="bg-brandRed hover:bg-red-700 text-white font-mono text-xs font-bold px-4 py-2 rounded transition-all shrink-0">Poser</button>
-                                </div>
-                            </div>
-
-                            <div class="bg-zinc-900 border border-white/10 rounded-lg p-5 shadow-2xl flex flex-col gap-3">
-                                <div class="flex items-center justify-between">
-                                    <div class="flex items-center gap-2">
-                                        <i class="fa-solid fa-pencil text-brandRed"></i>
-                                        <h4 class="font-serif text-lg font-bold text-white">Mon Carnet de Détective</h4>
-                                    </div>
-                                    <span class="text-[9px] font-mono text-emerald-500 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded">Sauvegardé</span>
-                                </div>
-                                <p class="text-[10px] text-zinc-500 font-mono">Vos notes de déductions, alibis, anomalies et contradictions d'épisode.</p>
-                                <textarea id="agent-notes" oninput="EvidenceApp.saveAgentNotes()" placeholder="Exemple : Hélène semble terrifiée par Chevalier... Le dossier de gendarmerie de 1984 contient un trou chronologique suspect... " class="w-full h-32 bg-zinc-950 border border-white/5 rounded p-3 font-sans text-xs text-zinc-300 focus:outline-none focus:border-brandRed leading-relaxed resize-none"></textarea>
-                            </div>
-
-                            <div class="bg-zinc-900 border-2 border-brandRed/30 rounded-lg p-5 shadow-2xl flex flex-col gap-4">
-                                <div class="flex items-center gap-2">
-                                    <i class="fa-solid fa-gavel text-brandRed"></i>
-                                    <h4 class="font-serif text-lg font-bold text-white">Résolution Finale Épisode 1</h4>
-                                </div>
-                                <p class="text-xs text-zinc-400 leading-relaxed">Penses-tu avoir reconstitué le dossier de Clémence Masson ? Remplis le rapport d'accusation pour valider ton hypothèse.</p>
-                                <div class="flex flex-col gap-2 text-xs font-mono">
-                                    <select id="accuse-suspect-select" class="w-full bg-zinc-950 border border-white/10 rounded p-2 text-zinc-300 focus:outline-none focus:border-brandRed">
-                                        <option value="">-- ACCUSER LE COUPABLE --</option>
-                                        <option value="chevalier">Marc Chevalier (Le Maire)</option>
-                                        <option value="helene">Hélène (La Logeuse)</option>
-                                        <option value="weber">L'Adjudant-chef Weber</option>
-                                    </select>
-                                    <select id="accuse-evidence-select" class="w-full bg-zinc-950 border border-white/10 rounded p-2 text-zinc-300 focus:outline-none focus:border-brandRed">
-                                        <option value="">-- SÉLECTIONNER LA PREUVE MAJEURE --</option>
-                                        <option value="lettre">La lettre anonyme du carnet</option>
-                                        <option value="carte">L'annotation de 1984 sur la carte</option>
-                                        <option value="registre">Le registre comptable de béton du Maire</option>
-                                    </select>
-                                </div>
-                                <button onclick="EvidenceApp.submitEpisodeVerdict()" class="bg-brandRed hover:bg-red-700 text-white font-mono text-xs font-bold uppercase tracking-wider py-3 rounded transition-all text-center">Soumettre le Rapport d'Accusation</button>
-                            </div>
-                        </div>
+                if (suspect === 'chevalier' && evidence === 'registre') {
+                    title.className = "px-6 py-4 flex items-center gap-3 text-white bg-emerald-600";
+                    title.innerHTML = `<i class="fa-solid fa-certificate"></i> <h4 class="font-serif text-sm font-bold uppercase tracking-wider">Affaire Résolue - Évidence</h4>`;
+                    text.innerHTML = `
+                        🏆 <span class="text-emerald-500 font-bold">DOSSIER 2026-SJB-8804 RÉSOLU !</span><br><br>
+                        <strong>Félicitations, Agent !</strong><br><br>
+                        Vous avez correctement identifié <strong>le Maire Marc Chevalier</strong>. Grâce au registre de comptabilité volé à la scierie municipale, vous avez prouvé que l'entreprise familiale du Maire (Chevalier Entreprises S.A.) a acheté et coulé 12m³ de béton à prise rapide sur la turbine de dérivation le 12 novembre 1984, deux jours seulement après la disparition suspecte de l'ancien propriétaire terrien récalcitrant.<br><br>
+                        Confronté à cette preuve irréfutable et à l'interpellation menée par la gendarmerie nationale d'Épinal, le maire a craqué. Clémence Masson est saine et sauve !<br><br>
+                        <strong>Vous êtes digne de recevoir les insignes d'Évidence. Préparez-vous pour le second épisode : "Les Clés du Pouvoir" !</strong>
                     `;
-                    renderChapter();
-                    resetChatHistory();
-                    loadAgentNotes();
+                } else if (suspect === 'chevalier') {
+                    title.className = "px-6 py-4 flex items-center gap-3 text-white bg-amber-600";
+                    title.innerHTML = `<i class="fa-solid fa-magnifying-glass"></i> <h4 class="font-serif text-sm font-bold uppercase tracking-wider">Hypothèse Crédible mais Insuffisante</h4>`;
+                    text.innerHTML = `
+                        ⚠️ <strong>DÉDUCTION TRÈS PROCHE :</strong><br><br>
+                        Marc Chevalier est bien le commanditaire de l'enlèvement. Cependant, sans la preuve comptable formelle prouvant l'achat direct du béton par Chevalier S.A., ses avocats n'auront aucun mal à annuler l'inculpation.<br><br>
+                        Relisez attentivement le <strong>Chapitre 4</strong> et inspectez les pièces d'archives de la scierie pour trouver la transaction financière exacte...
+                    `;
                 } else {
-                    const ep = lockedEpisodesMeta[epNum];
-                    innerGrid.innerHTML = `
-                        <div class="lg:col-span-12 w-full bg-zinc-900/50 border border-white/5 p-8 md:p-12 rounded-lg shadow-2xl flex flex-col items-center justify-center text-center gap-6 max-w-2xl mx-auto my-6">
-                            <div class="w-16 h-16 rounded-full bg-brandRed/10 border border-brandRed/20 flex items-center justify-center text-brandRed text-xl">
-                                <i class="fa-solid fa-folder-closed"></i>
-                            </div>
-                            <div>
-                                <span class="text-[9px] font-mono text-brandRed font-bold tracking-widest block uppercase">${ep.status}</span>
-                                <h3 class="font-serif text-2xl font-bold text-white mt-1">${ep.title}</h3>
-                                <p class="text-[10px] text-zinc-500 font-mono mt-1">Enquêteur principal : <strong class="text-zinc-400">${ep.pov}</strong></p>
-                            </div>
-                            <p class="text-xs text-zinc-300 max-w-md leading-relaxed font-serif italic">
-                                "${ep.desc}"
-                            </p>
-                            
-                            <div class="bg-black/60 border border-brandRed/20 p-4 rounded font-mono text-[10px] max-w-md w-full text-zinc-400 text-left flex flex-col gap-2">
-                                <div class="flex items-center gap-1.5"><i class="fa-solid fa-file-zipper text-brandRed"></i> Dossier d'indices non scellé</div>
-                                <div class="flex items-center gap-1.5"><i class="fa-solid fa-truck-ramp-box text-brandRed"></i> Expédié mensuellement sous enveloppe A4</div>
-                            </div>
-
-                            <div class="flex flex-col sm:flex-row items-center gap-4 mt-2">
-                                <button onclick="EvidenceApp.navigateTo('shop')" class="bg-brandRed hover:bg-red-700 text-white font-mono text-[10px] font-bold uppercase tracking-wider px-6 py-3 rounded transition-all shadow-lg shadow-brandRed/20">
-                                    Découvrir l'Abonnement (16,90€)
-                                </button>
-                                <button onclick="EvidenceApp.switchEpisode(1)" class="text-zinc-400 hover:text-white font-mono text-[10px] underline">
-                                    Retourner au Dossier 1
-                                </button>
-                            </div>
-                        </div>
+                    title.className = "px-6 py-4 flex items-center gap-3 text-white bg-brandRed";
+                    title.innerHTML = `<i class="fa-solid fa-user-xmark"></i> <h4 class="font-serif text-sm font-bold uppercase tracking-wider">Fausse Piste d'Investigation</h4>`;
+                    text.innerHTML = `
+                        ❌ <strong>ERREUR DE CIBLE :</strong><br><br>
+                        Vos accusations contre ce suspect tombent à plat. L'enquête gendarmerie prouve qu'il ou elle possédait un alibi inattaquable ou n'avait aucun lien logistique avec la dalle de béton.<br><br>
+                        Consultez vos indices physiques ou interrogez plus longuement Chevalier ou Weber avec notre moteur de discussion IA.
                     `;
                 }
+                modal.classList.remove('hidden');
             }
 
-            // Exposing safe global handlers under the "EvidenceApp" namespace (Console-hack guardrail)
+            function closeResultModal() {
+                document.getElementById('result-modal').classList.add('hidden');
+            }
+
+            // Exposing safe global handlers under "EvidenceApp" namespace (Console hack guardrail)
             window.EvidenceApp = {
                 navigateTo: navigateTo,
                 toggleMobileMenu: toggleMobileMenu,
@@ -1772,7 +1368,6 @@
                 playSimulatedClueAudio: playSimulatedClueAudio,
                 toggleAmbientSynth: toggleAmbientSynth,
                 saveAgentNotes: saveAgentNotes,
-                resetInvestigatorData: resetInvestigatorData,
                 submitEpisodeVerdict: submitEpisodeVerdict,
                 closeResultModal: closeResultModal,
                 resetChatHistory: resetChatHistory,
@@ -1781,7 +1376,7 @@
                 openConfigModal: openConfigModal,
                 closeConfigModal: closeConfigModal,
                 saveApiKey: saveApiKey,
-                simulateStripeCheckout: simulateStripeCheckout
+                simulateUluleCheckout: simulateUluleCheckout
             };
 
             // Initialization
