@@ -3,14 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Évidence - Portail d'Investigation Interactif</title>
-    <!-- Tailwind CSS for modern premium styling -->
+    <title>Évidence — Enquêtes Littéraires Immersives & Interactives</title>
+    
+    <!-- Tailwind CSS for production-grade styling -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts for retro, gothic and handwritten typewriter aesthetics -->
+    
+    <!-- Google Fonts for Retro-Typewriter, Vintage Serif and Sans-serif legibility -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Special+Elite&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome for immersive UI icons -->
+    
+    <!-- FontAwesome for high-fidelity UI icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <script>
@@ -26,12 +29,12 @@
                     colors: {
                         brandRed: '#b91c1c',
                         brandRedDark: '#7f1d1d',
-                        brandDark: '#0a0a0a',
-                        brandAsh: '#141414',
-                        brandCoal: '#1f1f1f',
-                        parchment: '#f4efe6',
-                        parchmentDark: '#eadabe',
-                        inkBlue: '#1a365d',
+                        brandDark: '#0d0c0b',
+                        brandAsh: '#181614',
+                        brandCoal: '#24211e',
+                        parchment: '#f5f2eb',
+                        parchmentDark: '#e3ded3',
+                        inkBlue: '#1e293b',
                     }
                 }
             }
@@ -40,90 +43,96 @@
     
     <style>
         .parchment-bg {
-            background-color: #f4efe6;
+            background-color: #f5f2eb;
             background-image: 
-                radial-gradient(circle at 50% 50%, transparent 60%, rgba(0, 0, 0, 0.04) 100%),
-                radial-gradient(circle at 10% 20%, rgba(139, 92, 26, 0.05) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(139, 92, 26, 0.05) 0%, transparent 40%);
-            box-shadow: inset 0 0 40px rgba(139, 92, 26, 0.12);
+                radial-gradient(circle at 50% 50%, transparent 60%, rgba(0, 0, 0, 0.05) 100%),
+                radial-gradient(circle at 10% 20%, rgba(139, 92, 26, 0.04) 0%, transparent 40%);
+            box-shadow: inset 0 0 40px rgba(139, 92, 26, 0.15);
         }
         .coffee-stain {
             position: absolute;
             border-radius: 50%;
-            border: 3px double rgba(101, 67, 33, 0.08);
-            background: radial-gradient(circle at 30% 30%, rgba(101, 67, 33, 0.02) 0%, transparent 70%);
+            border: 4px double rgba(101, 67, 33, 0.08);
+            background: radial-gradient(circle at 30% 30%, rgba(101, 67, 33, 0.03) 0%, transparent 70%);
             pointer-events: none;
-            filter: blur(1px);
+            filter: blur(2px);
         }
         .stamp {
             border: 3px double #b91c1c;
             color: #b91c1c;
             font-family: 'Special Elite', monospace;
-            background: rgba(185, 28, 28, 0.03);
+            background: rgba(185, 28, 28, 0.02);
             text-shadow: 0 0 1px rgba(185, 28, 28, 0.1);
         }
-        /* Custom scrollbar for typewriter feel */
+        .wood-pattern {
+            background-color: #0d0c0b;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
         ::-webkit-scrollbar {
             width: 8px;
+            height: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #0a0a0a;
+            background: #0d0c0b;
         }
         ::-webkit-scrollbar-thumb {
-            background: #262626;
+            background: #24211e;
             border-radius: 4px;
         }
         ::-webkit-scrollbar-thumb:hover {
             background: #b91c1c;
         }
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
+        .text-justify-custom {
+            text-align: justify;
+            text-justify: inter-word;
         }
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
+        @keyframes waveform {
+            0%, 100% { height: 4px; }
+            50% { height: 28px; }
+        }
+        .bar-anim {
+            animation: waveform 1.2s ease-in-out infinite;
         }
     </style>
 </head>
-<body class="bg-brandDark text-zinc-100 font-sans h-full flex flex-col justify-between selection:bg-brandRed selection:text-white overflow-x-hidden">
+<body class="wood-pattern text-zinc-200 font-sans h-full flex flex-col justify-between selection:bg-brandRed selection:text-white overflow-x-hidden">
 
-    <!-- Ambient Sound Synthesizer Controller -->
-    <div class="bg-brandAsh border-b border-white/5 px-4 py-2 flex items-center justify-between text-xs font-mono z-50">
+    <div class="bg-black/90 border-b border-white/5 px-4 py-2 flex items-center justify-between text-xs font-mono z-50">
         <div class="flex items-center gap-2 text-zinc-400">
             <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            <span class="text-[10px] uppercase tracking-wider">Serveurs Sécurisés Évidence</span>
+            <span class="text-[10px] uppercase tracking-widest">Serveur Central Évidence v1.2</span>
         </div>
         <div class="flex items-center gap-4">
             <button onclick="EvidenceApp.toggleAmbientSynth()" id="synth-btn" class="text-zinc-400 hover:text-brandRed transition-colors flex items-center gap-1.5">
                 <i class="fa-solid fa-volume-xmark" id="synth-icon"></i>
-                <span id="synth-text">Ambiance Sonore Vosges (Désactivée)</span>
+                <span id="synth-text">Ambiance Forêt (Désactivée)</span>
             </button>
-            <button onclick="EvidenceApp.openConfigModal()" class="text-zinc-400 hover:text-white transition-colors">
-                <i class="fa-solid fa-key mr-1"></i> Config Clé IA
+            <button onclick="EvidenceApp.openConfigModal()" class="text-zinc-500 hover:text-white transition-colors text-[10px] border border-white/10 px-2 py-0.5 rounded">
+                <i class="fa-solid fa-key mr-1"></i> Admin Clé IA
             </button>
         </div>
     </div>
 
-    <!-- Navigation Header -->
-    <nav class="sticky top-0 bg-brandDark/95 backdrop-blur border-b border-white/10 z-40 transition-all duration-300">
+    <nav class="sticky top-0 bg-brandDark/95 backdrop-blur-md border-b border-white/10 z-40 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <button onclick="EvidenceApp.navigateTo('home')" class="w-10 h-10 bg-brandRed text-white font-bold rounded flex items-center justify-center shadow-lg shadow-brandRed/20 hover:bg-red-700 transition-all">
-                    <span class="font-typewriter text-lg">É</span>
+                <button onclick="EvidenceApp.navigateTo('home')" class="w-10 h-10 bg-brandRed text-white font-bold rounded flex items-center justify-center shadow-lg shadow-brandRed/30 hover:bg-red-700 transition-all">
+                    <span class="font-typewriter text-xl">É</span>
                 </button>
                 <div>
                     <h1 class="font-serif text-sm uppercase tracking-widest font-bold text-white leading-none">ÉVIDENCE</h1>
-                    <span class="text-[9px] text-brandRed font-mono uppercase tracking-[0.3em] font-bold block mt-0.5">Enquêtes Immersives • Interactive</span>
+                    <span class="text-[9px] text-brandRed font-mono uppercase tracking-[0.2em] font-bold block mt-0.5">Enquêtes Littéraires Immersives</span>
                 </div>
             </div>
             
             <div class="hidden md:flex items-center gap-8 font-mono text-xs uppercase tracking-wider">
-                <button onclick="EvidenceApp.navigateTo('home')" class="nav-link text-white hover:text-brandRed transition-colors">Accueil</button>
-                <button onclick="EvidenceApp.navigateTo('shop')" class="nav-link text-zinc-400 hover:text-brandRed transition-colors">Abonnements & Tarifs</button>
-                <button onclick="EvidenceApp.navigateTo('portal')" class="nav-link px-4 py-2 bg-brandRed/10 border border-brandRed/30 rounded text-brandRed hover:bg-brandRed hover:text-white transition-all shadow-md">Espace Enquêteur</button>
+                <button onclick="EvidenceApp.navigateTo('home')" class="nav-link text-white hover:text-brandRed transition-colors">Concept</button>
+                <button onclick="EvidenceApp.navigateTo('shop')" class="nav-link text-zinc-400 hover:text-brandRed transition-colors">S'abonner</button>
+                <button onclick="EvidenceApp.navigateTo('portal')" class="nav-link px-4 py-2 bg-brandRed/10 border border-brandRed/30 rounded text-brandRed hover:bg-brandRed hover:text-white transition-all shadow-md">Console Enquêteur</button>
             </div>
 
-            <!-- Mobile menu icon -->
             <div class="md:hidden">
                 <button onclick="EvidenceApp.toggleMobileMenu()" class="text-zinc-400 hover:text-white focus:outline-none">
                     <i class="fa-solid fa-bars text-xl"></i>
@@ -131,58 +140,54 @@
             </div>
         </div>
         
-        <!-- Mobile Dropdown Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-brandAsh border-b border-white/10 px-4 py-4 flex flex-col gap-3 font-mono text-xs uppercase">
-            <button onclick="EvidenceApp.navigateTo('home'); EvidenceApp.toggleMobileMenu()" class="text-left py-2 text-white border-b border-white/5">Accueil</button>
-            <button onclick="EvidenceApp.navigateTo('shop'); EvidenceApp.toggleMobileMenu()" class="text-left py-2 text-zinc-400 border-b border-white/5">Abonnements & Tarifs</button>
-            <button onclick="EvidenceApp.navigateTo('portal'); EvidenceApp.toggleMobileMenu()" class="text-left py-2 text-brandRed font-bold">Espace Enquêteur</button>
+            <button onclick="EvidenceApp.navigateTo('home'); EvidenceApp.toggleMobileMenu()" class="text-left py-2 text-white border-b border-white/5">Concept</button>
+            <button onclick="EvidenceApp.navigateTo('shop'); EvidenceApp.toggleMobileMenu()" class="text-left py-2 text-zinc-400 border-b border-white/5">S'abonner</button>
+            <button onclick="EvidenceApp.navigateTo('portal'); EvidenceApp.toggleMobileMenu()" class="text-left py-2 text-brandRed font-bold">Console Enquêteur</button>
         </div>
     </nav>
 
-    <!-- SECTION 1 : ACCUEIL & PRESENTATION PREMIUM -->
-    <section id="section-home" class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-8 flex flex-col gap-12 py-12">
+    <!-- SECTION 1 : GRAND PUBLIC & PITCH -->
+    <section id="section-home" class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-8 flex flex-col gap-16 py-12">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
             <div class="lg:col-span-7 flex flex-col gap-6">
                 <div class="inline-flex items-center gap-2 bg-brandRed/10 border border-brandRed/30 px-3 py-1 rounded-full text-xs font-mono text-brandRed w-fit">
-                    <i class="fa-solid fa-box-open"></i> EXPÉDITION SOUS ENVELOPPE SCELLÉE CHAQUE MOIS
+                    <i class="fa-solid fa-box-open"></i> EXPÉDITION SCELLÉE LE 5 DE CHAQUE MOIS
                 </div>
                 <h2 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-                    Ne lisez plus l'enquête. <br><span class="text-brandRed italic">Vivez-la.</span>
+                    Ne lisez plus l'enquête. <br><span class="text-brandRed italic">Infiltrez-la.</span>
                 </h2>
-                <p class="text-zinc-400 text-sm md:text-base leading-relaxed">
-                    <strong>Évidence</strong> réinvente l'expérience littéraire de détective. Chaque mois, recevez une enveloppe scellée contenant un roman, un livret de suspects d'archiviste, et de véritables indices physiques (lettres froissées, vieilles cartes de gendarmerie, photos Polaroid). Utilisez ce portail pour analyser vos pièces et interroger les suspects en direct par Intelligence Artificielle.
+                <p class="text-zinc-400 text-sm md:text-base leading-relaxed text-justify-custom">
+                    <strong>Évidence</strong> est un concept d'édition indépendante par abonnement. Chaque mois, recevez un nouvel épisode scellé dans votre boîte aux lettres : un roman haletant au format poche, un livret d'enquête d'archiviste, et de véritables pièces à conviction (lettres confidentielles, extraits de cadastre de 1984, cartes géographiques annotées). Utilisez ce portail pour inspecter vos pièces et interroger les suspects en direct par Intelligence Artificielle.
                 </p>
                 <div class="flex flex-wrap gap-4 mt-2">
-                    <button onclick="EvidenceApp.navigateTo('portal')" class="bg-brandRed hover:bg-red-700 text-white font-mono text-xs font-bold uppercase tracking-wider px-6 py-3.5 rounded transition-all shadow-lg shadow-brandRed/25 flex items-center gap-2">
-                        <i class="fa-solid fa-folder-open"></i> Accéder au Portail d'Enquête (Démo)
+                    <button onclick="EvidenceApp.navigateTo('portal')" class="bg-brandRed hover:bg-red-700 text-white font-mono text-xs font-bold uppercase tracking-wider px-6 py-4 rounded transition-all shadow-lg shadow-brandRed/25 flex items-center gap-2">
+                        <i class="fa-solid fa-folder-open"></i> Accéder au Portail d'Enquête
                     </button>
-                    <button onclick="EvidenceApp.navigateTo('shop')" class="bg-zinc-800 hover:bg-zinc-700 text-white font-mono text-xs font-bold uppercase tracking-wider px-6 py-3.5 rounded transition-all">
-                        Formules d'Abonnement
+                    <button onclick="EvidenceApp.navigateTo('shop')" class="bg-zinc-800 hover:bg-zinc-700 text-white font-mono text-xs font-bold uppercase tracking-wider px-6 py-4 rounded transition-all">
+                        Découvrir les Abonnements
                     </button>
                 </div>
             </div>
 
-            <!-- Immersive Promo Visual -->
             <div class="lg:col-span-5 flex flex-col items-center justify-center relative">
-                <div class="absolute -inset-1 bg-gradient-to-r from-brandRed to-zinc-800 rounded-lg blur opacity-30"></div>
-                <div class="bg-zinc-900 border border-white/10 p-6 rounded-lg w-full max-w-sm flex flex-col gap-4 shadow-2xl relative">
-                    <div class="w-full aspect-[3/4] bg-zinc-950 rounded-md overflow-hidden relative border border-white/10 flex items-center justify-center group shadow-inner">
-                        <div class="absolute inset-0 bg-cover bg-center opacity-65 group-hover:scale-105 transition-all duration-700" style="background-image: url('https://images.unsplash.com/photo-1518156677180-95a2893f3e9f?q=80&w=600&auto=format&fit=crop');"></div>
+                <div class="absolute -inset-1 bg-gradient-to-r from-brandRed to-amber-900 rounded-lg blur opacity-30"></div>
+                <div class="bg-brandAsh border border-white/10 p-6 rounded-xl w-full max-w-sm flex flex-col gap-4 shadow-2xl relative">
+                    <div class="w-full aspect-[3/4] bg-zinc-950 rounded-lg overflow-hidden relative border border-white/5 flex items-center justify-center group shadow-inner">
+                        <div class="absolute inset-0 bg-cover bg-center opacity-60 group-hover:scale-105 transition-all duration-700" style="background-image: url('https://images.unsplash.com/photo-1518156677180-95a2893f3e9f?q=80&w=600&auto=format&fit=crop');"></div>
                         <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
-                        
                         <div class="absolute top-4 left-4 stamp px-3 py-1 text-[10px] font-bold uppercase -rotate-12">Série Évidence</div>
-                        
                         <div class="absolute bottom-6 left-6 right-6 flex flex-col gap-1.5">
-                            <span class="text-[9px] text-brandRed uppercase tracking-widest font-mono font-bold">Épisode 1 • Saison 1</span>
+                            <span class="text-[9px] text-brandRed uppercase tracking-widest font-mono font-bold">Saison 1 • Épisode 1</span>
                             <h3 class="font-serif text-xl font-bold text-white leading-tight">Le Carnet Perdu</h3>
-                            <p class="text-[10px] text-zinc-400 italic">Enlèvement et complot dans les Vosges</p>
+                            <p class="text-[10px] text-zinc-400 italic">Disparition mystérieuse dans la forêt des Vosges</p>
                         </div>
                     </div>
                     
                     <div class="flex items-center justify-between text-xs font-mono pt-2 border-t border-white/5">
-                        <span class="text-zinc-500">FORMAT PHYSIQUE DISPO</span>
-                        <span class="text-brandRed font-bold text-sm">16,90 € / mois</span>
+                        <span class="text-zinc-500 uppercase text-[10px]">Abonnement Ulule</span>
+                        <span class="text-brandRed font-bold text-base">16,90 € / mois</span>
                     </div>
                 </div>
             </div>
@@ -190,46 +195,104 @@
         </div>
 
         <!-- Gameplay Steps -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 py-8 border-y border-white/5">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 py-10 border-y border-white/5">
             <div class="flex gap-4">
-                <div class="w-12 h-12 bg-zinc-900 border border-white/10 rounded flex items-center justify-center text-brandRed font-serif font-bold shrink-0 shadow-md">1</div>
+                <div class="w-12 h-12 bg-brandAsh border border-white/10 rounded-lg flex items-center justify-center text-brandRed font-serif font-bold shrink-0 shadow-md">1</div>
                 <div>
-                    <h4 class="font-serif text-lg font-bold text-white">Lisez le journal</h4>
-                    <p class="text-zinc-400 text-xs mt-1 leading-relaxed">Parcourez le roman de Clémence Masson. Ses chapitres intimes révèlent les rouages de l'intrigue et mentionnent subtilement les pièces de votre dossier.</p>
+                    <h4 class="font-serif text-lg font-bold text-white">Lisez le Roman</h4>
+                    <p class="text-zinc-400 text-xs mt-1.5 leading-relaxed text-justify-custom">Parcourez le livre de Clémence. Ses écrits révèlent l'intrigue et font directement allusion aux pièces matérielles présentes dans votre enveloppe.</p>
                 </div>
             </div>
             <div class="flex gap-4">
-                <div class="w-12 h-12 bg-zinc-900 border border-white/10 rounded flex items-center justify-center text-brandRed font-serif font-bold shrink-0 shadow-md">2</div>
+                <div class="w-12 h-12 bg-brandAsh border border-white/10 rounded-lg flex items-center justify-center text-brandRed font-serif font-bold shrink-0 shadow-md">2</div>
                 <div>
-                    <h4 class="font-serif text-lg font-bold text-white">Manipulez l'invisible</h4>
-                    <p class="text-zinc-400 text-xs mt-1 leading-relaxed">Saisissez les indices réels : la lettre froissée, la carte routière de 1984. Cherchez les incohérences d'alibis et les contradictions.</p>
+                    <h4 class="font-serif text-lg font-bold text-white">Analysez vos Indices</h4>
+                    <p class="text-zinc-400 text-xs mt-1.5 leading-relaxed text-justify-custom">Manipulez la lettre d'époque, étudiez la vieille carte de gendarmerie et repérez les contradictions dans les documents officiels.</p>
                 </div>
             </div>
             <div class="flex gap-4">
-                <div class="w-12 h-12 bg-zinc-900 border border-white/10 rounded flex items-center justify-center text-brandRed font-serif font-bold shrink-0 shadow-md">3</div>
+                <div class="w-12 h-12 bg-brandAsh border border-white/10 rounded-lg flex items-center justify-center text-brandRed font-serif font-bold shrink-0 shadow-md">3</div>
                 <div>
-                    <h4 class="font-serif text-lg font-bold text-white">Interrogez par IA</h4>
-                    <p class="text-zinc-400 text-xs mt-1 leading-relaxed">Discutez en direct avec le maire Marc Chevalier, la logeuse Hélène ou l'adjudant Weber. Piégez-les grâce à notre intégration IA avancée.</p>
+                    <h4 class="font-serif text-lg font-bold text-white">Interrogez les Suspects</h4>
+                    <p class="text-zinc-400 text-xs mt-1.5 leading-relaxed text-justify-custom">Connectez-vous au portail et posez directement vos questions aux suspects. Piégez-les grâce à notre intégration IA narrative unique.</p>
                 </div>
+            </div>
+        </div>
+
+        <!-- Season Timeline -->
+        <div class="flex flex-col gap-6">
+            <div class="text-center max-w-xl mx-auto flex flex-col gap-2">
+                <h3 class="font-serif text-2xl font-bold text-white">Feuille de Route : Saison 1</h3>
+                <p class="text-xs text-zinc-400">Six mois d'une traque intense, divisée en 6 points de vue complémentaires.</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-6 gap-4 font-mono text-[10px] text-center">
+                <div class="bg-brandAsh border border-brandRed/40 p-4 rounded-lg flex flex-col gap-2 relative">
+                    <span class="text-brandRed font-bold">MOIS 1</span>
+                    <span class="text-white font-serif text-xs font-semibold leading-tight">Le Carnet Perdu</span>
+                    <span class="text-zinc-500 uppercase tracking-widest text-[8px]">POV Clémence</span>
+                </div>
+                <div class="bg-brandAsh border border-white/5 p-4 rounded-lg flex flex-col gap-2">
+                    <span class="text-zinc-500">MOIS 2</span>
+                    <span class="text-zinc-400 font-serif text-xs font-semibold leading-tight">Les Clés du Pouvoir</span>
+                    <span class="text-zinc-600 uppercase tracking-widest text-[8px]">POV Le Maire</span>
+                </div>
+                <div class="bg-brandAsh border border-white/5 p-4 rounded-lg flex flex-col gap-2">
+                    <span class="text-zinc-500">MOIS 3</span>
+                    <span class="text-zinc-400 font-serif text-xs font-semibold leading-tight">Le Dossier Noir</span>
+                    <span class="text-zinc-600 uppercase tracking-widest text-[8px]">POV Le Gendarme</span>
+                </div>
+                <div class="bg-brandAsh border border-white/5 p-4 rounded-lg flex flex-col gap-2">
+                    <span class="text-zinc-500">MOIS 4</span>
+                    <span class="text-zinc-400 font-serif text-xs font-semibold leading-tight">Les Murs ont des Oreilles</span>
+                    <span class="text-zinc-600 uppercase tracking-widest text-[8px]">POV La Logeuse</span>
+                </div>
+                <div class="bg-brandAsh border border-white/5 p-4 rounded-lg flex flex-col gap-2">
+                    <span class="text-zinc-500">MOIS 5</span>
+                    <span class="text-zinc-400 font-serif text-xs font-semibold leading-tight">Le Chant du Corbeau</span>
+                    <span class="text-zinc-600 uppercase tracking-widest text-[8px]">POV L'Anonyme</span>
+                </div>
+                <div class="bg-brandAsh border border-white/5 p-4 rounded-lg flex flex-col gap-2">
+                    <span class="text-zinc-500">MOIS 6</span>
+                    <span class="text-zinc-400 font-serif text-xs font-semibold leading-tight">Confrontation</span>
+                    <span class="text-zinc-600 uppercase tracking-widest text-[8px]">POV Le Final</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Press Testimonials -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 bg-brandAsh border border-white/5 p-8 rounded-xl shadow-xl">
+            <div class="flex flex-col gap-2 italic">
+                <div class="flex text-amber-500 gap-1 text-xs">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="text-zinc-300 text-xs leading-relaxed font-serif">"L'ouverture de l'enveloppe scellée est un moment magique. Et le fait de pouvoir dialoguer avec les suspects à qui l'on vient de découvrir des alibis bidons à l'écrit est d'une intensité folle !"</p>
+                <span class="font-mono text-[9px] uppercase tracking-wider text-brandRed">— Le Monde de l'Édition</span>
+            </div>
+            <div class="flex flex-col gap-2 italic">
+                <div class="flex text-amber-500 gap-1 text-xs">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="text-zinc-300 text-xs leading-relaxed font-serif">"Évidence brise les codes de la littérature noire. Les indices physiques ont une texture parfaite et l'immersion technologique sur le portail est d'une fluidité exemplaire."</p>
+                <span class="font-mono text-[9px] uppercase tracking-wider text-brandRed">— Polar Hebdo</span>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 2 : BOUTIQUE ET PACKS D'ABONNEMENT -->
+    <!-- SECTION 2 : BOUTIQUE ET ABONNEMENTS ULULE -->
     <section id="section-shop" class="hidden flex-1 max-w-7xl w-full mx-auto p-4 md:p-8 flex flex-col gap-12 py-12">
         <div class="text-center max-w-2xl mx-auto flex flex-col gap-3">
             <h2 class="font-serif text-3xl md:text-4xl font-bold text-white">Nos Formules d'Abonnement</h2>
-            <p class="text-zinc-400 text-sm">Évidence propose des formules claires, sans engagement, conçues pour s'adapter à toutes vos envies d'enquêtes.</p>
+            <p class="text-zinc-400 text-sm">Évidence propose des abonnements mensuels récurrents sans engagement, propulsés en toute sécurité par Ulule.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             
             <!-- Plan 1 : LE NUMÉRIQUE -->
-            <div class="bg-zinc-900/50 border border-white/5 hover:border-brandRed/30 p-8 rounded-lg flex flex-col justify-between gap-8 transition-all relative">
+            <div class="bg-brandAsh border border-white/5 hover:border-brandRed/30 p-8 rounded-xl flex flex-col justify-between gap-8 transition-all relative">
                 <div class="flex flex-col gap-4">
-                    <span class="text-[9px] text-zinc-500 uppercase font-mono tracking-widest block">DÉMATERIALISÉ</span>
+                    <span class="text-[9px] text-zinc-500 uppercase font-mono tracking-widest block">DÉMATÉRIALISÉ</span>
                     <h3 class="font-serif text-2xl font-bold text-white">Détective Numérique</h3>
-                    <p class="text-zinc-400 text-xs leading-relaxed">Idéal pour jouer immédiatement sans frais de port. Recevez les romans et livrets en PDF haute définition prêts à imprimer chez vous.</p>
+                    <p class="text-zinc-400 text-xs leading-relaxed text-justify-custom">Idéal pour jouer immédiatement sans frais de port. Recevez chaque mois vos romans et livrets en format PDF haute définition prêts à imprimer chez vous.</p>
                     <div class="flex items-baseline gap-1 mt-2">
                         <span class="text-3xl font-bold text-white">4,90 €</span>
                         <span class="text-zinc-500 text-xs">/ mois</span>
@@ -237,26 +300,26 @@
                 </div>
                 
                 <div class="flex flex-col gap-3 border-t border-white/5 pt-6 text-xs font-mono text-zinc-400">
-                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Romans & Livre d'enquête PDF</div>
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Romans & livre d'enquête PDF</div>
                     <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Indices numériques optimisés</div>
-                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Interrogatoire IA accessible</div>
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Interrogatoire IA illimité</div>
                 </div>
 
-                <button onclick="EvidenceApp.simulateUluleCheckout('Détective Numérique', 4.90)" class="w-full bg-zinc-800 hover:bg-brandRed text-white font-mono text-xs font-bold uppercase tracking-wider py-3 rounded transition-all">
+                <button onclick="EvidenceApp.simulateUluleCheckout('Détective Numérique', 4.90)" class="w-full bg-zinc-800 hover:bg-brandRed text-white font-mono text-xs font-bold uppercase tracking-wider py-3.5 rounded transition-all">
                     S'abonner (Numérique)
                 </button>
             </div>
 
-            <!-- Plan 2 : L'ABONNEMENT PHYSIQUE MENSUEL -->
-            <div class="bg-zinc-900 border-2 border-brandRed p-8 rounded-lg flex flex-col justify-between gap-8 transition-all relative shadow-2xl">
+            <!-- Plan 2 : L'ABONNEMENT PHYSIQUE -->
+            <div class="bg-brandAsh border-2 border-brandRed p-8 rounded-xl flex flex-col justify-between gap-8 transition-all relative shadow-2xl">
                 <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-brandRed text-white text-[10px] font-mono font-bold px-4 py-1.5 rounded-full uppercase tracking-wider">
                     RECOMMANDÉ
                 </div>
                 
                 <div class="flex flex-col gap-4 mt-2">
-                    <span class="text-[9px] text-brandRed uppercase font-mono tracking-widest block font-bold">LIVRAISON DIRECTE</span>
+                    <span class="text-[9px] text-brandRed uppercase font-mono tracking-widest block font-bold">EXPÉDITION COMPLÈTE</span>
                     <h3 class="font-serif text-2xl font-bold text-white">Enquêteur Évidence</h3>
-                    <p class="text-zinc-300 text-xs leading-relaxed">Recevez un nouvel épisode scellé dans votre boîte aux lettres le 5 de chaque mois. Boîte carton extra-plate, indices physiques d'édition inclus.</p>
+                    <p class="text-zinc-300 text-xs leading-relaxed text-justify-custom">Recevez votre box d'enquête scellée chez vous le 5 de chaque mois. Enveloppe cartonnée rigide de moins de 3 cm, roman et indices d'édition inclus.</p>
                     <div class="flex items-baseline gap-1 mt-2">
                         <span class="text-3xl font-bold text-white">16,90 €</span>
                         <span class="text-zinc-400 text-xs">/ mois (Port inclus)</span>
@@ -264,22 +327,23 @@
                 </div>
                 
                 <div class="flex flex-col gap-3 border-t border-white/5 pt-6 text-xs font-mono text-zinc-300">
-                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Boîte passe-fente &lt; 3cm</div>
-                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Vrais indices &amp; roman d'édition</div>
-                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Console de jeu IA illimitée</div>
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Enveloppe rigide protectrice</div>
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Roman de poche d'édition</div>
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Indices réels de haute qualité</div>
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Interrogatoire IA illimité</div>
                 </div>
 
-                <button onclick="EvidenceApp.simulateUluleCheckout('Enquêteur Évidence', 16.90)" class="w-full bg-brandRed hover:bg-red-700 text-white font-mono text-xs font-bold uppercase tracking-wider py-3 rounded transition-all shadow-lg shadow-brandRed/30">
+                <button onclick="EvidenceApp.simulateUluleCheckout('Enquêteur Évidence', 16.90)" class="w-full bg-brandRed hover:bg-red-700 text-white font-mono text-xs font-bold uppercase tracking-wider py-3.5 rounded transition-all shadow-lg shadow-brandRed/30">
                     S'abonner (Physique)
                 </button>
             </div>
 
             <!-- Plan 3 : LE PARRAIN -->
-            <div class="bg-zinc-950/40 border border-dashed border-white/10 p-8 rounded-lg flex flex-col justify-between gap-8 relative opacity-90">
+            <div class="bg-brandAsh border border-dashed border-white/10 p-8 rounded-xl flex flex-col justify-between gap-8 relative opacity-90">
                 <div class="flex flex-col gap-4">
                     <span class="text-[9px] text-zinc-500 uppercase font-mono tracking-widest block">SOUTIEN EXCLUSIF</span>
                     <h3 class="font-serif text-2xl font-bold text-zinc-400">Le Parrain d'Évidence</h3>
-                    <p class="text-zinc-500 text-xs leading-relaxed">Soutenez activement la création d'édition indépendante. Recevez votre box mensuelle avec remerciements imprimés officiels dans le livret.</p>
+                    <p class="text-zinc-500 text-xs leading-relaxed text-justify-custom">Soutenez notre modèle d'artisanat d'édition indépendant. Recevez votre box physique avec vos remerciements officiels imprimés dans le livret.</p>
                     <div class="flex items-baseline gap-1 mt-2">
                         <span class="text-3xl font-bold text-zinc-400">25,00 €</span>
                         <span class="text-zinc-500 text-xs">/ mois</span>
@@ -289,10 +353,10 @@
                 <div class="flex flex-col gap-3 border-t border-white/5 pt-6 text-xs font-mono text-zinc-500">
                     <div class="flex items-center gap-2"><i class="fa-solid fa-check"></i> Kit physique complet premium</div>
                     <div class="flex items-center gap-2"><i class="fa-solid fa-check"></i> Remerciements imprimés officiels</div>
-                    <div class="flex items-center gap-2"><i class="fa-solid fa-check"></i> Accès au Discord des créateurs</div>
+                    <div class="flex items-center gap-2"><i class="fa-solid fa-check"></i> Accès au Discord privé</div>
                 </div>
 
-                <button onclick="EvidenceApp.simulateUluleCheckout('Parrain d\'Évidence', 25.00)" class="w-full bg-zinc-800/50 hover:bg-zinc-800 text-zinc-400 font-mono text-xs font-bold uppercase tracking-wider py-3 rounded">
+                <button onclick="EvidenceApp.simulateUluleCheckout('Parrain d\'Évidence', 25.00)" class="w-full bg-zinc-800/50 hover:bg-zinc-800 text-zinc-400 font-mono text-xs font-bold uppercase tracking-wider py-3.5 rounded">
                     Devenir Parrain
                 </button>
             </div>
@@ -300,24 +364,24 @@
         </div>
     </section>
 
-    <!-- SECTION 3 : ESPACE ENQUÊTEUR PORTABLE INTERACTIF (LE COEUR DU JEU) -->
+    <!-- SECTION 3 : PORTAIL SÉCURISÉ ENQUÊTEUR -->
     <section id="section-portal" class="hidden flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 lg:p-8 flex flex-col gap-8 py-8">
         
-        <!-- LOCK SCREEN (Shown initially until passcode verification) -->
-        <div id="portal-lockscreen" class="flex-1 max-w-md w-full mx-auto bg-zinc-900 border-2 border-brandRed/40 p-8 rounded-lg flex flex-col items-center text-center gap-6 shadow-2xl my-12">
+        <!-- LOCK SCREEN -->
+        <div id="portal-lockscreen" class="flex-1 max-w-md w-full mx-auto bg-brandAsh border-2 border-brandRed/40 p-8 rounded-xl flex flex-col items-center text-center gap-6 shadow-2xl my-12 animate-fade-in">
             <div class="w-16 h-16 rounded-full bg-brandRed/10 border border-brandRed/30 flex items-center justify-center text-brandRed text-2xl animate-pulse">
                 <i class="fa-solid fa-lock"></i>
             </div>
             <div>
                 <h3 class="font-serif text-xl font-bold text-white uppercase tracking-wider">Accès Restreint — Dossier Évidence</h3>
                 <p class="text-xs text-zinc-400 mt-2 leading-relaxed">
-                    Saisissez le **code secret d'accès** d'enquêteur dissimulé à la fin du Chapitre 1 de votre Roman d'édition physique ou révélé dans l'espace membre de votre abonnement Ulule.
+                    Saisissez le **code secret d'accès** dissimulé à la fin du Chapitre 1 de votre Roman d'édition physique ou révélé dans l'espace membre de votre abonnement Ulule.
                 </p>
             </div>
             
             <div class="w-full flex flex-col gap-3 font-mono text-xs">
-                <input type="text" id="portal-passcode-input" placeholder="SAISIR LE CODE SECRET..." class="w-full bg-zinc-950 border border-white/10 rounded px-4 py-3 text-center text-white tracking-widest text-sm uppercase focus:outline-none focus:border-brandRed" onkeydown="if(event.key === 'Enter') EvidenceApp.unlockPortal()">
-                <button onclick="EvidenceApp.unlockPortal()" class="w-full bg-brandRed hover:bg-red-700 text-white font-bold py-3 rounded uppercase tracking-wider transition-all">
+                <input type="text" id="portal-passcode-input" placeholder="SAISIR LE CODE SECRET..." class="w-full bg-black border border-white/10 rounded-lg px-4 py-3 text-center text-white tracking-widest text-sm uppercase focus:outline-none focus:border-brandRed" onkeydown="if(event.key === 'Enter') EvidenceApp.unlockPortal()">
+                <button onclick="EvidenceApp.unlockPortal()" class="w-full bg-brandRed hover:bg-red-700 text-white font-bold py-3.5 rounded-lg uppercase tracking-wider transition-all">
                     Déverrouiller l'Espace
                 </button>
             </div>
@@ -325,20 +389,19 @@
             <span class="text-[9px] text-zinc-500 font-mono italic">Astuce pour le prototype : le code est <strong class="text-zinc-400">SJB-1984</strong></span>
         </div>
 
-        <!-- DYNAMIC PORTAL DASHBOARD (Injected via JS only after verification) -->
-        <div id="portal-dashboard" class="flex flex-col gap-8"></div>
+        <div id="portal-dashboard" class="flex flex-col gap-8 hidden"></div>
 
     </section>
 
-    <!-- FOOTER SYSTEM -->
-    <footer class="bg-brandDark border-t border-white/5 py-8 text-center text-xs text-zinc-600 font-mono">
+    <!-- FOOTER -->
+    <footer class="bg-black/80 border-t border-white/5 py-8 text-center text-xs text-zinc-600 font-mono">
         <p>© 2026 Évidence. Formats d'édition et enveloppes d'immersion A4 protégés et brevetés.</p>
         <p class="text-[10px] text-zinc-700 mt-2">Conçu par Baptiste Huot-Marchand • Besançon (France)</p>
     </footer>
 
-    <!-- CONFIGURATION DIALOG SYSTEM MODAL (API KEYS) -->
+    <!-- CONFIGURATION MODAL (API KEYS) -->
     <div id="config-modal" class="fixed inset-0 bg-black/85 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-        <div class="bg-zinc-900 border border-brandRed max-w-md w-full rounded-lg overflow-hidden shadow-2xl">
+        <div class="bg-brandAsh border border-brandRed max-w-md w-full rounded-xl overflow-hidden shadow-2xl">
             <div class="bg-brandRed px-6 py-4 flex items-center gap-3 text-white">
                 <i class="fa-solid fa-key"></i>
                 <h4 class="font-serif text-sm font-bold uppercase tracking-wider">Configuration Clé d'API Gemini</h4>
@@ -349,7 +412,7 @@
                 </p>
                 <div class="flex flex-col gap-2">
                     <label class="font-mono text-[10px] text-zinc-400">CLÉ API GOOGLE AI STUDIO (GEMINI) :</label>
-                    <input type="password" id="api-key-input" placeholder="AIzaSy..." class="w-full bg-zinc-950 border border-white/10 rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brandRed">
+                    <input type="password" id="api-key-input" placeholder="AIzaSy..." class="w-full bg-black border border-white/10 rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brandRed">
                 </div>
                 <p class="text-[10px] text-zinc-500 italic">
                     Astuce : Si vous n'avez pas de clé API, le système basculera automatiquement sur un mode de dialogue d'archives pré-enregistré pour simuler l'interrogatoire sans bloquer votre jeu !
@@ -368,21 +431,19 @@
 
     <!-- RESULT ACCUSATION SCREEN MODAL OVERLAY -->
     <div id="result-modal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
-        <div class="bg-zinc-900 border-2 border-brandRed max-w-lg w-full rounded-lg overflow-hidden shadow-2xl">
+        <div class="bg-brandAsh border-2 border-brandRed max-w-lg w-full rounded-xl overflow-hidden shadow-2xl">
             <div id="result-header" class="px-6 py-4 flex items-center gap-3 text-white"></div>
             <div class="p-6 flex flex-col gap-4 font-mono text-xs text-[#f4efe6] leading-relaxed">
                 <p id="result-text"></p>
-                <button onclick="EvidenceApp.closeResultModal()" class="bg-brandRed hover:bg-red-700 text-white font-bold py-3 rounded text-xs tracking-wider uppercase font-mono transition-all text-center">
+                <button onclick="EvidenceApp.closeResultModal()" class="bg-brandRed hover:bg-red-700 text-white font-bold py-3 rounded-lg text-xs tracking-wider uppercase font-mono transition-all text-center">
                     Retourner à l'Investigation
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- CODE SCRIPTING & LOGICAL ENGINE OF THE PORTAL (IIFE PROTECTED) -->
     <script>
         (function() {
-            // Decoupled / Encapsulated Private Variables (Invisible to F12 Console)
             const chaptersData = [
                 {
                     title: "Chapitre 1 : 12 Octobre – Là où la route s'arrête",
@@ -416,7 +477,7 @@
                         "En observant le socle de béton gris de la turbine, j'ai compris. C'est une tombe industrielle de plusieurs tonnes coulée à la hâte en novembre 1984 pour sceller un secret.",
                         "Soudain, une berline noire de luxe est passée lentement, patrouillant dans la forêt à l'aube. Je me suis cachée sous des madriers.",
                         "Cet après-midi, je suis aller à la gendarmerie. J'ai interrogé l'Adjudant-chef Weber sur l'affaire Lemoine. Son visage s'est fermé. « Le dossier a été classé il y a quarante ans. Fugue. Fin de l'histoire. »",
-                        "Puis il a murmuré sur un ton menaçant : « Si je vous revois tourner autour de la vieille scierie, je vous ferai passer vingt-quatre heures en cellule pour trouble à l'ordre public. »"
+                        "Puis he a murmuré sur un ton menaçant : « Si je vous revois tourner autour de la vieille scierie, je vous ferai passer vingt-quatre heures en cellule pour trouble à l'ordre public. »"
                     ],
                     instruction: "🔍 INDICE DISPONIBLE : Marc Chevalier et l'Adjudant Weber cachent un secret majeur lié à cette turbine. Tentez de les piéger dans l'interrogatoire de suspects à droite."
                 },
@@ -425,7 +486,7 @@
                     body: [
                         "Aujourd'hui, j'ai entendu des vibrations sourdes monter du rez-de-chaussée d'Hélène. Quelqu'un était chez elle. J'ai branché mon enregistreur Zoom au-dessus de la bouche de chauffage en fonte.",
                         "C'était Marc Chevalier, le maire. Sa voix était autoritaire : « Weber m'a appelé. Elle fouille dans les dossiers de quatre-vingt-quatre, Hélène. Fais-la partir. Je veux que sa Twingo ait quitté le département d'ici la fin de la semaine. Si elle s'approche encore de la scierie, je m'en occuperai personnellement. »",
-                        "Cette nuit, Hélène est sortie au village. J'en opi- profité pour descendre à pas de loup et ouvrir les bureaux d'archives administratifs de la scierie abandonnée sous l'escalier.",
+                        "Cette nuit, Hélène est sortie au village. J'en ai profité pour descendre à pas de loup et ouvrir les bureaux d'archives administratifs de la scierie abandonnée sous l'escalier.",
                         "J'ai ouvert le tiroir rouillé des archives comptables de 1984. J'ai ouvert le registre de comptabilité relié en toile noire, et j'ai trouvé la preuve de transaction à la date du 12 novembre 1984..."
                     ],
                     instruction: "📂 PIÈCE COMPTABLE DETECTÉE : Clémence fait référence au registre de 1984. L'annotation indique une livraison de 12m³ de béton à prise rapide payée par Chevalier S.A."
@@ -438,7 +499,7 @@
                         "Mon plan est simple. À cinq heures du matin, je marcherai jusqu'à la turbine sans faire de bruit. Je tenterai de glisser mon micro et la caméra de mon téléphone dans la fente de la trappe pour capturer des images.",
                         "Dés que ce sera fait, je roulerai sans m'arrêter vers Épinal. Mon carnet est rangé dans mon sac. Si quelqu'un trouve ce carnet... regardez la turbine. Regardez le béton. Tout est là. Je descends."
                     ],
-                    instruction: "🚨 FIN DU MANUSCRIT : Clémence a disparu. Son dictaphone Zoom a été retrouvé au sol. Scannez le QR Code de votre boîte ou ouvrez l'onglet 'Pièces d'Archive' > 'Fichier Audio' pour écouter le dénouement sonore."
+                    instruction: "🚨 FIN DU MANUSCRIT : Clémence a disparu. Son dictaphone Zoom a été retrouvé au sol. Scannez le QR Code de votre boîte ou ouvrez l'onglet 'Pièces d'Archive' > 'Fichier Audio' pour écouer le dénouement sonore."
                 }
             ];
 
@@ -551,12 +612,12 @@
                                     </div>
                                 </div>
 
-                                <div class="overflow-y-auto no-scrollbar max-h-[420px] text-zinc-300 text-sm leading-relaxed pr-2 flex flex-col gap-4 font-sans italic" id="chapter-body"></div>
+                                <div class="overflow-y-auto no-scrollbar max-h-[420px] text-zinc-300 text-sm leading-relaxed pr-2 flex flex-col gap-4 font-sans italic text-justify-custom" id="chapter-body"></div>
                                 <div id="diagnetic-notification-box" class="mt-4 bg-brandRed/10 border-l-4 border-brandRed p-4 rounded-r text-xs text-zinc-300 font-mono hidden"></div>
                             </div>
 
                             <!-- TAB 2: PIÈCES D'ARCHIVES -->
-                            <div id="panel-evidence" class="hidden flex flex-col gap-6 h-full">
+                            <div id="panel-evidence" class="hidden flex flex-col gap-6 h-full animate-fade-in">
                                 <div class="flex items-center justify-between border-b border-white/10 pb-4">
                                     <div>
                                         <span class="text-[9px] text-brandRed font-mono font-bold tracking-wider uppercase block">Indices d'Enveloppe A4</span>
@@ -649,7 +710,7 @@
                             </div>
 
                             <p class="text-[10px] text-zinc-500 font-mono">Vos notes, alibis, anomalies chronologiques d'Évidence.</p>
-                            <textarea id="agent-notes" oninput="EvidenceApp.saveAgentNotes()" placeholder="Exemple : Hélène semble terrifiée par Chevalier... Le registre comptable de 1984 prouve l'achat de béton par Chevalier S.A. deux jours après la disparition..." class="w-full h-32 bg-zinc-950 border border-white/5 rounded p-3 font-sans text-xs text-zinc-300 focus:outline-none focus:border-brandRed leading-relaxed resize-none"></textarea>
+                            <textarea id="agent-notes" oninput="EvidenceApp.saveAgentNotes()" placeholder="Exemple : Hélène semble terrifiée par Chevalier... Le registre comptable de 1984 prouve l'achat de béton par Chevalier S.A. deux jours après la disparition..." class="wood-pattern w-full h-32 border border-white/5 rounded p-3 font-sans text-xs text-zinc-300 focus:outline-none focus:border-brandRed leading-relaxed resize-none"></textarea>
                         </div>
 
                         <!-- VERDICT -->
@@ -823,7 +884,7 @@
 
                 if (clueId === 'lettre') {
                     viewer.innerHTML = `
-                        <div class="parchment-bg text-inkBlue p-6 rounded border border-yellow-800/10 text-left relative max-w-md w-full shadow-inner rotate-1">
+                        <div class="parchment-bg text-inkBlue p-6 rounded border border-yellow-800/10 text-left relative max-w-md w-full shadow-inner rotate-1 animate-fade-in">
                             <div class="coffee-stain w-16 h-16 top-2 right-4"></div>
                             <h5 class="font-handwritten text-lg font-bold border-b border-blue-900/15 pb-1 text-blue-950">Trouvé dans la boîte aux lettres</h5>
                             <p class="font-handwritten text-xl mt-4 leading-relaxed">
@@ -836,20 +897,21 @@
                     `;
                 } else if (clueId === 'avis') {
                     viewer.innerHTML = `
-                        <div class="bg-white text-zinc-900 p-6 rounded border border-zinc-300 text-left font-mono text-[10px] uppercase leading-tight w-full max-w-md shadow-lg">
+                        <div class="bg-white text-zinc-900 p-6 rounded border border-zinc-300 text-left font-mono text-[10px] uppercase leading-tight w-full max-w-md shadow-lg animate-fade-in relative">
+                            <div class="absolute right-4 top-2 stamp px-3 py-0.5 text-[8px] font-bold uppercase -rotate-6">CONFIDENTIEL</div>
                             <h5 class="font-bold text-center border-b border-zinc-800 pb-2 text-xs">Avis de Recherche • Gendarmerie Vosges</h5>
                             <p class="mt-4"><strong>DISPARITION INQUIÉTANTE</strong></p>
                             <p class="mt-2">NOM : VALIER • PRENOM : Clémence</p>
-                            <p class="mt-1">Dernière fois vue : 21 Octobre 2026 à l'ancienne scierie municipale.</p>
-                            <p class="mt-2">Son véhicule (Renault Twingo AA-344-BB) a été retrouvé abandonné avec les portières non verrouillées.</p>
+                            <p class="mt-1">Dernière fois vue : 21 Octobre 2026 à l'ancienne scierie municipale de Saint-Jean-des-Bois.</p>
+                            <p class="mt-2">Son véhicule (Renault Twingo verte AA-344-BB) a été retrouvé abandonné avec les portières non verrouillées.</p>
                             <p class="mt-4 border-t border-zinc-300 pt-2 text-center text-zinc-500 text-[8px]">Dossier n°2026-SJB-8804</p>
                         </div>
                     `;
                 } else if (clueId === 'carte') {
                     viewer.innerHTML = `
-                        <div class="bg-[#ebd9bd] text-zinc-800 p-4 rounded border border-yellow-900/20 text-left relative max-w-md w-full overflow-hidden shadow-xl">
+                        <div class="bg-[#ebd9bd] text-zinc-800 p-4 rounded border border-yellow-900/20 text-left relative max-w-md w-full overflow-hidden shadow-xl animate-fade-in">
                             <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:16px_16px]"></div>
-                            <h5 class="font-serif text-xs font-bold border-b border-yellow-900/10 pb-1 text-yellow-950 uppercase">Extrait Carte Forêt de 1984</h5>
+                            <h5 class="font-serif text-xs font-bold border-b border-yellow-900/10 pb-1 text-yellow-950 uppercase">Extrait Carte Forêt de 1984 (Interactif)</h5>
                             <div class="h-28 border border-yellow-900/20 my-3 rounded bg-amber-50/50 flex flex-col items-center justify-center relative font-serif text-[10px] text-zinc-600 italic">
                                 <span class="absolute top-2 text-[8px] uppercase tracking-wider font-mono">D412 • Vosges</span>
                                 <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
@@ -857,15 +919,15 @@
                                     <span class="font-bold text-[9px] mt-1">Étang du Passeur</span>
                                 </div>
                             </div>
-                            <p class="font-handwritten text-indigo-900 text-sm rotate-[-1deg] leading-tight mt-1">
+                            <p class="font-handwritten text-indigo-950 text-sm rotate-[-1deg] leading-tight mt-1">
                                 "12/11/84 : Le petit Lemoine n'est jamais parti d'ici. Ils ont coulé le béton de la turbine de la scierie au-dessus de lui."
                             </p>
                         </div>
                     `;
                 } else if (clueId === 'audio') {
                     viewer.innerHTML = `
-                        <div class="bg-zinc-900/90 p-6 rounded-lg border border-white/10 w-full max-w-md flex flex-col gap-4 text-center">
-                            <span class="font-mono text-[9px] text-brandRed tracking-widest uppercase font-bold">Fichier d'Enregistrement Zoom H4</span>
+                        <div class="bg-zinc-950 p-6 rounded-lg border border-white/10 w-full max-w-md flex flex-col gap-4 text-center animate-fade-in">
+                            <span class="font-mono text-[9px] text-brandRed tracking-widest uppercase font-bold">Enregistrement Zoom H4</span>
                             <h5 class="font-serif text-sm font-bold text-white">PROLOGUE_NON_DIFFUSE.MP3</h5>
                             
                             <div class="flex items-center justify-center gap-4 mt-2">
@@ -873,7 +935,16 @@
                                     <i class="fa-solid fa-play text-lg pl-1" id="audio-play-icon"></i>
                                 </button>
                             </div>
-                            <div class="w-full bg-zinc-950 rounded-full h-1.5 overflow-hidden">
+                            <!-- Simulated audio waveform visualization -->
+                            <div class="flex items-end justify-center gap-1.5 h-8 my-2 opacity-50" id="waveform-visualizer">
+                                <span class="w-1 bg-brandRed rounded bar-anim" style="animation-delay: 0.1s; height: 12px;"></span>
+                                <span class="w-1 bg-brandRed rounded bar-anim" style="animation-delay: 0.3s; height: 24px;"></span>
+                                <span class="w-1 bg-brandRed rounded bar-anim" style="animation-delay: 0.2s; height: 6px;"></span>
+                                <span class="w-1 bg-brandRed rounded bar-anim" style="animation-delay: 0.4s; height: 18px;"></span>
+                                <span class="w-1 bg-brandRed rounded bar-anim" style="animation-delay: 0.5s; height: 28px;"></span>
+                                <span class="w-1 bg-brandRed rounded bar-anim" style="animation-delay: 0.7s; height: 14px;"></span>
+                            </div>
+                            <div class="w-full bg-zinc-900 rounded-full h-1.5 overflow-hidden">
                                 <div class="bg-brandRed h-full w-0" id="audio-progress-bar"></div>
                             </div>
                             <p class="text-[9px] text-zinc-500 font-mono">Durée : 1min 15s • Archives de Gendarmerie</p>
@@ -960,7 +1031,7 @@
                         synthGain = null;
                     }
                     icon.className = "fa-solid fa-volume-xmark";
-                    txt.innerText = "Ambiance Sonore Vosges (Désactivée)";
+                    txt.innerText = "Ambiance Forêt (Désactivée)";
                     synthActive = false;
                     showNotification("Ambiance sonore désactivée.");
                 } else {
@@ -1070,7 +1141,7 @@
                     const ep = lockedEpisodesMeta[epNum];
                     innerGrid.innerHTML = `
                         <div class="lg:col-span-12 w-full bg-zinc-900/50 border border-white/5 p-8 md:p-12 rounded-lg shadow-2xl flex flex-col items-center justify-center text-center gap-6 max-w-2xl mx-auto my-6">
-                            <div class="w-16 h-16 rounded-full bg-brandRed/10 border border-brandRed/20 flex items-center justify-center text-brandRed text-xl">
+                            <div class="wood-pattern w-16 h-16 rounded-full bg-brandRed/10 border border-brandRed/20 flex items-center justify-center text-brandRed text-xl">
                                 <i class="fa-solid fa-folder-closed"></i>
                             </div>
                             <div>
@@ -1078,7 +1149,7 @@
                                 <h3 class="font-serif text-2xl font-bold text-white mt-1">${ep.title}</h3>
                                 <p class="text-[10px] text-zinc-500 font-mono mt-1">Narrateur : <strong class="text-zinc-400">${ep.pov}</strong></p>
                             </div>
-                            <p class="text-xs text-zinc-300 max-w-md leading-relaxed font-serif italic">
+                            <p class="text-xs text-zinc-300 max-w-md leading-relaxed font-serif italic text-justify-custom">
                                 "${ep.desc}"
                             </p>
                             
@@ -1106,7 +1177,7 @@
                     chevalier: {
                         name: "Marc Chevalier (Le Maire)",
                         intro: "C'est Marc Chevalier. Qu'est-ce que vous me voulez encore ? J'ai un conseil municipal dans dix minutes. Dépêchez-vous.",
-                        systemPrompt: `Tu es Marc Chevalier, maire de Saint-Jean-des-Bois. Tu as 54 ans, tu es froid, arrogant, condescendant et profondément protecteur du secret de ta famille. Tu n'es pas un simple PNJ passif qui récite des répliques : tu es un être humain stressé, de mauvaise foi, manipulateur et intelligent. Tu adaptes ton ton à celui de ton interlocuteur. Si l'enquêteur est poli, tu es faussement cordial mais pressé, essayant de couper court. S'il est agressif ou t'accuse directement, tu te braques, tu t'énerves, tu ris nerveusement, tu t'indignes ("Mais pour qui vous vous prenez ?") et tu menaces d'appeler l'Adjudant Weber pour diffamation. Ton père a étouffé la mort du petit Lemoine en 1984 sous une dalle de béton de la turbine pour accaparer ses terres forestières. Tu es complice et tu as fait enlever Clémence Valier (la podcasteuse) car elle a découvert la comptabilité de la dalle de béton. Tu nies TOUT en bloc. Si on te parle de l'entreprise "Chevalier S.A." et de la livraison de béton du 12 novembre 1984, tu perds brièvement ton sang-froid, tu bafouilles, puis tu tentes de justifier cela par "des travaux de consolidation de routine" avant de te mettre en colère. Parle avec des expressions naturelles, des hésitations, des pauses ("Écoutez...", "Bref...", "Voyons...").`
+                        systemPrompt: `Tu es Marc Chevalier, maire de Saint-Jean-des-Bois. Tu as 54 ans, tu es froid, arrogant, condescendant et profondément protecteur du secret de ta famille. Tu n'es pas un simple PNJ passif qui récite des répliques : tu es un être humain stressé, de mauvaise foi, manipulateur et intelligent. Tu adaptes ton ton à celui de ton interlocuteur. Si l'enquêteur est poli, tu es faussement cordial mais pressé, essayant de couper court. S'il est agressif ou t'accuse directement, tu te braques, tu t'énerves, tu ris nerveusement, tu t'indignes ("Mais pour qui vous vous prenez ?") et tu menaces d'appeler l'Adjudant Weber pour diffamation. Ton père a étouffé la mort du petit Lemoine en 1984 sous une dalles de béton de la turbine pour accaparer ses terres forestières. Tu es complice et tu as fait enlever Clémence Valier (la podcasteuse) car elle a découvert la comptabilité de la dalle de béton. Tu nies TOUT en bloc. Si on te parle de l'entreprise "Chevalier S.A." et de la livraison de béton du 12 novembre 1984, tu perds brièvement ton sang-froid, tu bafouilles, puis tu tentes de justifier cela par "des travaux de consolidation de routine" avant de te mettre en colère. Parle avec des expressions naturelles, des hésitations, des pauses ("Écoutez...", "Bref...", "Voyons...").`
                     },
                     helene: {
                         name: "Hélène (La Logeuse)",
@@ -1232,7 +1303,7 @@
                 throw new Error("Toutes les tentatives d'API ont échoué.");
             }
 
-            // Detailed contextual offline backup answers
+            // High fidelity NLP simulated dialogue matrix when Gemini API Key is unconfigured
             function getFallbackMockReply(suspectId, query) {
                 const q = query.toLowerCase();
                 if (suspectId === 'chevalier') {
@@ -1308,7 +1379,7 @@
                             Vous allez être redirigé vers notre plateforme partenaire d'abonnement Ulule pour finaliser votre inscription.
                         </p>
                         <div class="mt-4 w-full">
-                            <a href="${ululeUrl}" target="_blank" class="block w-full bg-brandRed hover:bg-red-700 text-white text-center font-bold py-3 rounded text-[11px] uppercase tracking-wider transition-all">
+                            <a href="${ululeUrl}" target="_blank" class="block w-full bg-brandRed hover:bg-red-700 text-white text-center font-bold py-3 rounded-lg text-[11px] uppercase tracking-wider transition-all">
                                 <i class="fa-solid fa-arrow-up-right-from-square mr-1.5"></i> Cliquer ici si la redirection ne démarre pas
                             </a>
                         </div>
@@ -1364,7 +1435,7 @@
                     title.innerHTML = `<i class="fa-solid fa-magnifying-glass"></i> <h4 class="font-serif text-sm font-bold uppercase tracking-wider">Hypothèse Crédible mais Insuffisante</h4>`;
                     text.innerHTML = `
                         ⚠️ <strong>DÉDUCTION TRÈS PROCHE :</strong><br><br>
-                        Marc Chevalier est bien le commanditaire de l'enlèvement. Cependant, sans la preuve comptable formelle prouvant l'achat direct du béton par Chevalier S.A., ses avocats n'auront aucun mal à annuler l'inculpation.<br><br>
+                        Marc Chevalier est bien le commanditaire de l'enlèvement. Cependant, sans la preuve comptable formelle prouvant l'achat du béton par Chevalier S.A., ses avocats n'auront aucun mal à annuler l'inculpation.<br><br>
                         Relisez attentivement le <strong>Chapitre 4</strong> et inspectez les pièces d'archives de la scierie pour trouver la transaction financière exacte...
                     `;
                 } else {
