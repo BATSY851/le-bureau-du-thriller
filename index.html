@@ -1295,6 +1295,8 @@
                 title.className = "px-6 py-4 flex items-center gap-3 text-white bg-[#b91c1c]";
                 title.innerHTML = `<i class="fa-solid fa-shield-halved text-2xl animate-pulse"></i> <h4 class="font-serif text-sm font-bold uppercase tracking-wider">Sécurisation de la commande</h4>`;
                 
+                const ululeUrl = "https://fr.ulule.com/?ref=header";
+
                 text.innerHTML = `
                     <div class="flex flex-col items-center gap-4 text-center my-4 font-mono">
                         <div class="w-10 h-10 border-4 border-brandRed border-t-transparent rounded-full animate-spin"></div>
@@ -1303,16 +1305,31 @@
                             <p class="text-[10px] text-brandRed mt-2 animate-pulse uppercase tracking-widest">Connexion sécurisée avec Ulule en cours...</p>
                         </div>
                         <p class="text-[10px] text-zinc-500 italic max-w-xs mt-2">
-                            Vous allez être redirigé vers notre plateforme partenaire d'abonnement Ulule pour finaliser votre inscription et collecter votre adresse postale d'expédition.
+                            Vous allez être redirigé vers notre plateforme partenaire d'abonnement Ulule pour finaliser votre inscription.
                         </p>
+                        <div class="mt-4 w-full">
+                            <a href="${ululeUrl}" target="_blank" class="block w-full bg-brandRed hover:bg-red-700 text-white text-center font-bold py-3 rounded text-[11px] uppercase tracking-wider transition-all">
+                                <i class="fa-solid fa-arrow-up-right-from-square mr-1.5"></i> Cliquer ici si la redirection ne démarre pas
+                            </a>
+                        </div>
                     </div>
                 `;
                 modal.classList.remove('hidden');
 
-                // Redirect after 2 seconds to make the flow look intentional, secure, and professional
+                // Redirect after 2.5 seconds using window.open to bypass iframe sandbox restrictions
                 setTimeout(() => {
-                    window.location.href = "https://fr.ulule.com/?ref=header";
-                }, 2000);
+                    try {
+                        // Open in a new tab (bypasses iframe blocker)
+                        const newWindow = window.open(ululeUrl, '_blank');
+                        if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
+                            // If popups are strictly blocked, try navigating top location
+                            window.top.location.href = ululeUrl;
+                        }
+                    } catch (e) {
+                        // Fallback to top navigation if allowed
+                        window.top.location.href = ululeUrl;
+                    }
+                }, 2500);
             }
 
             // Final Verdict Evaluation
