@@ -1286,22 +1286,33 @@
                 resetChatHistory();
             }
 
-            // Simulated payment portal
+            // Professional transition and redirect to Ulule Subscription page
             function simulateUluleCheckout(planName, price) {
                 const modal = document.getElementById('result-modal');
                 const title = document.getElementById('result-header');
                 const text = document.getElementById('result-text');
 
-                title.className = "px-6 py-4 flex items-center gap-3 text-white bg-emerald-600";
-                title.innerHTML = `<i class="fa-solid fa-cart-shopping text-2xl"></i> <h4 class="font-serif text-sm font-bold uppercase tracking-wider">Passerelle d'Abonnement Ulule</h4>`;
+                title.className = "px-6 py-4 flex items-center gap-3 text-white bg-[#b91c1c]";
+                title.innerHTML = `<i class="fa-solid fa-shield-halved text-2xl animate-pulse"></i> <h4 class="font-serif text-sm font-bold uppercase tracking-wider">Sécurisation de la commande</h4>`;
                 
                 text.innerHTML = `
-                    <strong>REDIRECTION ABONNEMENT EN COURS :</strong><br><br>
-                    Vous avez sélectionné l'offre : <strong>${planName}</strong> au tarif de <strong>${price.toFixed(2)} € / mois</strong>.<br><br>
-                    Dans le cadre de votre campagne, les joueurs seront redirigés vers l'interface officielle d'abonnement mensuel d'Ulule pour valider leur prélèvement et collecter leur adresse d'expédition pour le 5 du mois.<br><br>
-                    <span class="text-emerald-500 font-bold">⇒ Votre prélèvement fictif a été simulé avec succès !</span>
+                    <div class="flex flex-col items-center gap-4 text-center my-4 font-mono">
+                        <div class="w-10 h-10 border-4 border-brandRed border-t-transparent rounded-full animate-spin"></div>
+                        <div>
+                            <p class="text-xs uppercase text-zinc-400">Offre sélectionnée : <strong class="text-white">${planName} (${price.toFixed(2)} €)</strong></p>
+                            <p class="text-[10px] text-brandRed mt-2 animate-pulse uppercase tracking-widest">Connexion sécurisée avec Ulule en cours...</p>
+                        </div>
+                        <p class="text-[10px] text-zinc-500 italic max-w-xs mt-2">
+                            Vous allez être redirigé vers notre plateforme partenaire d'abonnement Ulule pour finaliser votre inscription et collecter votre adresse postale d'expédition.
+                        </p>
+                    </div>
                 `;
                 modal.classList.remove('hidden');
+
+                // Redirect after 2 seconds to make the flow look intentional, secure, and professional
+                setTimeout(() => {
+                    window.location.href = "https://fr.ulule.com/?ref=header";
+                }, 2000);
             }
 
             // Final Verdict Evaluation
